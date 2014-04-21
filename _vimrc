@@ -14,6 +14,13 @@
 :set guioptions -=m
 :set guioptions -=T
 
+" http://stackoverflow.com/questions/7622564/vim-auto-indent-private-keyword
+:set cino+=g0
+" http://stackoverflow.com/questions/2549019/how-to-avoid-namespace-content-indentation-in-vim
+" this actually need to relative higher version of vim73, at least it works for vim74
+:set cino+=N-s
+:set cino+=(s
+
 
 " Vim color file
 " Maintainer: Marco Peereboom <slash@peereboom.us>
