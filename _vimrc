@@ -6,7 +6,10 @@
 :syntax on
 :set nu
 :set guifont=Consolas:h12:cANSI
-:set guifont=Envy_Code_R:h12:cANSI
+
+" change font explicity, and keep consolas here, since non-installed fonts
+" will reset the fonts to default
+" :set guifont=Envy_Code_R:h12:cANSI
 
 :set cindent
 :set autoindent
