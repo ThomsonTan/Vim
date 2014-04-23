@@ -4,7 +4,12 @@
 :set scrolloff=5
 :set tabstop=4 shiftwidth=4 expandtab
 :syntax on
-:set nu
+
+" Using relative numbers for navigation
+" switch between normal and relative is not considered, since the column width changes 
+" in this case. Please use C-g to get the absolute line information
+" ref: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+:set rnu
 :set guifont=Consolas:h12:cANSI
 
 " change font explicity, and keep consolas here, since non-installed fonts
