@@ -5,6 +5,8 @@
 :set tabstop=4 shiftwidth=4 expandtab
 :syntax on
 
+"http://unix.stackexchange.com/questions/3073/what-is-a-vi-equivalent-of-vims-set-ruler-command
+:set ruler
 " Using relative numbers for navigation
 " switch between normal and relative is not considered, since the column width changes 
 " in this case. Please use C-g to get the absolute line information
