@@ -10,11 +10,12 @@
 " in this case. Please use C-g to get the absolute line information
 " ref: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 :set rnu
-:set guifont=Consolas:h12:cANSI
 
-" change font explicity, and keep consolas here, since non-installed fonts
-" will reset the fonts to default
-" :set guifont=Envy_Code_R:h12:cANSI
+" try/catch/finally doesn't work, cannot catch the error of `set guifont=`
+" specify comma seperated fonts works great here, and gVim will use the 
+" first available fonts, which is what I want.
+" http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
+:set guifont=Envy_Code_R:h12:cANSI,Consolas:h12:cANSI
 
 :set cindent
 :set autoindent
