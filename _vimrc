@@ -240,10 +240,12 @@ vnoremap <C-c> "+y
 inoremap <A-h> <C-o>h
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
+" FIXME: the issue here is A-l cannot move to the last column in edit mode
+" Use a to see whether this can be fixed
+inoremap <A-l> <C-o>a
 inoremap <A-f> <C-o>w
 inoremap <A-b> <C-o>b
-inoremap <A-e> <C-o>e
+inoremap <A-e> <C-o>e<C-o>l
 inoremap <A-d> <C-o>4j
 inoremap <A-u> <C-o>4k
 
