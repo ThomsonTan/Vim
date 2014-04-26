@@ -15,6 +15,8 @@
 " ref: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 :set rnu
 
+" Set font for specific file type, autocmd BufEnter *.txt set guifont=Arial\ 12
+
 " try/catch/finally doesn't work, cannot catch the error of `set guifont=`
 " specify comma seperated fonts works great here, and gVim will use the 
 " first available fonts, which is what I want.
@@ -24,8 +26,9 @@
 :set cindent
 :set autoindent
 
-:set guioptions -=m
-:set guioptions -=T
+" Hide the menu and toolbar completely
+:set guioptions-=m
+:set guioptions-=T
 
 " http://stackoverflow.com/questions/7622564/vim-auto-indent-private-keyword
 :set cino+=g0
