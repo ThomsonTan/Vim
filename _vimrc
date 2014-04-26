@@ -1,3 +1,5 @@
+" Hacker Vim 7.2 mentioned the command added to gvimrc should not have : prepended,
+" but it seems it also works here
 :set ic
 :set smartcase
 :set incsearch
