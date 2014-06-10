@@ -251,8 +251,11 @@ inoremap <A-l> <C-o>a
 inoremap <A-f> <C-o>w
 inoremap <A-b> <C-o>b
 inoremap <A-e> <C-o>e<C-o>l
-inoremap <A-d> <C-o>4j
+" reserve A-c for the most common Esc, and use c for down, as sit down
+inoremap <A-c> <C-o>4j
 inoremap <A-u> <C-o>4k
+
+inoremap <A-d> <Esc>
 
 " provide hjkl moves in CommandLine modes,
 " from the same link as above
