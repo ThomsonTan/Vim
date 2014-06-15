@@ -1,11 +1,38 @@
 " Hacker Vim 7.2 mentioned the command added to gvimrc should not have : prepended,
 " but it seems it also works here
+
+" highlight current line in insertion mode
+" autocmd InsertLeave * se nocul
+" autocmd InsertEnter * se cul
+set nocompatible
+" detect the file type
+filetype on
+filetype plugin on
+set completeopt=longest,menu
+
+" load indent file for specific file type
+filetype indent on
+
 :set ic
 :set smartcase
 :set incsearch
 :set scrolloff=5
 :set tabstop=4 shiftwidth=4 expandtab
 :syntax on
+
+" ignore the errorbell, does this really work?
+set noerrorbells
+
+" don't generate swap file
+setlocal noswapfile
+set bufhidden=hide
+set updatecount=0
+
+" no backup file ?
+" set nobackup
+
+" always show last status line, but this is unexpected
+" set laststatus=2
 
 "http://unix.stackexchange.com/questions/3073/what-is-a-vi-equivalent-of-vims-set-ruler-command
 :set ruler
@@ -24,6 +51,7 @@
 :set guifont=Envy_Code_R:h12:cANSI,Consolas:h12:cANSI
 
 :set cindent
+" could also say set ai! ?
 :set autoindent
 
 " Hide the menu and toolbar completely
@@ -74,7 +102,7 @@ hi SpecialKey guifg=Orange
 hi Title guifg=Magenta
 hi WarningMsg guifg=Red
 hi WildMenu guibg=Cyan guifg=Black
-hi Folded guibg=White guifg=DarkBlue
+hi Folded guibg=#303030 guifg=DarkBlue
 hi FoldColumn guibg=Grey guifg=DarkBlue
 hi DiffAdd guibg=LightBlue
 hi DiffChange guibg=LightMagenta
@@ -135,7 +163,8 @@ hi SpecialKey guifg=Orange
 hi Title guifg=Magenta
 hi WarningMsg guifg=Red
 hi WildMenu guibg=Cyan guifg=Black
-hi Folded guibg=DarkGrey guifg=DarkBlue
+" below one takes effect actually, overwrite previous one?
+hi Folded guibg=#184018 guifg=DarkBlue
 hi FoldColumn guibg=Grey guifg=DarkBlue
 hi DiffAdd guibg=LightBlue
 hi DiffChange guibg=LightMagenta
@@ -255,7 +284,14 @@ inoremap <A-e> <C-o>e<C-o>l
 inoremap <A-c> <C-o>4j
 inoremap <A-u> <C-o>4k
 
+" map <A-d> for both insert and visual mode
+" also add it for normal mode
 inoremap <A-d> <Esc>
+vnoremap <A-d> <Esc>
+nnoremap <A-d> <Esc>
+" below mapping comes from link, search <C-c> and command line mode
+" http://vim.wikia.com/wiki/Avoid_the_escape_key
+cnoremap <A-d> <C-c>
 
 " provide hjkl moves in CommandLine modes,
 " from the same link as above
@@ -267,4 +303,30 @@ cnoremap <A-l> <Right>
 
 nnoremap <C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
 nnoremap <C-j> :call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
+
+" below techical of maximize gvim Window on Windows comems from below link:
+" http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
+if (has("win32") || has("win64"))
+    au GUIEnter * simalt ~x
+    " share clipboard with Windows
+    set clipboard+=unnamed
+elseif has("unix")
+    set clipboard+=linux
+endif
+
+" The techinical of maximize Windows on Linux comes from below link:
+" http://blog.163.com/lgh_2002/blog/static/4401752620115604617575/
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b
+add,maximized_vert,maximized_horz
+endfunction
+
+" allow backspace cross cursor and line border, is this really necessary?
+" set whichwrap+=<,>,h,l
+
+" put below hi at the begining of the file doesn't take any effect, so put it
+" here seems Ok.
+" Btw which plug-in split/end comment for me???
+set cursorline
+hi cursorline guibg=#282828
 
