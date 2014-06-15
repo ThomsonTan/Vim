@@ -7,6 +7,8 @@
 set nocompatible
 " detect the file type
 filetype on
+" below option will cause gvim to load language extensions, such as c.vim
+" see link: http://easwy.com/blog/archives/advanced-vim-skills-filetype-on/
 filetype plugin on
 set completeopt=longest,menu
 
