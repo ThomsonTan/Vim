@@ -302,6 +302,8 @@ cnoremap <A-j> <C-Right>
 cnoremap <A-k> <C-Left>
 cnoremap <A-l> <Right>
 
+" map <A-j> in normal mode to break the current line after cursor
+nnoremap <A-j> a<CR><Esc>k$
 
 nnoremap <C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
 nnoremap <C-j> :call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
