@@ -7,8 +7,6 @@
 set nocompatible
 " detect the file type
 filetype on
-" below option will cause gvim to load language extensions, such as c.vim
-" see link: http://easwy.com/blog/archives/advanced-vim-skills-filetype-on/
 filetype plugin on
 set completeopt=longest,menu
 
@@ -189,7 +187,24 @@ function! Highlighting()
   endif
   let @/ = '\<'.expand('<cword>').'\>'
   let g:highlighting = 1
-  return ":silent set hlsearch\<CR>"
+" use mary y to add the current position to jump list, since y is the 
+" longest key to type :)
+" One tricky behavior is when highlighting, the first back navigation
+" back to the mark, not the one below the mark!
+" Just got some tricky stuff about jump list format, see :help jumplist
+" My understanding is when insert a new location to jumplist, it will 
+" be inserted, at the same time point the top location to an empty loc,
+" which is used to record the new loc when <C-o> is used to back to the
+" loc just inserted.
+" ??? I am wondering whether there is easy way to be ware that <C-o> will
+"     cause current pos to be inserted to the jump list or now.
+"     In the recording current pos mode, when <C-o> is used (<C-i> doesn't
+"     exit such mode), the mode will be exited.
+" The insertion mode of locs could be tricky, the motion command just 
+" insert current pos to jump list (or fill the top empty one),
+" then does the motion then create a empty
+" jump loc at the bottom of jump list, the next motion. Strange model.
+  return "my`y:silent set hlsearch\<CR>"
 endfunction
 nnoremap <silent> <expr> <space> Highlighting()
 
