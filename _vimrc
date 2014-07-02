@@ -16,6 +16,7 @@ filetype indent on
 :set ic
 :set smartcase
 :set incsearch
+set hlsearch
 :set scrolloff=5
 :set tabstop=4 shiftwidth=4 expandtab
 :syntax on
