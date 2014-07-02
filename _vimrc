@@ -295,6 +295,9 @@ inoremap <A-k> <C-o>k
 " FIXME: the issue here is A-l cannot move to the last column in edit mode
 " Use a to see whether this can be fixed
 inoremap <A-l> <C-o>a
+" Below <A-f> cannot go to the last (append) position of the line, because 
+" the last postion is not a valid insert position.
+" but above <A-l> can do it. Take care of this minor difference.
 inoremap <A-f> <C-o>w
 inoremap <A-b> <C-o>b
 inoremap <A-e> <C-o>e<C-o>l
