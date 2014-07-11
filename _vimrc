@@ -327,6 +327,10 @@ nnoremap <A-j> a<CR><Esc>k$
 nnoremap <C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
 nnoremap <C-j> :call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
 
+" map completion at local file scope to more convenient keys
+inoremap <A-,> <C-x><C-p>
+inoremap <A-.> <C-x><C-n>
+
 " below techical of maximize gvim Window on Windows comems from below link:
 " http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
 if (has("win32") || has("win64"))
