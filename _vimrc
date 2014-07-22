@@ -352,6 +352,7 @@ inoremap <A-p> <C-p>
 " and namespaces indentation
 nnoremap <C-n> ][w][%zz
 nnoremap <C-p> []%zz
+nnoremap <C-m> 10[{zz
 
 " below techical of maximize gvim Window on Windows comems from below link:
 " http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
