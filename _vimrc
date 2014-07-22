@@ -181,12 +181,26 @@ hi Type gui=NONE guifg=Cyan guibg=Black
 
 
 let g:highlighting = 0
-function! Highlighting()
-  if g:highlighting == 1 && @/ =~ '^\\<'.expand('<cword>').'\\>$'
-    let g:highlighting = 0
-    return ":silent nohlsearch\<CR>"
+" TODO: Toggle between different highlights looks separate
+function! Highlighting(inputPat)
+  if g:highlighting == 1 
+    if @/ =~ '^\\<'.expand('<cword>').'\\>$' 
+      let g:highlighting = 0
+      return ":silent nohlsearch\<CR>"
+    endif
+    if @/ == a:inputPat
+      let g:highlighting = 0
+      return ":silent nohlsearch\<CR>"
+    endif
   endif
-  let @/ = '\<'.expand('<cword>').'\>'
+  if a:inputPat == ''
+    let @/ = '\<'.expand('<cword>').'\>'
+  else
+    let @/ = a:inputPat
+    " echo below echo the input string to command prompt line
+    " which is very useful
+    " echo a:inputPat
+  endif
   let g:highlighting = 1
 " use mary y to add the current position to jump list, since y is the 
 " longest key to type :)
@@ -207,7 +221,7 @@ function! Highlighting()
 " jump loc at the bottom of jump list, the next motion. Strange model.
   return "my`y:silent set hlsearch\<CR>"
 endfunction
-nnoremap <silent> <expr> <space> Highlighting()
+nnoremap <silent> <expr> <space> Highlighting('')
 
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
@@ -333,6 +347,12 @@ inoremap <A-.> <C-x><C-n>
 inoremap <A-n> <C-n>
 inoremap <A-p> <C-p>
 
+" functions navivation, still not perfect
+" The first function cannot be handed for forward navigation, also cannot handle C++ class
+" and namespaces indentation
+nnoremap <C-n> ][w][%zz
+nnoremap <C-p> []%zz
+
 " below techical of maximize gvim Window on Windows comems from below link:
 " http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
 if (has("win32") || has("win64"))
@@ -358,4 +378,62 @@ endfunction
 " Btw which plug-in split/end comment for me???
 set cursorline
 hi cursorline guibg=#282828
+
+" http://vim.wikia.com/wiki/Search_in_current_function
+" 7/22/2014
+" Search within a scope (a {...} program block).
+" Version 2010-02-28 from http://vim.wikia.com/wiki/VimTip1530
+" Original solution in above link use / to search? which has the issue of 
+" advancing past the current one when selected, which is the typical 
+" behavior of search, but weird for highlight.
+" Anyway, I like highlight instead of search here, so switch the implementation
+" to use @/ and set hlsearch as toggle, which makes it consistent with space 
+" highlight
+" One random thing looks strange is there is no file type hint when creating new
+" lines now, file type identify is closed???
+
+" Search within top-level block for word at cursor, or selected text.
+nnoremap <silent> <C-S-space>       :exe 'norm '.<SID>ScopeSearch('][%', 1)<CR>
+vnoremap <silent> <C-S-space> <Esc> :exe 'norm '.<SID>ScopeSearch('][%', 2)<CR>gV
+" Search within current block for word at cursor, or selected text.
+" ugly workaround of appending h here, it may not work in some edge scenarios
+" Why this command moves cursor one char later?
+" Strange again, the extra move just disppeared, is it because I insered an extra
+" space after <CR>, must be type accurate keys for mapping!!! Perfect solution.
+nnoremap <silent> <C-space>       :exe 'norm '.<SID>ScopeSearch('[{', 1)<CR>
+vnoremap <silent> <C-space> <Esc> :exe 'norm '.<SID>ScopeSearch('[{', 2)<CR>gV
+" Search within current top-level block for user-entered text.
+" No need of below 2 right now
+" nnoremap <Leader>/ /<C-R>=<SID>ScopeSearch('[[', 0)<CR>
+" vnoremap <Leader>/ <Esc>/<C-R>=<SID>ScopeSearch('[[', 2)<CR><CR>
+
+" Return a pattern to search within a specified scope, or
+" return a backslash to cancel search if scope not found.
+" navigator: a command to jump to the beginning of the desired scope
+" mode: 0=scope only; 1=scope+current word; 2=scope+visual selection
+function! s:ScopeSearch(navigator, mode)
+  if a:mode == 0
+    let pattern = ''
+  elseif a:mode == 1
+    let pattern = '\<' . expand('<cword>') . '\>'
+  else
+    let old_reg = getreg('@')
+    let old_regtype = getregtype('@')
+    normal! gvy
+    let pattern = escape(@@, '/\.*$^~[')
+    call setreg('@', old_reg, old_regtype)
+  endif
+  let saveview = winsaveview()
+  execute 'normal! ' . a:navigator
+  let first = line('.')
+  normal %
+  let last = line('.')
+  normal %
+  call winrestview(saveview)
+  if first < last
+    " return printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern)
+    return Highlighting(printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern))
+  endif
+endfunction
+
 
