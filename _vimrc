@@ -350,8 +350,8 @@ inoremap <A-p> <C-p>
 " functions navivation, still not perfect
 " The first function cannot be handed for forward navigation, also cannot handle C++ class
 " and namespaces indentation
-nnoremap <C-n> ][w][%zz
-nnoremap <C-p> []%zz
+nnoremap <C-n> :keepj norm ][w][%zz<CR>
+nnoremap <C-p> :keepj norm []%zz<CR>
 nnoremap <C-m> 10[{zz
 
 " below techical of maximize gvim Window on Windows comems from below link:
