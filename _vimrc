@@ -186,10 +186,13 @@ function! Highlighting(inputPat)
   if g:highlighting == 1 
     if @/ =~ '^\\<'.expand('<cword>').'\\>$' 
       let g:highlighting = 0
+      " clear the output after clear highlight, mainly for match lines.
+      echo ""
       return ":silent nohlsearch\<CR>"
     endif
     if @/ == a:inputPat
       let g:highlighting = 0
+      echo ""
       return ":silent nohlsearch\<CR>"
     endif
   endif
@@ -202,6 +205,7 @@ function! Highlighting(inputPat)
     " echo a:inputPat
   endif
   let g:highlighting = 1
+  exe "%s/".a:inputPat."//gn"
 " use mary y to add the current position to jump list, since y is the 
 " longest key to type :)
 " One tricky behavior is when highlighting, the first back navigation
@@ -394,15 +398,15 @@ hi cursorline guibg=#282828
 " lines now, file type identify is closed???
 
 " Search within top-level block for word at cursor, or selected text.
-nnoremap <silent> <C-S-space>       :exe 'norm '.<SID>ScopeSearch('][%', 1)<CR>
-vnoremap <silent> <C-S-space> <Esc> :exe 'norm '.<SID>ScopeSearch('][%', 2)<CR>gV
+nnoremap <silent> <C-S-space>       :exe 'silent norm '.<SID>ScopeSearch('][%', 1)<CR>
+vnoremap <silent> <C-S-space> <Esc> :exe 'silent norm '.<SID>ScopeSearch('][%', 2)<CR>gV
 " Search within current block for word at cursor, or selected text.
 " ugly workaround of appending h here, it may not work in some edge scenarios
 " Why this command moves cursor one char later?
 " Strange again, the extra move just disppeared, is it because I insered an extra
 " space after <CR>, must be type accurate keys for mapping!!! Perfect solution.
-nnoremap <silent> <C-space>       :exe 'norm '.<SID>ScopeSearch('[{', 1)<CR>
-vnoremap <silent> <C-space> <Esc> :exe 'norm '.<SID>ScopeSearch('[{', 2)<CR>gV
+nnoremap <silent> <C-space>       :exe 'silent norm '.<SID>ScopeSearch('[{', 1)<CR>
+vnoremap <silent> <C-space> <Esc> :exe 'silent norm '.<SID>ScopeSearch('[{', 2)<CR>gV
 " Search within current top-level block for user-entered text.
 " No need of below 2 right now
 " nnoremap <Leader>/ /<C-R>=<SID>ScopeSearch('[[', 0)<CR>
@@ -413,6 +417,7 @@ vnoremap <silent> <C-space> <Esc> :exe 'norm '.<SID>ScopeSearch('[{', 2)<CR>gV
 " navigator: a command to jump to the beginning of the desired scope
 " mode: 0=scope only; 1=scope+current word; 2=scope+visual selection
 function! s:ScopeSearch(navigator, mode)
+  let retStr = ''
   if a:mode == 0
     let pattern = ''
   elseif a:mode == 1
@@ -430,11 +435,14 @@ function! s:ScopeSearch(navigator, mode)
   normal %
   let last = line('.')
   normal %
-  call winrestview(saveview)
   if first < last
     " return printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern)
-    return Highlighting(printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern))
+    let retStr = Highlighting(printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern))
   endif
+  " restore vew after highligh is necessary, since highlighting has motion (search)
+  " which affects the real view
+  call winrestview(saveview)
+  return retStr
 endfunction
 
 
