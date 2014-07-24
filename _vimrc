@@ -438,6 +438,9 @@ function! s:ScopeSearch(navigator, mode)
   if first < last
     " return printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern)
     let retStr = Highlighting(printf('\%%>%dl\%%<%dl%s', first-1, last+1, pattern))
+  else
+    let retStr = ':echo no highlight in scope'
+    echo 'No highlight in scope'
   endif
   " restore vew after highligh is necessary, since highlighting has motion (search)
   " which affects the real view
