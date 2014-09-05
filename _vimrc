@@ -41,7 +41,8 @@ set updatecount=0
 " switch between normal and relative is not considered, since the column width changes 
 " in this case. Please use C-g to get the absolute line information
 " ref: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-:set rnu
+" switch back to normal line number due to easy navigation
+:set nu
 
 " Set font for specific file type, autocmd BufEnter *.txt set guifont=Arial\ 12
 
@@ -340,7 +341,8 @@ cnoremap <A-k> <C-Left>
 cnoremap <A-l> <Right>
 
 " map <A-j> in normal mode to break the current line after cursor
-nnoremap <A-j> a<CR><Esc>k$
+" cancel this maaping for easy-motion
+" nnoremap <A-j> a<CR><Esc>k$
 
 nnoremap <C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
 nnoremap <C-j> :call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
@@ -455,4 +457,26 @@ function! s:ScopeSearch(navigator, mode)
   return retStr
 endfunction
 
+" config for easy-motion, this is the minimal bindings
+set rtp+=$HOME/vimfiles/bundle/vundle/
+call vundle#rc('$HOME/vimfiles/bundle')
+Bundle 'Lokaltog/vim-easymotion'
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <A-j> <Plug>(easymotion-j)
+map <A-k> <Plug>(easymotion-k)
 
