@@ -226,7 +226,8 @@ function! Highlighting(inputPat)
 " jump loc at the bottom of jump list, the next motion. Strange model.
   return "my`y:silent set hlsearch\<CR>"
 endfunction
-nnoremap <silent> <expr> <space> Highlighting('')
+" Stop mapping space as highlight, start to use quickhl
+"nnoremap <silent> <expr> <space> Highlighting('')
 
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
@@ -457,6 +458,7 @@ function! s:ScopeSearch(navigator, mode)
   return retStr
 endfunction
 
+" ==============================================================================
 " config for easy-motion, this is the minimal bindings
 set rtp+=$HOME/vimfiles/bundle/vundle/
 call vundle#rc('$HOME/vimfiles/bundle')
@@ -480,3 +482,15 @@ let g:EasyMotion_smartcase = 1
 map <A-j> <Plug>(easymotion-j)
 map <A-k> <Plug>(easymotion-k)
 
+" ==============================================================================
+" config for quickhl
+Bundle 't9md/vim-quickhl'
+
+nmap <Space> <Plug>(quickhl-manual-this)
+xmap <Space> <Plug>(quickhl-manual-this)
+nmap <A-u> <Plug>(quickhl-manual-reset)
+xmap <A-u> <Plug>(quickhl-manual-reset)
+
+nmap <A-i> <Plug>(quickhl-cword-toggle)
+" nmap <Space>] <Plug>(quickhl-tag-toggle)
+map H <Plug>(operator-quickhl-manual-this-motion)
