@@ -227,7 +227,7 @@ function! Highlighting(inputPat)
   return "my`y:silent set hlsearch\<CR>"
 endfunction
 " Stop mapping space as highlight, start to use quickhl
-"nnoremap <silent> <expr> <space> Highlighting('')
+nnoremap <silent> <expr> <C-space> Highlighting('')
 
 nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
@@ -419,7 +419,9 @@ vnoremap <silent> <C-S-space> <Esc> :exe 'silent norm '.<SID>ScopeSearch('][%', 
 " Why this command moves cursor one char later?
 " Strange again, the extra move just disppeared, is it because I insered an extra
 " space after <CR>, must be type accurate keys for mapping!!! Perfect solution.
-nnoremap <silent> <C-space>       :exe 'silent norm '.<SID>ScopeSearch('[{', 1)<CR>
+" 9/10/2014 scope search is less useful than highlighting. Move this shortcut
+" to highlight since single space is used to highlight multiple words
+" nnoremap <silent> <C-space>       :exe 'silent norm '.<SID>ScopeSearch('[{', 1)<CR>
 vnoremap <silent> <C-space> <Esc> :exe 'silent norm '.<SID>ScopeSearch('[{', 2)<CR>gV
 " Search within current top-level block for user-entered text.
 " No need of below 2 right now
