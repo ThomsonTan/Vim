@@ -180,6 +180,8 @@ hi Ignore guifg=Grey
 hi Identifier guifg=Yellow guibg=Black
 hi Type gui=NONE guifg=Cyan guibg=Black
 
+hi Pmenu    ctermfg=white ctermbg=black gui=NONE guifg=white guibg=#303030
+hi Pmenusel ctermfg=white ctermbg=blue gui=bold guifg=White guibg=Purple
 
 let g:highlighting = 0
 " TODO: Toggle between different highlights looks separate
@@ -516,3 +518,8 @@ xmap <A-u> <Plug>(quickhl-manual-reset)
 nmap <A-i> <Plug>(quickhl-cword-toggle)
 " nmap <Space>] <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
+
+" ==============================================================================
+" configuration for YCM
+Bundle 'ThomsonTan/YouCompleteMe'
+
