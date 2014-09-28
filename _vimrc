@@ -521,5 +521,12 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 
 " ==============================================================================
 " configuration for YCM
+" since this is special build for Windows, no need to update it throught
+" Vundle, requires a special build
 Bundle 'ThomsonTan/YouCompleteMe'
+
+" ==============================================================================
+" configuration for identLine
+Bundle 'Yggdroot/indentLine'
+set list lcs=tab:\|\ 
 
