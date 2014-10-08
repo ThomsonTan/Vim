@@ -42,7 +42,12 @@ set updatecount=0
 " in this case. Please use C-g to get the absolute line information
 " ref: http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 " switch back to normal line number due to easy navigation
-:set nu
+" https://superuser.com/questions/339593/vim-toggle-number-with-relativenumber/339595#339595
+se nu
+nnoremap <A-r> :exec "se rnu!"<CR>
+inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
+
+nnoremap <A-space> *
 
 " Set font for specific file type, autocmd BufEnter *.txt set guifont=Arial\ 12
 
