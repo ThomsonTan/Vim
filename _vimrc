@@ -363,7 +363,8 @@ inoremap <A-p> <C-p>
 " functions navivation, still not perfect
 " The first function cannot be handed for forward navigation, also cannot handle C++ class
 " and namespaces indentation
-nnoremap <C-n> :keepj norm ][w][%zz<CR>
+" Refactor functions navigation by usign column search <A-l>
+nmap <C-n> <A-l>{<CR>
 nnoremap <C-p> :keepj norm []%zz<CR>
 " just saw some code in is_symbols which has nested level more than 10
 nnoremap <C-m> mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
