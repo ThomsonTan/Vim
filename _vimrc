@@ -96,8 +96,6 @@ hi VertSplit gui=reverse
 hi Visual gui=reverse guifg=White guibg=Black
 hi VisualNOS gui=underline
 hi DiffText guibg=Red
-hi Cursor guibg=#004080 guifg=NONE
-hi lCursor guibg=Cyan guifg=NONE
 hi Directory guifg=Orange
 hi LineNr guifg=#BBBB00
 hi MoreMsg guifg=SeaGreen
@@ -158,7 +156,7 @@ hi VertSplit gui=reverse
 hi Visual gui=reverse guifg=Grey guibg=Black
 hi VisualNOS gui=underline
 hi DiffText guibg=Red
-hi Cursor guibg=#004080 guifg=NONE
+hi Cursor guibg=#004080 guifg=white
 hi lCursor guibg=Cyan guifg=NONE
 hi Directory guifg=Orange
 hi LineNr guifg=Grey
