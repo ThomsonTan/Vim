@@ -486,6 +486,29 @@ function! s:ScopeSearch(navigator, mode)
   return retStr
 endfunction
 
+" Smooth scrolling from http://stackoverflow.com/questions/4064651/what-is-the-best-way-to-do-smooth-scrolling-in-vim
+function SmoothScroll(up)
+    if a:up
+        let scrollaction="\<C-Y>"
+    else
+        let scrollaction="\<C-E>"
+    endif
+    exec "normal " . scrollaction
+    redraw
+    let counter=3
+    while counter<&scroll
+        let counter+=1
+        sleep 6m
+        redraw
+        exec "normal " . scrollaction
+    endwhile
+endfunction
+
+nnoremap <C-U> :call SmoothScroll(1)<Enter>
+nnoremap <C-D> :call SmoothScroll(0)<Enter>
+inoremap <C-U> <Esc>:call SmoothScroll(1)<Enter>i
+inoremap <C-D> <Esc>:call SmoothScroll(0)<Enter>i
+
 " ==============================================================================
 " config for easy-motion, this is the minimal bindings
 set rtp+=$HOME/vimfiles/bundle/vundle/
