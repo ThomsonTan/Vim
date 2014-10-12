@@ -571,6 +571,7 @@ endif
 if maparg("<C-U>", 'n') == ''
   nnoremap <silent> <C-U> mk<C-U>:call <SID>CheckForChangeForAlternativeStyle(1, 0)<CR>
 endif
+
 " == Functions == "
 
 " Globally exposed function, so other scripts may call us.
@@ -588,7 +589,6 @@ function! s:CheckForChangeForAlternativeStyle(actIfChange, alternativeStyle)
   call s:CheckForChange(a:actIfChange)
   let g:SexyScroller_EasingStyle = g:tempStyle
 endfunction
-
 
 function! s:CheckForChange(actIfChange)
   let w:newPosition = winsaveview()
