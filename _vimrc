@@ -502,7 +502,7 @@ endif
 
 " We can only really see the cursor moving if 'cursorline' is enabled (or my hiline plugin is running)
 if !exists("g:SexyScroller_CursorTime")
-  let g:SexyScroller_CursorTime = ( &cursorline || exists("g:hiline") && g:hiline ? 8 : 0 )
+  let g:SexyScroller_CursorTime = ( &cursorline || exists("g:hiline") && g:hiline ? 10 : 0 )
 endif
 
 " By default, scrolling the buffer is slower then moving the cursor, because a page of text is "heavier" than the cursor.  :)
@@ -565,11 +565,11 @@ if maparg("zb", 'n') == ''
 endif
 
 if maparg("<C-D>", 'n') == ''
-  nnoremap <silent> <C-D> mk<C-D>:call <SID>CheckForChangeForAlternativeStyle(1, 0)<CR>
+  nnoremap <silent> <C-D> :call <SID>ChangeStyle(0)<CR>mk<C-D>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
 if maparg("<C-U>", 'n') == ''
-  nnoremap <silent> <C-U> mk<C-U>:call <SID>CheckForChangeForAlternativeStyle(1, 0)<CR>
+  nnoremap <silent> <C-U> :call <SID>ChangeStyle(0)<CR>mk<C-U>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
 " == Functions == "
@@ -583,11 +583,16 @@ function! g:SexyScroller_ScrollToCursor(...)
   call s:CheckForChange(actIfChange)
 endfunction
 
-function! s:CheckForChangeForAlternativeStyle(actIfChange, alternativeStyle)
-  let g:tempStyle = g:SexyScroller_EasingStyle
-  let g:SexyScroller_EasingStyle = a:alternativeStyle
-  call s:CheckForChange(a:actIfChange)
-  let g:SexyScroller_EasingStyle = g:tempStyle
+function! s:ChangeStyle(alternativeStyle)
+    let g:backupStyle = g:SexyScroller_EasingStyle
+    let g:SexyScroller_EasingStyle = a:alternativeStyle
+    let g:backupScrollTime = 15
+    let g:SexyScroller_ScrollTime = g:SexyScroller_ScrollTime
+endfunction
+
+function! s:BackupStyle()
+    let g:SexyScroller_EasingStyle = g:backupStyle
+    let g:SexyScroller_ScrollTime = g:backupScrollTime
 endfunction
 
 function! s:CheckForChange(actIfChange)
