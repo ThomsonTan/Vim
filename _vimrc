@@ -555,13 +555,13 @@ endif
 
 " Map some of the z commands similarly.
 if maparg("zt", 'n') == ''
-  nnoremap zt zt:call <SID>CheckForChange(1)<CR>
+  nnoremap zt zt:call <SID>CheckForChange(0)<CR>
 endif
 if maparg("zz", 'n') == ''
-  nnoremap zz zz:call <SID>CheckForChange(1)<CR>
+  nnoremap zz zz:call <SID>CheckForChange(0)<CR>
 endif
 if maparg("zb", 'n') == ''
-  nnoremap zb zb:call <SID>CheckForChange(1)<CR>
+  nnoremap zb zb:call <SID>CheckForChange(0)<CR>
 endif
 
 if maparg("<C-D>", 'n') == ''
@@ -763,6 +763,12 @@ function! s:ToggleEnabled()
   let g:SexyScroller_Enabled = !g:SexyScroller_Enabled
   echo "Sexy Scroller is " . ( g:SexyScroller_Enabled ? "en" : "dis" ) . "abled"
 endfunction
+
+" ==============================================================================
+" config for taglist
+let Tlist_Use_SingleClick = 1
+let Tlist_Use_Right_Window = 1
+nnoremap <silent> <F8> :TlistToggle<CR>
 
 " ==============================================================================
 " config for easy-motion, this is the minimal bindings
