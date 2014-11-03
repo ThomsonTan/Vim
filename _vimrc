@@ -418,7 +418,7 @@ endfunction
 " here seems Ok.
 " Btw which plug-in split/end comment for me???
 set cursorline
-hi cursorline guibg=#282828
+hi cursorline guibg=#303030
 
 " http://vim.wikia.com/wiki/Search_in_current_function
 " 7/22/2014
@@ -769,6 +769,13 @@ endfunction
 let Tlist_Use_SingleClick = 1
 let Tlist_Use_Right_Window = 1
 nnoremap <silent> <F8> :TlistToggle<CR>
+
+" ==============================================================================
+" config for Source Explorer which simulate Source Insight
+nnoremap <silent> <F7> :SrcExplToggle<CR>
+let g:SrcExpl_gobackKey = '<F11>' " temporary mapping
+let g:SrcExpl_jumpKey = "<F10>" 
+let g:SrcExpl_refreshTime = 100 
 
 " ==============================================================================
 " config for easy-motion, this is the minimal bindings
