@@ -64,6 +64,8 @@ nnoremap <A-space> *
 " Hide the menu and toolbar completely
 :set guioptions-=m
 :set guioptions-=T
+:set guioptions-=r
+:set guioptions-=L
 
 " http://stackoverflow.com/questions/7622564/vim-auto-indent-private-keyword
 :set cino+=g0
@@ -120,6 +122,8 @@ hi Special guifg=#BB00BB guibg=Black
 hi Ignore guifg=Grey
 hi Identifier guifg=#00BBBB guibg=Black
 hi Type guifg=#00BB00 guibg=Black
+" Seems VirtSplit doesn't work?
+hi VirtSplit guibg=#404040
 
 hi link IncSearch Visual
 hi link String Constant
