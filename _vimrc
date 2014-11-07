@@ -371,7 +371,7 @@ inoremap <A-p> <C-p>
 nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap C-p to jump to tag
-nnoremap <C-p> mm:exe "tag ".expand("<cword>")<CR>md
+nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md
 " just saw some code in is_symbols which has nested level more than 10
 nnoremap <C-m> mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
