@@ -365,7 +365,9 @@ inoremap <A-p> <C-p>
 " and namespaces indentation
 " Refactor functions navigation by usign column search <A-l>
 nmap <C-n> <A-l>{<CR>
-nnoremap <C-p> :keepj norm []%zz<CR>
+" nnoremap <C-p> :keepj norm []%zz<CR>
+" remap C-p to jump to tag
+nnoremap <C-p> :exe "tag ".expand("<cword>")<CR>
 " just saw some code in is_symbols which has nested level more than 10
 nnoremap <C-m> mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
