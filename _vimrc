@@ -787,7 +787,7 @@ let g:SrcExpl_refreshTime = 100
 " config for easy-motion, this is the minimal bindings
 set rtp+=$HOME/vimfiles/bundle/vundle/
 call vundle#rc('$HOME/vimfiles/bundle')
-Bundle 'Lokaltog/vim-easymotion'
+Bundle 'ThomsonTan/vim-easymotion'
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
