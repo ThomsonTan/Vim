@@ -370,8 +370,6 @@ nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap C-p to jump to tag
 nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md
-" just saw some code in is_symbols which has nested level more than 10
-nnoremap <C-m> mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
 " navigation in one line
 nnoremap <A-f> /\%<C-R>=line('.')<CR>l
@@ -585,6 +583,9 @@ nnoremap <silent> <A-.> :call <SID>StartSexy()<CR>]}
 " this may have issue when navigating to different buffer?
 nnoremap <silent> <C-i> :call <SID>StartSexy()<CR><C-i>
 nnoremap <silent> <C-o> :call <SID>StartSexy()<CR><C-o>
+
+" just saw some code in is_symbols which has nested level more than 10
+nnoremap <silent> <C-m> :call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
 if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
