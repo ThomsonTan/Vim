@@ -594,7 +594,7 @@ if maparg("<C-f>", 'n') == ''
   nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-f>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
-if maparg("<C-U>", 'n') == ''
+if maparg("<C-b>", 'n') == ''
   nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-b>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
