@@ -570,6 +570,7 @@ nnoremap <silent> N :call <SID>StartSexy()<CR>N
 nnoremap <silent> <A-space> :call <SID>StartSexy()<CR>*
 nnoremap <silent> * :call <SID>StartSexy()<CR>*
 nnoremap <silent> # :call <SID>StartSexy()<CR>#
+nnoremap <silent> % :call <SID>StartSexy()<CR>%
 
 " back to position is much useful than back to line, so map to convenient key
 nnoremap <silent> ' :call <SID>StartSexy()<CR>`
