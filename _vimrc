@@ -565,12 +565,18 @@ endif
 
 nnoremap <silent> / :call <SID>StartSexy()<CR>/
 nnoremap <silent> ? :call <SID>StartSexy()<CR>?
-nnoremap <silent> n :call <SID>StartSexy()<CR>n
-nnoremap <silent> N :call <SID>StartSexy()<CR>N
+nnoremap <silent> <expr> n <SID>StartSexy().'Nn'[v:searchforward]
+nnoremap <silent> <expr> N <SID>StartSexy().'nN'[v:searchforward]
 nnoremap <silent> <A-space> :call <SID>StartSexy()<CR>*
 nnoremap <silent> * :call <SID>StartSexy()<CR>*
 nnoremap <silent> # :call <SID>StartSexy()<CR>#
 nnoremap <silent> % :call <SID>StartSexy()<CR>%
+nn <silent> gg :call <SID>StartSexy()<CR>gg
+nn <silent> gd :call <SID>StartSexy()<CR>gd
+nn <silent> gD :call <SID>StartSexy()<CR>gD
+nn <silent> <expr> G <SID>StartSexy().'G'
+nn <silent> <expr> j <SID>StartSexy().'j'
+nn <silent> <expr> k <SID>StartSexy().'k'
 
 " back to position is much useful than back to line, so map to convenient key
 nnoremap <silent> ' :call <SID>StartSexy()<CR>`
@@ -629,6 +635,7 @@ endfunction
 
 function! s:StartSexy()
     let g:SexyScroller_StartSexy = 1
+    return ''
 endfunction
 
 function! s:CheckForChange(actIfChange)
@@ -861,4 +868,3 @@ Bundle 'ThomsonTan/YouCompleteMe'
 " configuration for identLine
 Bundle 'Yggdroot/indentLine'
 set list lcs=tab:\|\ 
-
