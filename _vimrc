@@ -373,15 +373,6 @@ nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md
 " just saw some code in is_symbols which has nested level more than 10
 nnoremap <C-m> mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
-" back to position is much useful than back to line, so map to convenient key
-nnoremap ' `
-nnoremap ` '
-
-" C-, is mapped by input method?
-" Weird that both C-, C-. even C-; don't work, both local and TS
-nnoremap <A-,> [{
-nnoremap <A-.> ]}
-
 " navigation in one line
 nnoremap <A-f> /\%<C-R>=line('.')<CR>l
 " navigation in current column
@@ -391,8 +382,8 @@ nnoremap <A-n> :keepj norm nn%zz<CR>
 nnoremap <A-p> :keepj norm N%zz<CR>
 
 " make n/N behavior consistent
-nnoremap <expr> n 'Nn'[v:searchforward]
-nnoremap <expr> N 'nN'[v:searchforward]
+" nnoremap <expr> n 'Nn'[v:searchforward]
+" nnoremap <expr> N 'nN'[v:searchforward]
 
 " shortcuts for insert mode, a/u reserve a/u for in file marks
 " not use u register since the existence of gi command
@@ -581,6 +572,19 @@ nnoremap <silent> N :call <SID>StartSexy()<CR>N
 nnoremap <silent> <A-space> :call <SID>StartSexy()<CR>*
 nnoremap <silent> * :call <SID>StartSexy()<CR>*
 nnoremap <silent> # :call <SID>StartSexy()<CR>#
+
+" back to position is much useful than back to line, so map to convenient key
+nnoremap <silent> ' :call <SID>StartSexy()<CR>`
+nnoremap <silent>` :call <SID>StartSexy()<CR>'
+
+" C-, is mapped by input method?
+" Weird that both C-, C-. even C-; don't work, both local and TS
+nnoremap <silent> <A-,> :call <SID>StartSexy()<CR>[{
+nnoremap <silent> <A-.> :call <SID>StartSexy()<CR>]}
+
+" this may have issue when navigating to different buffer?
+nnoremap <silent> <C-i> :call <SID>StartSexy()<CR><C-i>
+nnoremap <silent> <C-o> :call <SID>StartSexy()<CR><C-o>
 
 if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
