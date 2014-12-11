@@ -47,8 +47,6 @@ se nu
 nnoremap <A-r> :exec ":se rnu!"<CR>
 inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
 
-nnoremap <A-space> *
-
 " Set font for specific file type, autocmd BufEnter *.txt set guifont=Arial\ 12
 
 " try/catch/finally doesn't work, cannot catch the error of `set guifont=`
@@ -536,6 +534,10 @@ if !exists("g:SexyScroller_DebugInterruption")
   let g:SexyScroller_DebugInterruption = 0
 endif
 
+if !exists("g:SexyScroller_StartSexy")
+  let g:SexyScroller_StartSexy = 0
+endif
+
 " == Setup == "
 
 command! SexyScrollerToggle call s:ToggleEnabled()
@@ -560,6 +562,8 @@ if maparg("<C-Y>", 'n') == ''
 endif
 
 " Map some of the z commands similarly.
+" z* commands are not compatible with sexy scroller, it shows up the target
+" cursor anyway!!!
 if maparg("zt", 'n') == ''
   nnoremap zt zt:call <SID>CheckForChange(0)<CR>
 endif
@@ -570,12 +574,28 @@ if maparg("zb", 'n') == ''
   nnoremap zb zb:call <SID>CheckForChange(0)<CR>
 endif
 
-if maparg("<C-D>", 'n') == ''
-  nnoremap <silent> <C-D> :call <SID>ChangeStyle(0)<CR>mk<C-D>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+nnoremap <silent> / :call <SID>StartSexy()<CR>/
+nnoremap <silent> ? :call <SID>StartSexy()<CR>?
+nnoremap <silent> n :call <SID>StartSexy()<CR>n
+nnoremap <silent> N :call <SID>StartSexy()<CR>N
+nnoremap <silent> <A-space> :call <SID>StartSexy()<CR>*
+nnoremap <silent> * :call <SID>StartSexy()<CR>*
+nnoremap <silent> # :call <SID>StartSexy()<CR>#
+
+if maparg("<C-d>", 'n') == ''
+  nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
 if maparg("<C-U>", 'n') == ''
-  nnoremap <silent> <C-U> :call <SID>ChangeStyle(0)<CR>mk<C-U>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+  nnoremap <silent> <C-u> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-u>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+endif
+
+if maparg("<C-f>", 'n') == ''
+  nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-f>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+endif
+
+if maparg("<C-U>", 'n') == ''
+  nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-b>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
 
 " == Functions == "
@@ -601,10 +621,14 @@ function! s:BackupStyle()
     let g:SexyScroller_ScrollTime = g:backupScrollTime
 endfunction
 
+function! s:StartSexy()
+    let g:SexyScroller_StartSexy = 1
+endfunction
+
 function! s:CheckForChange(actIfChange)
   let w:newPosition = winsaveview()
   let w:newBuffer = bufname('%')
-  if a:actIfChange && g:SexyScroller_Enabled
+  if a:actIfChange && g:SexyScroller_Enabled && g:SexyScroller_StartSexy
         \ && exists("w:oldPosition")
         \ && exists("w:oldBuffer") && w:newBuffer==w:oldBuffer "&& mode()=='n'
     if s:differ("topline",3) || s:differ("leftcol",3) || s:differ("lnum",2) || s:differ("col",2)
@@ -614,6 +638,7 @@ function! s:CheckForChange(actIfChange)
       endif
     endif
   endif
+  let g:SexyScroller_StartSexy = 0
   let w:oldPosition = w:newPosition
   let w:oldBuffer = w:newBuffer
 endfunction
@@ -809,7 +834,7 @@ map <A-k> <Plug>(easymotion-k)
 
 " ==============================================================================
 " config for quickhl
-Bundle 't9md/vim-quickhl'
+Bundle 'ThomsonTan/vim-quickhl'
 
 nmap <Space> <Plug>(quickhl-manual-this)
 xmap <Space> <Plug>(quickhl-manual-this)
