@@ -252,6 +252,29 @@ function! NextClosedFold(dir)
     endif
 endfunction
 
+" ==============================================================================
+" :h tags-option and :h file-searching for more syntax
+" search tags from the current file directory to root
+set tags=./tags;/
+
+" ==============================================================================
+" cscope support file
+if filereadable("cscope.out")
+    cs add cscope.out
+elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+endif
+
+nmap <A-2>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
+nmap <A-2>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" ==============================================================================
 " Vim plugin -- last-position-jump improved (esp. for Easy Vim)
 " File:         lastpos.vim
 " Created:      2010 Apr 08     (new approach!)
