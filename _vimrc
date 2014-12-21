@@ -259,8 +259,10 @@ set tags=./tags;/
 
 " ==============================================================================
 " cscope support file
-if filereadable("cscope.out")
-    cs add cscope.out
+let cscope_file=findfile("cscope.out", ".;")
+let cscope_pre = matchstr(cscope_file, ".*[\\/]")[:-2]
+if !empty(cscope_file) && filereadable(cscope_file)
+    exe "cs add" cscope_file cscope_pre
 elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
