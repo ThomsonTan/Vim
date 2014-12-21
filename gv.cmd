@@ -13,8 +13,10 @@ set EndMarker=%%k
 
 if "%EndMarker%" EQU "" (
     if not "%GVLineNumber%" EQU "" (
-        start !MYGVIMPATH! +%GVLineNumber% %GVFileName%
-        goto :EOF
+        if "!GVLineNumber:~0,1!" EQU "\\" (
+            start !MYGVIMPATH! +%GVLineNumber% %GVFileName%
+            goto :EOF
+        )
     )
 )
 
