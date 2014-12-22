@@ -259,7 +259,7 @@ set tags=./tags;/
 
 " ==============================================================================
 " cscope support file
-let cscope_file=findfile("cscope.out", ".;")
+let cscope_file=fnamemodify(findfile("cscope.out", ".;"), ':p")
 let cscope_pre = matchstr(cscope_file, ".*[\\/]")[:-2]
 if !empty(cscope_file) && filereadable(cscope_file)
     exe "cs add" cscope_file cscope_pre
