@@ -616,6 +616,10 @@ nnoremap <silent> <A-.> :call <SID>StartSexy()<CR>]}
 nnoremap <silent> <C-i> :call <SID>StartSexy()<CR><C-i>
 nnoremap <silent> <C-o> :call <SID>StartSexy()<CR><C-o>
 
+" Scroll for ctags shortcuts
+nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>
+nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>
+
 " just saw some code in is_symbols which has nested level more than 10
 nnoremap <silent> <C-m> :call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
