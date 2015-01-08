@@ -75,6 +75,8 @@ hi Ignore guifg=Grey
 hi Identifier guifg=Yellow guibg=Black
 hi Type gui=NONE guifg=Cyan guibg=Black
 
+hi cursorline guibg=#303030
+
 hi Pmenu    ctermfg=white ctermbg=black gui=NONE guifg=white guibg=#303030
 hi Pmenusel ctermfg=white ctermbg=blue gui=bold guifg=White guibg=Purple
 

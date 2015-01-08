@@ -334,7 +334,6 @@ endfunction
 " here seems Ok.
 " Btw which plug-in split/end comment for me???
 set cursorline
-hi cursorline guibg=#303030
 
 " http://vim.wikia.com/wiki/Search_in_current_function
 " 7/22/2014
