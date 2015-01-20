@@ -33,7 +33,9 @@ function! ToggleSyntax()
   endif
 endfunction
 
-nnoremap <silent> <A-s> :call ToggleSyntax()<cr>
+" nnoremap <silent> <A-s> :call ToggleSyntax()<cr>
+nnoremap <silent> <A-s> :w<cr>
+inoremap <silent> <A-s> <C-o>:w<cr>
 
 " ignore the errorbell, does this really work?
 set noerrorbells
@@ -758,7 +760,7 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-s)
+" nmap s <Plug>(easymotion-s)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
