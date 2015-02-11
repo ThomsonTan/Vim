@@ -153,6 +153,18 @@ function! NextClosedFold(dir)
 endfunction
 
 " ==============================================================================
+" Repeat functionality in insert mode
+" C-x C-l can be used to match prefix for existing line
+" ==============================================================================
+function! RepeatInInsertMode()
+    let times = input("Count:")
+    let char  = input("Char:")
+    exe ":norm a" . repeat(char, times)
+endfunction
+
+imap <C-u> <C-o>:call RepeatInInsertMode()<cr>
+
+" ==============================================================================
 " :h tags-option and :h file-searching for more syntax
 " search tags from the current file directory to root
 set tags=./tags;/
