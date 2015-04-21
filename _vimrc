@@ -532,7 +532,7 @@ nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>zR
 nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>
 
 " just saw some code in is_symbols which has nested level more than 10
-nnoremap <silent> <C-m> :call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
+nnoremap <silent> <C-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
 if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
