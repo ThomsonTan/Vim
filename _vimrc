@@ -162,7 +162,7 @@ function! RepeatInInsertMode()
     exe ":norm a" . repeat(char, times)
 endfunction
 
-imap <C-u> <C-o>:call RepeatInInsertMode()<cr>
+imap <C-l> <C-o>:call RepeatInInsertMode()<cr>
 
 " ==============================================================================
 " :h tags-option and :h file-searching for more syntax
