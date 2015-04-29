@@ -532,6 +532,7 @@ nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>zR:call <SID>CheckForChan
 nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>:call <SID>CheckForChange(0)<CR>
 
 " just saw some code in is_symbols which has nested level more than 10
+" TODO: C-m is inconsistent with Sexy move
 nnoremap <silent> <C-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
 if maparg("<C-d>", 'n') == ''
