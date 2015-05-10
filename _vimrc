@@ -533,7 +533,8 @@ nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>:call <SID>CheckForChange
 
 " just saw some code in is_symbols which has nested level more than 10
 " TODO: C-m is inconsistent with Sexy move
-nnoremap <silent> <C-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
+" Remap to A-m since C-m is <CR> which could be used in q/ or q: mode.
+nnoremap <silent> <A-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
 
 if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
