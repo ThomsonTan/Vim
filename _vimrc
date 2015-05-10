@@ -162,6 +162,7 @@ function! RepeatInInsertMode()
     exe ":norm a" . repeat(char, times)
 endfunction
 
+" TODO: C-l is windows refresh?
 imap <C-l> <C-o>:call RepeatInInsertMode()<cr>
 
 " ==============================================================================
@@ -551,6 +552,18 @@ endif
 if maparg("<C-b>", 'n') == ''
   nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-b>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
 endif
+
+" Search for current selection (from Practical Vim)
+" ==============================================================================
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V'.substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
 
 " == Functions == "
 
