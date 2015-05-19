@@ -809,6 +809,8 @@ map <A-k> <Plug>(easymotion-k)
 " config for quickhl
 Bundle 'ThomsonTan/vim-quickhl'
 
+let g:quickhl_hl_keyword=1
+
 nmap <Space> <Plug>(quickhl-manual-this)
 xmap <Space> <Plug>(quickhl-manual-this)
 nmap <A-u> <Plug>(quickhl-manual-reset)
@@ -822,7 +824,7 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 " configuration for YCM
 " since this is special build for Windows, no need to update it throught
 " Vundle, requires a special build
-Bundle 'ThomsonTan/YouCompleteMe'
+" Bundle 'ThomsonTan/YouCompleteMe'
 
 " ==============================================================================
 " configuration for identLine
