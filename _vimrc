@@ -241,8 +241,10 @@ unlet s:cpo_save
 
 " vim:et tw=72 sts=4 sw=4:
 
-:set fdm=syntax
-:autocmd VimEnter * normal! zR
+" Disable fdm to improve performance, IdentLine is also a big factor of the
+" very slow performance
+" set fdm=syntax
+" autocmd VimEnter * normal! zR
 
 " support Ccrtl+c/ctrl+v
 " from http://stackoverflow.com/questions/2861627/paste-in-insert-mode
@@ -817,7 +819,7 @@ nmap <A-u> <Plug>(quickhl-manual-reset)
 xmap <A-u> <Plug>(quickhl-manual-reset)
 
 nmap <A-i> <Plug>(quickhl-cword-toggle)
-" nmap <Space>] <Plug>(quickhl-tag-toggle)
+nmap <F5> <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
 
 " ==============================================================================
