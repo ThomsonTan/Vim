@@ -244,7 +244,7 @@ unlet s:cpo_save
 " Disable fdm to improve performance, IdentLine is also a big factor of the
 " very slow performance
 " set fdm=syntax
-" autocmd VimEnter * normal! zR
+autocmd VimEnter * normal! zR
 
 " support Ccrtl+c/ctrl+v
 " from http://stackoverflow.com/questions/2861627/paste-in-insert-mode
