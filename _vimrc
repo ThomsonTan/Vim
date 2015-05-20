@@ -819,6 +819,7 @@ nmap <A-u> <Plug>(quickhl-manual-reset)
 xmap <A-u> <Plug>(quickhl-manual-reset)
 
 nmap <A-i> <Plug>(quickhl-cword-toggle)
+" be care to enable tag-toogle, performance degrade on large tags/files
 nmap <F5> <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
 
@@ -830,5 +831,9 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 
 " ==============================================================================
 " configuration for identLine
+" Disable it by default for performance reason
+let g:indentLine_enabled=0
 Bundle 'Yggdroot/indentLine'
 set list lcs=tab:\|\ 
+nmap <F4> :IndentLinesToggle<cr>
+
