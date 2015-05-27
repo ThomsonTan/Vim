@@ -49,7 +49,7 @@ hi IncSearch gui=reverse
 hi StatusLine gui=reverse
 hi StatusLineNC gui=reverse
 hi VertSplit gui=reverse
-hi Visual gui=reverse guifg=Grey
+hi Visual gui=reverse guifg=#585858 "LightGrey
 hi VisualNOS gui=underline
 hi DiffText guibg=Red
 hi Cursor          guifg=#000000 guibg=Gray
