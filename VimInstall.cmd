@@ -13,3 +13,8 @@ mkdir %homedrive%%homepath%\vimfiles\plugin
 copy plugin\srcexpl.vim %homedrive%%homepath%\vimfiles\plugin\
 copy plugin\taglist.vim %homedrive%%homepath%\vimfiles\plugin\
 
+if not exist %homedrive%%homepath%\vimfiles\after\syntax (
+mkdir %homedrive%%homepath%\vimfiles\after\syntax
+)
+
+copy after\syntax\c.vim %homedrive%%homepath%\vimfiles\after\syntax\
