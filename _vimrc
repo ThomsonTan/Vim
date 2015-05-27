@@ -69,7 +69,7 @@ inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
 " specify comma seperated fonts works great here, and gVim will use the 
 " first available fonts, which is what I want.
 " http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
-:set guifont=Envy_Code_R:h12:cANSI,Consolas:h12:cANSI
+:set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
 
 :set cindent
 " could also say set ai! ?
@@ -798,7 +798,7 @@ omap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-bd-tl)
 omap t <Plug>(easymotion-bd-tl)
 nmap f <Plug>(easymotion-sl)
-nmap f <Plug>(easymotion-sl)
+omap f <Plug>(easymotion-sl)
 
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
@@ -825,7 +825,7 @@ map H <Plug>(operator-quickhl-manual-this-motion)
 
 " ==============================================================================
 " configuration for YCM
-" since this is special build for Windows, no need to update it throught
+" since this is special build for Windows, no need to update it through
 " Vundle, requires a special build
 " Bundle 'ThomsonTan/YouCompleteMe'
 
