@@ -267,7 +267,7 @@ inoremap <A-l> <C-o>a
 " but above <A-l> can do it. Take care of this minor difference.
 inoremap <A-f> <C-o>w
 inoremap <A-b> <C-o>b
-inoremap <A-e> <C-o>e<C-o>l
+inoremap <A-e> <Esc>ea
 " reserve A-c for the most common Esc, and use c for down, as sit down
 inoremap <A-c> <C-o>4j
 inoremap <A-u> <C-o>4k
@@ -837,3 +837,6 @@ Bundle 'Yggdroot/indentLine'
 set list lcs=tab:\|\ 
 nmap <F4> :IndentLinesToggle<cr>
 
+" ==============================================================================
+" configuration for lexima
+Bundle 'ThomsonTan/lexima'
