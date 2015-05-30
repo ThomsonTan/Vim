@@ -2,4 +2,4 @@
 
 cmd.exe /c copy /y /v _vimrc %homedrive%%homepath%\_vimrc
 
-robocopy /S vimfiles\ %homedri%%homepath%\
+robocopy /S vimfiles\ %homedrive%%homepath%\vimfiles\
