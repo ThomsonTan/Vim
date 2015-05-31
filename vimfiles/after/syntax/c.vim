@@ -19,3 +19,6 @@ hi def link cFuncDefOneParam Function
 hi def link cFuncDefNoParamNoRightParen Function
 hi def link cFuncDefNoParamWithRightParen Function
 
+syn keyword cReturnStatement return
+hi def link cReturnStatement ReturnStatement
+
