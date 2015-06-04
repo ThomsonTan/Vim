@@ -473,9 +473,9 @@ nnoremap <A-q> :call <SID>ToggleEnabled()<CR>
 
 augroup Smooth_Scroller
   autocmd!
-  autocmd CursorMoved * call s:CheckForChange(1)
-  autocmd CursorMovedI * call s:CheckForChange(1)
-  autocmd InsertLeave * call s:CheckForChange(0)
+  autocmd CursorMoved * call s:CheckForPositionChange(1)
+  autocmd CursorMovedI * call s:CheckForPositionChange(1)
+  autocmd InsertLeave * call s:CheckForPositionChange(0)
   " Unfortunately we would like to fire on other occasions too, e.g.
   " BufferScrolled, but Vim does not offer enough events for us to hook to!
 augroup END
@@ -483,23 +483,23 @@ augroup END
 " |CTRL-E| and |CTRL-Y| scroll the window, but do not fire any events for us to detect.
 " If the user has not made a custom mapping for them, we will map them to fix this.
 if maparg("<C-E>", 'n') == ''
-  nnoremap <silent> <C-E> <C-E>:call <SID>CheckForChange(1)<CR>
+  nnoremap <silent> <C-E> <C-E>:call <SID>CheckForPositionChange(1)<CR>
 endif
 if maparg("<C-Y>", 'n') == ''
-  nnoremap <silent> <C-Y> <C-Y>:call <SID>CheckForChange(1)<CR>
+  nnoremap <silent> <C-Y> <C-Y>:call <SID>CheckForPositionChange(1)<CR>
 endif
 
 " Map some of the z commands similarly.
 " z* commands are not compatible with sexy scroller, it shows up the target
 " cursor anyway!!!
 if maparg("zt", 'n') == ''
-  nnoremap zt zt:call <SID>CheckForChange(0)<CR>
+  nnoremap zt zt:call <SID>CheckForPositionChange(0)<CR>
 endif
 if maparg("zz", 'n') == ''
-  nnoremap zz zz:call <SID>CheckForChange(0)<CR>
+  nnoremap zz zz:call <SID>CheckForPositionChange(0)<CR>
 endif
 if maparg("zb", 'n') == ''
-  nnoremap zb zb:call <SID>CheckForChange(0)<CR>
+  nnoremap zb zb:call <SID>CheckForPositionChange(0)<CR>
 endif
 
 nnoremap <silent> / :call <SID>StartSexy()<CR>/
@@ -531,28 +531,29 @@ nnoremap <silent> <C-i> :call <SID>StartSexy()<CR><C-i>
 nnoremap <silent> <C-o> :call <SID>StartSexy()<CR><C-o>
 
 " Scroll for ctags shortcuts
-nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>zR:call <SID>CheckForChange(0)<CR>
-nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>:call <SID>CheckForChange(0)<CR>
+nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>zR:call <SID>CheckForPositionChange(0)<CR>
+nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>:call <SID>CheckForPositionChange(0)<CR>
 
 " just saw some code in is_symbols which has nested level more than 10
 " TODO: C-m is inconsistent with Sexy move
 " Remap to A-m since C-m is <CR> which could be used in q/ or q: mode.
-nnoremap <silent> <A-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{zz
+" Cannot fix annoy scroll here, [{ is delayed to load?
+nnoremap <silent> <A-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{<CR>
 
 if maparg("<C-d>", 'n') == ''
-  nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-d>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+  nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-d>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
 if maparg("<C-U>", 'n') == ''
-  nnoremap <silent> <C-u> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-u>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+  nnoremap <silent> <C-u> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-u>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
 if maparg("<C-f>", 'n') == ''
-  nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-f>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+  nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-f>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
 if maparg("<C-b>", 'n') == ''
-  nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeStyle(0)<CR>mk<C-b>:call <SID>CheckForChange(1)<CR>:call <SID>BackupStyle()<CR>
+  nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-b>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
 " Search for current selection (from Practical Vim)
@@ -575,17 +576,17 @@ endfunction
 " If 1 is passed and the position has changed, it will scroll smoothly to the new position.
 function! g:SexyScroller_ScrollToCursor(...)
   let actIfChange = a:0 >= 1 ? a:1 : 1
-  call s:CheckForChange(actIfChange)
+  call s:CheckForPositionChange(actIfChange)
 endfunction
 
-function! s:ChangeStyle(alternativeStyle)
+function! s:ChangeSexyScrollStyle(alternativeStyle)
     let g:backupStyle = g:SexyScroller_EasingStyle
     let g:SexyScroller_EasingStyle = a:alternativeStyle
     let g:backupScrollTime = 15
     let g:SexyScroller_ScrollTime = g:SexyScroller_ScrollTime
 endfunction
 
-function! s:BackupStyle()
+function! s:BackupSexyScrollStyle()
     let g:SexyScroller_EasingStyle = g:backupStyle
     let g:SexyScroller_ScrollTime = g:backupScrollTime
 endfunction
@@ -595,7 +596,7 @@ function! s:StartSexy()
     return ''
 endfunction
 
-function! s:CheckForChange(actIfChange)
+function! s:CheckForPositionChange(actIfChange)
   let w:newPosition = winsaveview()
   let w:newBuffer = bufname('%')
   if a:actIfChange && g:SexyScroller_Enabled && g:SexyScroller_StartSexy
