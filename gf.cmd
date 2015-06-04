@@ -5,8 +5,8 @@ goto endofperl
 
 
 @rem -- BEGIN PERL -- ';
-#line 8
-#!/usr/bin/perl
+#!/usr/bin/perl #line should be put after this line
+#line 9
 # Search keywords in multiple lines in given files, or file names in given pattern
 # under current directory
 #grep -oPz 'key1(.*\n){l,L}.*key1' file.txt could do the same
@@ -20,15 +20,26 @@ my $maxLines = 10;
 my $inverse_search;
 my @Filter_ARGV;
 my $FileNamePattern;
+my $greedyMatchStartPat = 0;
+
+if (@ARGV == 0) {
+    print "Usage: $0 <pattern1> <pattern2> [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-g] [-r] [-R<FileNamePattern>] [filename [filename ...]]\n";
+    print "\n";
+    print "    pattern will be surrounded by match operator (/pattern1/i) in Perl.\n";
+    print "    -l2 means output has 2 lines as minimum, which is default. -l1 makes no sense here.\n";
+    print "    -R FileNamePattern is matched resursively.\n";
+    print "    -g Match line to start pattern greedy, start line is reset when sees start pattern anytime.\n";
+    print "    no wildchar in filename.\n";
+    print "\n";
+    exit 0;
+}
 
 for (@ARGV) {
     if (/^-l/) {
         $minLines = substr $_, 2;
-        $minLines += 1;
     }
     elsif (/^-L/) {
         $maxLines = substr $_, 2;
-        $maxLines += 1;
     }
     elsif (/^\-r/) {
         $inverse_search = true;
@@ -41,6 +52,9 @@ for (@ARGV) {
     }
     elsif (!defined($pat2)) {
         $pat2 = $_;
+    }
+    elsif (/^-g/) {
+        $greedyMatchStartPat = 1;
     }
     else {
         push @Filter_ARGV, $_;
@@ -60,9 +74,12 @@ sub GetFileNames {
     }
 }
 
-find ({wanted => \&GetFileNames, no_chdir => 1}, '.');
-if (not $FileNamePattern && @Filter_ARGV == 0) {
-    #exit 0;
+if (defined($FileNamePattern) || @Filter_ARGV == 0) {
+    find ({wanted => \&GetFileNames, no_chdir => 1}, '.');
+}
+if (@Filter_ARGV == 0) {
+    print "No files for searching\n\n";
+    exit 0;
 }
 
 @ARGV = @Filter_ARGV;
@@ -73,7 +90,7 @@ my $start_matching = 0;
 my $hasAnyOutput = 0;
 while (<>) {
    chomp;
-   if (/$pat1/i) {
+   if ((($greedyMatchStartPat == 1) || !$start_matching) && /$pat1/i) {
        @cache_range = ();
        $start_matching = 1;
        $startline = $.;
@@ -111,6 +128,8 @@ while (<>) {
         }
     }
 }
+
+print "\n";
 
 
 __END__
