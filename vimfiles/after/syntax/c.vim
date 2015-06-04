@@ -14,7 +14,7 @@ hi def link  cCustomFuncUse FunctionUse
 
 syn match cFuncDefNoParamNoRightParen excludenl  "\zs\w\+\ze\s*($"
 syn match cFuncDefNoParamWithRightParen excludenl  "\zs\w\+\ze\s*(\s*)$"
-syn match cFuncDefOneParam "\zs\w\+\ze\s*(\w\+\s\+"
+syn match cFuncDefOneParam "\zs\w\+\ze\s*(\w\+\**&\{0,2}\s\+"
 hi def link cFuncDefOneParam Function
 hi def link cFuncDefNoParamNoRightParen Function
 hi def link cFuncDefNoParamWithRightParen Function
