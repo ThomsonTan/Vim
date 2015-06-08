@@ -842,3 +842,8 @@ nmap <F4> :IndentLinesToggle<cr>
 " ==============================================================================
 " configuration for lexima
 Bundle 'ThomsonTan/lexima'
+
+" ==============================================================================
+" configuration for rainbow
+let g:rainbow_active = 1
+
