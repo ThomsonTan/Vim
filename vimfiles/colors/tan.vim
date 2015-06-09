@@ -51,7 +51,6 @@ hi StatusLineNC gui=reverse
 hi VertSplit gui=reverse
 hi Visual gui=reverse guifg=#585858 "LightGrey
 hi VisualNOS gui=underline
-hi DiffText guibg=Red
 hi Cursor          guifg=#000000 guibg=Gray
 hi iCursor         guifg=#000000 guibg=Gray
 hi Directory guifg=Orange
@@ -67,9 +66,12 @@ hi WildMenu guibg=Cyan
 " below one takes effect actually, overwrite previous one?
 hi Folded guibg=#184018 guifg=DarkBlue
 hi FoldColumn guibg=Grey guifg=DarkBlue
-hi DiffAdd guibg=LightBlue
-hi DiffChange guibg=LightMagenta
-hi DiffDelete guifg=Orange guibg=LightCyan
+
+hi DiffAdd gui=none guibg=#585800
+hi DiffDelete gui=none guibg=Black
+hi DiffChange gui=none guibg=#404040
+hi DiffText gui=none guibg=#585800
+
 hi Comment guifg=#75715E
 hi Constant guifg=#AE81DD " Extracted from sublime "Magenta
 hi PreProc guifg=Orange
@@ -77,7 +79,7 @@ hi Statement gui=NONE guifg=#F92672 "Yellow
 hi Special guifg=Red
 hi Ignore guifg=Grey
 hi Type gui=NONE guifg=Cyan
-hi ReturnStatement guifg=Yellow
+hi ReturnStatement guifg=DarkYellow
 
 hi MatchParen      guifg=#000000 guibg=#FD971F gui=bold
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold

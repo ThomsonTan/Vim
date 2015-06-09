@@ -350,7 +350,10 @@ endfunction
 " put below hi at the begining of the file doesn't take any effect, so put it
 " here seems Ok.
 " Btw which plug-in split/end comment for me???
-set cursorline
+" Don't enable cursorline in diff mode since it makes diff region mess
+if !&diff
+    set cursorline
+endif
 
 " http://vim.wikia.com/wiki/Search_in_current_function
 " 7/22/2014
