@@ -72,7 +72,7 @@ hi DiffDelete gui=none guibg=Black
 hi DiffChange gui=none guibg=#404040
 hi DiffText gui=none guibg=#707000
 
-hi Comment guifg=#95917E
+hi Comment guifg=#75715E
 hi Constant guifg=#AE81DD " Extracted from sublime "Magenta
 hi PreProc guifg=Orange
 hi Statement gui=NONE guifg=#F92672 "Yellow
