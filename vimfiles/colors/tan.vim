@@ -67,10 +67,10 @@ hi WildMenu guibg=Cyan
 hi Folded guibg=#184018 guifg=DarkBlue
 hi FoldColumn guibg=Grey guifg=DarkBlue
 
-hi DiffAdd gui=none guibg=#707000
+hi DiffAdd gui=none guibg=#603000
 hi DiffDelete gui=none guibg=Black
 hi DiffChange gui=none guibg=#404040
-hi DiffText gui=none guibg=#707000
+hi DiffText gui=none guibg=#603000
 
 hi Comment guifg=#75715E
 hi Constant guifg=#AE81DD " Extracted from sublime "Magenta
