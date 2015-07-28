@@ -256,12 +256,12 @@ vnoremap <C-c> "+y
 " provide short cuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
 :set winaltkeys=no
-inoremap <A-h> <C-o>h
+inoremap <A-h> <Left>
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
 " FIXME: the issue here is A-l cannot move to the last column in edit mode
 " Use a to see whether this can be fixed
-inoremap <A-l> <C-o>a
+inoremap <A-l> <Right>
 " Below <A-f> cannot go to the last (append) position of the line, because 
 " the last postion is not a valid insert position.
 " but above <A-l> can do it. Take care of this minor difference.
