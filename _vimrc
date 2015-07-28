@@ -801,8 +801,8 @@ nmap s <Plug>(easymotion-s2)
 omap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-bd-tl)
 omap t <Plug>(easymotion-bd-tl)
-nmap f <Plug>(easymotion-sl)
-omap f <Plug>(easymotion-sl)
+nmap F <Plug>(easymotion-sl)
+omap F <Plug>(easymotion-sl)
 
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
