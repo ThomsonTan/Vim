@@ -799,8 +799,8 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-s2)
 omap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-bd-tl)
-omap t <Plug>(easymotion-bd-tl)
+nmap T <Plug>(easymotion-bd-tl)
+omap T <Plug>(easymotion-bd-tl)
 nmap F <Plug>(easymotion-sl)
 omap F <Plug>(easymotion-sl)
 
