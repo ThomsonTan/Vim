@@ -312,7 +312,7 @@ inoremap <A-p> <C-p>
 nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap C-p to jump to tag
-nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md
+nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>mD
 
 " navigation in one line
 nnoremap <A-f> /\%<C-R>=line('.')<CR>l
