@@ -45,6 +45,7 @@ hi FunctionUse     guifg=#66D9EF
 
 hi Normal          guifg=Grey guibg=#272822
 hi ErrorMsg guibg=Red guifg=Grey
+hi ModeMsg guifg=#75715E
 hi IncSearch gui=reverse
 hi StatusLine gui=reverse
 hi StatusLineNC gui=reverse

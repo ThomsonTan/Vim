@@ -180,14 +180,17 @@ elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
 
-nmap <A-2>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>f :cs find f <C-R>=expand("<cword>")<CR><CR>
-nmap <A-2>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
-nmap <A-2>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+let g:lastCSCmd = ''
+let g:lastCSKey = ''
+nmap <A-2>s :let g:lastCSCmd='s'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find s <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>g :let g:lastCSCmd='g'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find g <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>c :let g:lastCSCmd='c'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find c <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>d :let g:lastCSCmd='d'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find d <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>t :let g:lastCSCmd='t'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find t <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>e :let g:lastCSCmd='e'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find e <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>f :let g:lastCSCmd='f'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find f <C-R>=g:lastCSKey<CR><CR>
+nmap <A-2>i :let g:lastCSCmd='i'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find i ^<C-R>=g:lastCSKey<CR>$<CR>
+nmap <A-2>r :exe "cs find" g:lastCSCmd g:lastCSKey <CR>
 
 " ==============================================================================
 " Vim plugin -- last-position-jump improved (esp. for Easy Vim)
