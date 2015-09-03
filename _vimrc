@@ -180,17 +180,14 @@ elseif $CSCOPE_DB != ""
     cs add $CSCOPE_DB
 endif
 
-let g:lastCSCmd = ''
-let g:lastCSKey = ''
-nmap <A-2>s :let g:lastCSCmd='s'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find s <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>g :let g:lastCSCmd='g'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find g <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>c :let g:lastCSCmd='c'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find c <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>d :let g:lastCSCmd='d'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find d <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>t :let g:lastCSCmd='t'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find t <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>e :let g:lastCSCmd='e'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find e <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>f :let g:lastCSCmd='f'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find f <C-R>=g:lastCSKey<CR><CR>
-nmap <A-2>i :let g:lastCSCmd='i'<CR>:let g:lastCSKey=expand("<cword>")<CR>:cs find i ^<C-R>=g:lastCSKey<CR>$<CR>
-nmap <A-2>r :exe "cs find" g:lastCSCmd g:lastCSKey <CR>
+nmap <A-2>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>f :cs find f <C-R>=expand("<cword>")<CR><CR>
+nmap <A-2>i :cs find i ^<C-R>=expand("<cword>")<CR>$<CR>
+nmap <A-2>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " ==============================================================================
 " Vim plugin -- last-position-jump improved (esp. for Easy Vim)
@@ -312,7 +309,7 @@ inoremap <A-p> <C-p>
 nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap C-p to jump to tag
-nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>mD
+nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md
 
 " navigation in one line
 nnoremap <A-f> /\%<C-R>=line('.')<CR>l
@@ -541,10 +538,11 @@ nnoremap <silent> <C-]> :call <SID>StartSexy()<CR><C-]>zR:call <SID>CheckForPosi
 nnoremap <silent> <C-t> :call <SID>StartSexy()<CR><C-t>:call <SID>CheckForPositionChange(0)<CR>
 
 " just saw some code in is_symbols which has nested level more than 10
-" TODO: C-m is inconsistent with Sexy move
 " Remap to A-m since C-m is <CR> which could be used in q/ or q: mode.
 " Cannot fix annoy scroll here, [{ is delayed to load?
-nnoremap <silent> <A-m> mk:call <SID>StartSexy()<CR>mm[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{<CR>
+" Fixed finally, wrap command to :exe to its abort doesn't block following
+" command to save position.
+nnoremap <silent> <A-m> mk:call <SID>StartSexy()<CR>mm:exe "norm! [{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{[{"<CR>:call <SID>CheckForPositionChange(0)<CR>
 
 if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-d>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
