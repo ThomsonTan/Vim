@@ -80,7 +80,7 @@ hi Statement gui=NONE guifg=#F92672 "Yellow
 hi Special guifg=Red
 hi Ignore guifg=Grey
 hi Type gui=NONE guifg=Cyan
-hi ReturnStatement guifg=DarkYellow
+hi ReturnStatement guifg=Green
 
 hi MatchParen      guifg=#000000 guibg=#FD971F gui=bold
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
