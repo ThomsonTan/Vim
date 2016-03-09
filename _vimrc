@@ -63,6 +63,8 @@ se nu
 nnoremap <A-r> :exec ":se rnu!"<CR>
 inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
 
+nnoremap <A-e> :q<CR>
+
 " Set font for specific file type, autocmd BufEnter *.txt set guifont=Arial\ 12
 
 " try/catch/finally doesn't work, cannot catch the error of `set guifont=`
