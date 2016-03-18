@@ -45,6 +45,7 @@ hi FunctionUse     guifg=#66D9EF
 
 hi Normal          guifg=Grey guibg=#272822
 hi ErrorMsg guibg=Red guifg=Grey
+hi ModeMsg guifg=#75715E
 hi IncSearch gui=reverse
 hi StatusLine gui=reverse
 hi StatusLineNC gui=reverse
@@ -79,7 +80,7 @@ hi Statement gui=NONE guifg=#F92672 "Yellow
 hi Special guifg=Red
 hi Ignore guifg=Grey
 hi Type gui=NONE guifg=Cyan
-hi ReturnStatement guifg=DarkYellow
+hi ReturnStatement guifg=Green
 
 hi MatchParen      guifg=#000000 guibg=#FD971F gui=bold
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
