@@ -189,7 +189,7 @@ while (<>) {
         @cache_range = ();
         if ($hasAnyOutput ) {
 # only output separator line for multi-line search
-            if ($findDefPattern == 0) {
+            if (defined($pat2)) {
                 print "--------------------------------------------------------------------------------\n";
             }
             $hasAnyOutput = 0;
