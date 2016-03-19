@@ -74,13 +74,23 @@ for (@ARGV) {
     }
 }
 
+if ($caseInsensitiveMatch == 1) {
+    if (defined($pat1)) {
+        $pat1 = "(?i)" . $pat1;
+    }
+    if (defined($pat2)) {
+        $pat2 = "(?i)" . $pat2;
+    }
+}
+
 if ($inverse_search) {
     ($pat1, $pat2) = ($pat2, $pat1);
 }
 
 if ($findDefPattern == 1) {
 # apply function name heuristics on pattern 1
-    $pat1 = "[^>](" . $pat1 . ").*[^;]\s*\$";
+# Use non-capture group here
+    $pat1 = "(?:^|[^>])(" . $pat1 . ")(?:.*[^;]|)\s*\$";
 }
 
 sub GetFileNames {
@@ -130,7 +140,7 @@ my $start_matching = 0;
 my $hasAnyOutput = 0;
 while (<>) {
    chomp;
-   if ((($greedyMatchStartPat == 1) || !$start_matching) && /$pat1/i) {
+   if ((($greedyMatchStartPat == 1) || !$start_matching) && /$pat1/) {
        @cache_range = ();
        $start_matching = 1;
        $startline = $.;
@@ -148,14 +158,14 @@ while (<>) {
            $start_matching = 0;
            @cache_range = ();
        }
-       elsif (!defined($pat2) or /$pat2/i) {
+       elsif (!defined($pat2) or /$pat2/) {
            my $iterLineNum = 0;
             for (@cache_range) {
                print $currentColor, $ARGV, ':', $startline++, ': ';
                if ($iterLineNum == 0 or $iterLineNum == $#cache_range) {
-                   if ($iterLineNum == 0 and /$pat1/i) {
+                   if ($iterLineNum == 0 and /$pat1/) {
                    }
-                   elsif ($iterLineNum == $#cache_range or (defined($pat2) && /$pat2/i)) {
+                   elsif ($iterLineNum == $#cache_range or (defined($pat2) && /$pat2/)) {
                    }
                    my $outputStr = $_;
                    my $outputStart = 0;
