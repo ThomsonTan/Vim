@@ -65,6 +65,9 @@ for (@ARGV) {
         elsif (/^?d$/) {
             $findDefPattern = 1;
         }
+        else {
+            die("Unknown option " . $_);
+        }
     }
     elsif (!defined($pat1)) {
         $pat1 = $_;
