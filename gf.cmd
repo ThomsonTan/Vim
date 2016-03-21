@@ -148,7 +148,9 @@ while (<>) {
        $start_matching = 1;
        $startline = $.;
        push @cache_range, $_;
-       next;
+       if (defined($pat2)) {
+           next;
+       }
    }
    if ($start_matching) {
        if (defined($pat2)) {
@@ -166,20 +168,27 @@ while (<>) {
             for (@cache_range) {
                print $currentColor, $ARGV, ':', $startline++, ': ';
                if ($iterLineNum == 0 or $iterLineNum == $#cache_range) {
-                   if ($iterLineNum == 0 and /$pat1/) {
+                   my $highlightPat;
+                   if ($iterLineNum == 0) {
+                       $highlightPat = $pat1;
                    }
-                   elsif ($iterLineNum == $#cache_range or (defined($pat2) && /$pat2/)) {
+                   elsif ($iterLineNum == $#cache_range and defined($pat2)) {
+                       $highlightPat = $pat2;
                    }
                    my $outputStr = $_;
                    my $outputStart = 0;
-                   for my $matchId ($findDefPattern..$#-){
-                       print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
-                       print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
-                       $outputStart = $+[$matchId];
+                   my $matchId = $findDefPattern;
+                   if (defined($highlightPat)) {
+                       while (/$highlightPat/g) {
+                           print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
+                           print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
+                           $outputStart = $+[$matchId];
+                       }
                    }
                    print $currentColor, substr($outputStr, $outputStart);
                }
                else {
+# for interior lines (not the first one and last one), just follow the color
                    print $_;
                }
                print "\n";
