@@ -118,18 +118,18 @@ if (@Filter_ARGV == 0) {
 }
 
 my $currentColorIndex = 0;
-my $currentColor = color("red");
-my $currentBrightColor = color("bright_red");
+my $currentColor = color("green");
+my $currentBrightColor = color("bright_green");
 my $defaultColor = color("reset");
 
 sub SwitchColor {
-    if ($currentColorIndex == 0) {
-        $currentColorIndex = 1;
+    if ($currentColorIndex == 1) {
+        $currentColorIndex = 0;
         $currentColor = color("green");
         $currentBrightColor = color("bright_green");
     }
     else {
-        $currentColorIndex = 0;
+        $currentColorIndex = 1;
         $currentColor = color("red");
         $currentBrightColor = color("bright_red");
     }
