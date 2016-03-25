@@ -60,8 +60,8 @@ set updatecount=0
 " switch back to normal line number due to easy navigation
 " https://superuser.com/questions/339593/vim-toggle-number-with-relativenumber/339595#339595
 se nu
-nnoremap <A-r> :exec ":se rnu!"<CR>
-inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
+" nnoremap <A-r> :exec ":se rnu!"<CR>
+" inoremap <A-r> :exec "<C-o>:se rnu!"<CR>
 
 nnoremap <A-e> :q<CR>
 
