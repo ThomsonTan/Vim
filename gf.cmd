@@ -41,28 +41,28 @@ if (@ARGV == 0) {
 
 for (@ARGV) {
     if (/^[-\/]/) {
-        if (/^?l/) {
+        if (/^.l/) {
             $minLines = substr $_, 2;
         }
-        elsif (/^?L/) {
+        elsif (/^.L/) {
             $maxLines = substr $_, 2;
         }
-        elsif (/^?R/) {
+        elsif (/^.R/) {
             $inverse_search = true;
         }
-        elsif (/^?r/) {
+        elsif (/^.r/) {
             $FileNamePattern = substr $_, 2;
         }
-        elsif (/^?g/) {
+        elsif (/^.g/) {
             $greedyMatchStartPat = 1;
         }
-        elsif (/^?i$/) {
+        elsif (/^.i$/) {
             $caseInsensitiveMatch = 1;
         }
-        elsif (/^?e$/) {
+        elsif (/^.e/) {
             $pat2 = substr $_, 2;
         }
-        elsif (/^?d$/) {
+        elsif (/^.d$/) {
             $findDefPattern = 1;
         }
         else {
