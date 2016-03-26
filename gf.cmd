@@ -41,28 +41,28 @@ if (@ARGV == 0) {
 
 for (@ARGV) {
     if (/^[-\/]/) {
-        if (/^?l/) {
+        if (/^.l/) {
             $minLines = substr $_, 2;
         }
-        elsif (/^?L/) {
+        elsif (/^.L/) {
             $maxLines = substr $_, 2;
         }
-        elsif (/^?R/) {
+        elsif (/^.R/) {
             $inverse_search = true;
         }
-        elsif (/^?r/) {
+        elsif (/^.r/) {
             $FileNamePattern = substr $_, 2;
         }
-        elsif (/^?g/) {
+        elsif (/^.g/) {
             $greedyMatchStartPat = 1;
         }
-        elsif (/^?i$/) {
+        elsif (/^.i$/) {
             $caseInsensitiveMatch = 1;
         }
-        elsif (/^?e$/) {
+        elsif (/^.e/) {
             $pat2 = substr $_, 2;
         }
-        elsif (/^?d$/) {
+        elsif (/^.d$/) {
             $findDefPattern = 1;
         }
         else {
@@ -118,18 +118,18 @@ if (@Filter_ARGV == 0) {
 }
 
 my $currentColorIndex = 0;
-my $currentColor = color("red");
-my $currentBrightColor = color("bright_red");
+my $currentColor = color("green");
+my $currentBrightColor = color("bright_green");
 my $defaultColor = color("reset");
 
 sub SwitchColor {
-    if ($currentColorIndex == 0) {
-        $currentColorIndex = 1;
+    if ($currentColorIndex == 1) {
+        $currentColorIndex = 0;
         $currentColor = color("green");
         $currentBrightColor = color("bright_green");
     }
     else {
-        $currentColorIndex = 0;
+        $currentColorIndex = 1;
         $currentColor = color("red");
         $currentBrightColor = color("bright_red");
     }
@@ -148,7 +148,9 @@ while (<>) {
        $start_matching = 1;
        $startline = $.;
        push @cache_range, $_;
-       next;
+       if (defined($pat2)) {
+           next;
+       }
    }
    if ($start_matching) {
        if (defined($pat2)) {
@@ -166,20 +168,27 @@ while (<>) {
             for (@cache_range) {
                print $currentColor, $ARGV, ':', $startline++, ': ';
                if ($iterLineNum == 0 or $iterLineNum == $#cache_range) {
-                   if ($iterLineNum == 0 and /$pat1/) {
+                   my $highlightPat;
+                   if ($iterLineNum == 0) {
+                       $highlightPat = $pat1;
                    }
-                   elsif ($iterLineNum == $#cache_range or (defined($pat2) && /$pat2/)) {
+                   elsif ($iterLineNum == $#cache_range and defined($pat2)) {
+                       $highlightPat = $pat2;
                    }
                    my $outputStr = $_;
                    my $outputStart = 0;
-                   for my $matchId ($findDefPattern..$#-){
-                       print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
-                       print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
-                       $outputStart = $+[$matchId];
+                   my $matchId = $findDefPattern;
+                   if (defined($highlightPat)) {
+                       while (/$highlightPat/g) {
+                           print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
+                           print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
+                           $outputStart = $+[$matchId];
+                       }
                    }
                    print $currentColor, substr($outputStr, $outputStart);
                }
                else {
+# for interior lines (not the first one and last one), just follow the color
                    print $_;
                }
                print "\n";
