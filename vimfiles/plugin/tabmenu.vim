@@ -2,7 +2,7 @@ if has('gui_running')
     noremap <A-r> :call SwitchTab()<CR>
 endif
 
-let g:filenamePadLen = 20
+let g:filenamePadLen = 26
 
 function! SwitchTab()
   let iTab = 1
@@ -19,7 +19,8 @@ function! SwitchTab()
   let cTab = iTab
   let iTab = 1
   for desc in sortedTabDescs
-      echom nr2char(iTab + 96) . ' : ' .desc 
+      let idChar = nr2char(iTab + 96)
+      echom idChar . ' : ' . desc . ' : ' . idChar
       let iTab = iTab + 1
   endfor
   echohl Question
@@ -60,6 +61,6 @@ func! TabId2Str(index)
   " detach file name and separate it out:
   let filename = fnamemodify(name, ':t')
   let path = fnamemodify(name,':h')
-  let filenamePad = repeat(' ', g:filenamePadLen - len(filename))
-  return filename . filenamePad . path
+  let filenamePad = repeat('-', g:filenamePadLen - len(filename))
+  return filename . ' ' . filenamePad . ' ' . path
 endfunc
