@@ -1,7 +1,7 @@
 if has('gui_running')
     noremap <A-r> :call SwitchTab()<CR>
-    autocmd TabEnter * :call EnterTab()
-    autocmd TabLeave * :call LeaveTab()
+    autocmd TabEnter * call EnterTab()
+    autocmd TabLeave * call LeaveTab()
 endif
 
 function! EnterTab()
@@ -77,7 +77,7 @@ function! SwitchTab()
       let tabDescs += [tabDesc]
       let iTab = iTab + 1
   endfor
-  
+
   let sortedTabDescs = []
   if (g:cTabPages == len(tabDescs))
       for i in range(g:cTabPages)
