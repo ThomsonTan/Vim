@@ -1,5 +1,5 @@
 if has('gui_running')
-    noremap <A-r> :call SwitchTab()<CR>
+    nnoremap <A-r> :call SwitchTab()<CR>
     autocmd TabEnter * call EnterTab()
     autocmd TabLeave * call LeaveTab()
 endif
