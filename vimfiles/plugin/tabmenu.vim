@@ -1,8 +1,28 @@
+" this plug-in depends on a private gvim.exe to work properly for
+" --remote-tab-silent
 if has('gui_running')
     nnoremap <A-r> :call SwitchTab()<CR>
+    nnoremap <A-e> :call CloseCurrentTab()<CR>
     autocmd TabEnter * call EnterTab()
     autocmd TabLeave * call LeaveTab()
 endif
+
+function! CloseCurrentTab()
+    let iCurTab = tabpagenr()
+    if (iCurTab != g:TabStack[0])
+        echom iCurTab
+        echom g:TabStack
+        throw "iCurTab != g:TabStack[0]"
+    endif
+    if (tabpagewinnr(iCurTab, '$') == 1 && len(g:TabStack) > 1)
+        " This is the last window in the current tab
+        let toTab = g:TabStack[1]
+        exec ":tabnext".toTab
+        exec ":tabclose".iCurTab
+    else
+        exec ":q"
+    endif
+endfunction
 
 function! EnterTab()
     let cCurTab = tabpagenr('$')
