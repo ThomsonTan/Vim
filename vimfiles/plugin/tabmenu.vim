@@ -18,7 +18,19 @@ function! CloseCurrentTab()
         " This is the last window in the current tab
         let toTab = g:TabStack[1]
         exec ":tabnext".toTab
+        " tricky here, TabLeave/TabEnter happened
+        if (g:TabStack[0] != toTab)
+            throw ":tabnext doesn't trigger TabLeave/TabEnter?"
+        endif
         exec ":tabclose".iCurTab
+        " tabclose doesn't fire TabEnter/TabLeave events?
+        call remove(g:TabStack, 1)
+        let g:cTabPages -= 1
+        for i in range(g:cTabPages)
+            if (g:TabStack[i] > iCurTab)
+                let g:TabStack[i] -= 1
+            endif
+        endfor
     else
         exec ":q"
     endif
