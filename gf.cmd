@@ -101,7 +101,7 @@ sub GetFileNames {
 # don't search ctags filefunctionDef
         return;
     }
-    elsif (/$FileNamePattern/i && -f) {
+    elsif (/$FileNamePattern/i && -f && -T) {
         push @Filter_ARGV, $_;
     }
     elsif (-d && $_ != '.' && $_ != '..') {
