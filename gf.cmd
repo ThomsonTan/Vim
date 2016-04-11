@@ -180,11 +180,13 @@ while (<>) {
                    my $matchId = $findDefPattern;
                    if (defined($highlightPat)) {
                        while (/$highlightPat/g) {
+                           print $defaultColor;
                            print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
                            print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
                            $outputStart = $+[$matchId];
                        }
                    }
+                   print $defaultColor;
                    print $currentColor, substr($outputStr, $outputStart);
                }
                else {
