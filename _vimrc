@@ -289,8 +289,8 @@ cnoremap <A-d> <C-c>
 " provide hjkl moves in CommandLine modes,
 " from the same link as above
 cnoremap <A-h> <Left>
-cnoremap <A-j> <C-Right>
-cnoremap <A-k> <C-Left>
+cnoremap <A-j> <Down>
+cnoremap <A-k> <Up>
 cnoremap <A-l> <Right>
 
 " map <A-j> in normal mode to break the current line after cursor
