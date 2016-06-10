@@ -2,6 +2,7 @@
 " --remote-tab-silent
 if has('gui_running')
     nnoremap <A-r> :call SwitchTab()<CR>
+    inoremap <A-r> <Esc>:call SwitchTab()<CR>
     nnoremap <A-e> :call CloseCurrentTab()<CR>
     autocmd TabEnter * call EnterTab()
     autocmd TabLeave * call LeaveTab()
