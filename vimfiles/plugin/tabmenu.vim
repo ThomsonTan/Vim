@@ -7,6 +7,19 @@ if has('gui_running')
     autocmd TabLeave * call LeaveTab()
 endif
 
+function! CloseGivenTab(tabIndex)
+    let closeTabId = g:TabStack[a:tabIndex]
+    exec ":tabclose".closeTabId
+    " tabclose doesn't fire TabEnter/TabLeave events?
+    call remove(g:TabStack, a:tabIndex)
+    let g:cTabPages -= 1
+    for i in range(g:cTabPages)
+        if (g:TabStack[i] > closeTabId)
+            let g:TabStack[i] -= 1
+        endif
+    endfor
+endfunction
+
 function! CloseCurrentTab()
     let iCurTab = tabpagenr()
     if (iCurTab != g:TabStack[0])
@@ -22,29 +35,41 @@ function! CloseCurrentTab()
         if (g:TabStack[0] != toTab)
             throw ":tabnext doesn't trigger TabLeave/TabEnter?"
         endif
-        exec ":tabclose".iCurTab
-        " tabclose doesn't fire TabEnter/TabLeave events?
-        call remove(g:TabStack, 1)
-        let g:cTabPages -= 1
-        for i in range(g:cTabPages)
-            if (g:TabStack[i] > iCurTab)
-                let g:TabStack[i] -= 1
+        call CloseGivenTab(1)
+
+        " remove duplicated tabs
+        let lastTabIndex = len(g:TabStack) - 1
+        while lastTabIndex > 0
+            let curTabName = TabLabel(g:TabStack[lastTabIndex])
+            if curTabName == ''
+                let lastTabIndex -= 1
+                continue
             endif
-        endfor
+            let curTabName = fnamemodify(curTabName, ':p')
+
+            let curDup = 0
+            for i in range(lastTabIndex)
+                let name = TabLabel(g:TabStack[i])
+                if name == ''
+                    continue
+                else
+                    let name = fnamemodify(name, ':p')
+                endif
+                if name == curTabName
+                    let curDup = 1
+                    break
+                endif
+            endfor
+            if curDup == 1
+                call CloseGivenTab(lastTabIndex)
+            endif
+            let lastTabIndex -= 1
+        endwhile
 
         " close extra tabs
         let lastTabIndex = len(g:TabStack) - 1
         while lastTabIndex > 25
-            let lastTab = g:TabStack[lastTabIndex]
-            exec ":tabclose".lastTab
-            " tabclose doesn't fire TabEnter/TabLeave events as above?
-            call remove(g:TabStack, lastTabIndex)
-            let g:cTabPages -= 1
-            for i in range(g:cTabPages)
-                if (g:TabStack[i] > lastTab)
-                    let g:TabStack[i] -= 1
-                endif
-            endfor
+            call CloseGivenTab(lastTabIndex)
             let lastTabIndex -= 1
         endwhile
     else
