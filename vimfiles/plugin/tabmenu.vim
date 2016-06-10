@@ -31,6 +31,22 @@ function! CloseCurrentTab()
                 let g:TabStack[i] -= 1
             endif
         endfor
+
+        " close extra tabs
+        let lastTabIndex = len(g:TabStack) - 1
+        while lastTabIndex > 25
+            let lastTab = g:TabStack[lastTabIndex]
+            exec ":tabclose".lastTab
+            " tabclose doesn't fire TabEnter/TabLeave events as above?
+            call remove(g:TabStack, lastTabIndex)
+            let g:cTabPages -= 1
+            for i in range(g:cTabPages)
+                if (g:TabStack[i] > lastTab)
+                    let g:TabStack[i] -= 1
+                endif
+            endfor
+            let lastTabIndex -= 1
+        endwhile
     else
         exec ":q"
     endif

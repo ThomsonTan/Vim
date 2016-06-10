@@ -250,12 +250,15 @@ unlet s:cpo_save
 " set fdm=syntax
 autocmd VimEnter * normal! zR
 
-" support Ccrtl+c/ctrl+v
+" support crtl+c/ctrl+v
 " from http://stackoverflow.com/questions/2861627/paste-in-insert-mode
 " 2013/11/18 by tstan
 :set pastetoggle=<F10>
 inoremap <C-v> <F10><C-r>+<F10>
 vnoremap <C-c> "+y
+
+" More accessible key combination for jumping back to previous file
+nnoremap <C-h> :e#<CR>
 
 " provide short cuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
@@ -289,7 +292,7 @@ cnoremap <A-d> <C-c>
 " provide hjkl moves in CommandLine modes,
 " from the same link as above
 cnoremap <A-h> <Left>
-cnoremap <A-j> <Down>
+cnoremap <A-j> <C-Right>
 cnoremap <A-k> <Up>
 cnoremap <A-l> <Right>
 
@@ -313,7 +316,8 @@ inoremap <A-p> <C-p>
 nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap C-p to jump to tag
-nnoremap <C-p> mc:exe "tag ".expand("<cword>")<CR>md:call <SID>CheckForPositionChange(0)<CR>
+" http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
+nnoremap <C-p> <C-w><C-]><C-w>T^
 
 " navigation in one line
 nnoremap <A-f> /\%<C-R>=line('.')<CR>l
