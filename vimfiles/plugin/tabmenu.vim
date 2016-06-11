@@ -4,6 +4,10 @@ if has('gui_running')
     nnoremap <A-r> :call SwitchTab()<CR>
     inoremap <A-r> <Esc>:call SwitchTab()<CR>
     nnoremap <A-e> :call CloseCurrentTab()<CR>
+
+    nnoremap <A-a> :call CloseDupTabs()<CR>
+    inoremap <A-a> :call CloseDupTabs()<CR>
+
     autocmd TabEnter * call EnterTab()
     autocmd TabLeave * call LeaveTab()
 endif
@@ -19,6 +23,37 @@ function! CloseGivenTab(tabIndex)
             let g:TabStack[i] -= 1
         endif
     endfor
+endfunction
+
+function! CloseDupTabs()
+    " remove duplicated tabs
+    let lastTabIndex = len(g:TabStack) - 1
+    while lastTabIndex > 0
+        let curTabName = TabLabel(g:TabStack[lastTabIndex])
+        if curTabName == ''
+            let lastTabIndex -= 1
+            continue
+        endif
+        let curTabName = fnamemodify(curTabName, ':p')
+
+        let curDup = 0
+        for i in range(lastTabIndex)
+            let name = TabLabel(g:TabStack[i])
+            if name == ''
+                continue
+            else
+                let name = fnamemodify(name, ':p')
+            endif
+            if name == curTabName
+                let curDup = 1
+                break
+            endif
+        endfor
+        if curDup == 1
+            call CloseGivenTab(lastTabIndex)
+        endif
+        let lastTabIndex -= 1
+    endwhile
 endfunction
 
 function! CloseCurrentTab()
@@ -37,35 +72,6 @@ function! CloseCurrentTab()
             throw ":tabnext doesn't trigger TabLeave/TabEnter?"
         endif
         call CloseGivenTab(1)
-
-        " remove duplicated tabs
-        let lastTabIndex = len(g:TabStack) - 1
-        while lastTabIndex > 0
-            let curTabName = TabLabel(g:TabStack[lastTabIndex])
-            if curTabName == ''
-                let lastTabIndex -= 1
-                continue
-            endif
-            let curTabName = fnamemodify(curTabName, ':p')
-
-            let curDup = 0
-            for i in range(lastTabIndex)
-                let name = TabLabel(g:TabStack[i])
-                if name == ''
-                    continue
-                else
-                    let name = fnamemodify(name, ':p')
-                endif
-                if name == curTabName
-                    let curDup = 1
-                    break
-                endif
-            endfor
-            if curDup == 1
-                call CloseGivenTab(lastTabIndex)
-            endif
-            let lastTabIndex -= 1
-        endwhile
 
         " close extra tabs
         let lastTabIndex = len(g:TabStack) - 1
