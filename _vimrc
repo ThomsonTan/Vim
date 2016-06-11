@@ -315,12 +315,12 @@ inoremap <A-p> <C-p>
 " Refactor functions navigation by usign column search <A-l>
 nmap <C-n> <A-l>{<CR>
 " nnoremap <C-p> :keepj norm []%zz<CR>
-" remap a-g to jump to tag
+" remap a-f to jump to tag
 " http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
-nnoremap <A-g> <C-w><C-]><C-w>T^
+nnoremap <A-f> <C-w><C-]><C-w>T^
 
 " navigation in one line
-nnoremap <A-f> /\%<C-R>=line('.')<CR>l
+nnoremap <A-g> /\%<C-R>=line('.')<CR>l
 " navigation in current column
 nnoremap <A-l> /\%<C-R>=col('.')<CR>c
 nnoremap <A-S-l> ?\%<C-R>=col('.')<CR>c
