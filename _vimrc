@@ -22,6 +22,8 @@ set hlsearch
 colors tan
 syntax on
 
+set autoread
+
 let g:MySyntaxOn = 1
 function! ToggleSyntax()
   if g:MySyntaxOn == 1
