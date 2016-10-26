@@ -25,6 +25,12 @@ my $greedyMatchStartPat = 0;
 my $caseInsensitiveMatch = 0;
 my $findDefPattern = 0;
 
+my $resultMapFileName = $ENV{'PYCMD_RESULT_MAP_FILE_PATH'};
+my $hasMapFile = 1;
+open(my $resultMap, ">", $resultMapFileName) || ($hasMapFile = 0);
+
+my $lineIndex = 0;
+
 if (@ARGV == 0) {
     print "Usage: $0 <pattern1> [-e<pattern2>] [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-d] [-i] [-g] [-R] [-r<FileNamePattern>] [filename [filename ...]]\n";
     print "\n";
@@ -101,7 +107,7 @@ sub GetFileNames {
 # don't search ctags filefunctionDef
         return;
     }
-    elsif (/$FileNamePattern/i && -f && -T) {
+    elsif (/$FileNamePattern/i && -T) {
         push @Filter_ARGV, $_;
     }
     elsif (-d && $_ != '.' && $_ != '..') {
@@ -166,7 +172,21 @@ while (<>) {
        elsif (!defined($pat2) or /$pat2/) {
            my $iterLineNum = 0;
             for (@cache_range) {
-               print $currentColor, $ARGV, ':', $startline++, ': ';
+# remove prefix ./
+               my $currFileName = substr $ARGV, 2;
+               my $indexChar = ' ';
+               if ($lineIndex < 26) {
+                   $indexChar = chr(ord('a') + $lineIndex);
+               }
+               $lineIndex += 1;
+# output line index
+               print $defaultColor, $indexChar , ' ';
+               if ($hasMapFile == 1) {
+                   print $resultMap $currFileName, ':', $startline, "\n";
+               }
+
+#output file name and match line, with search pattern highlighted
+               print $currentColor, $currFileName, ':', $startline++, ': ';
                if ($iterLineNum == 0 or $iterLineNum == $#cache_range) {
                    my $highlightPat;
                    if ($iterLineNum == 0) {
@@ -180,13 +200,11 @@ while (<>) {
                    my $matchId = $findDefPattern;
                    if (defined($highlightPat)) {
                        while (/$highlightPat/g) {
-                           print $defaultColor;
                            print $currentColor, substr($outputStr, $outputStart, $-[$matchId] - $outputStart);
                            print $currentBrightColor, substr($outputStr, $-[$matchId], $+[$matchId] - $-[$matchId]);
                            $outputStart = $+[$matchId];
                        }
                    }
-                   print $defaultColor;
                    print $currentColor, substr($outputStr, $outputStart);
                }
                else {
