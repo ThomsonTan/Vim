@@ -35,9 +35,19 @@ function! ToggleSyntax()
   endif
 endfunction
 
+function! SaveCurrentBuffer()
+    " bufnr("%") return current buf number, winnr() current win number,
+    " tabpagenr() return current page numer
+    if getbufvar(bufnr("%"), "&mod") == 1
+        exe ":w"
+    else
+        echom "No change to save!"
+    endif
+endfunction
+
 " nnoremap <silent> <A-s> :call ToggleSyntax()<cr>
-nnoremap <silent> <A-s> :w<cr>
-inoremap <silent> <A-s> <C-o>:w<cr>
+nnoremap <silent> <A-s> :call SaveCurrentBuffer()<cr>
+inoremap <silent> <A-s> <C-o>:call SaveCurrentBuffer()<cr>
 
 " ignore the errorbell, does this really work?
 set noerrorbells

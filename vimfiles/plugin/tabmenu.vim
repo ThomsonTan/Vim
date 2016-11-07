@@ -12,8 +12,21 @@ if has('gui_running')
     autocmd TabLeave * call LeaveTab()
 endif
 
+" tab index starts at 1
 function! CloseGivenTab(tabIndex)
     let closeTabId = g:TabStack[a:tabIndex]
+    if tabpagewinnr(closeTabId, '$') > 1
+        " cannot close target tab since it has more than one window
+        return 0
+    endif
+    let buflist = tabpagebuflist(closeTabId)
+    for i in buflist
+        if getbufvar(i, "&mod") == 1
+            " at least one buffer in target tab is closed, don't close it
+            return 0
+        endif
+    endfor
+
     exec ":tabclose".closeTabId
     " tabclose doesn't fire TabEnter/TabLeave events?
     call remove(g:TabStack, a:tabIndex)
@@ -23,6 +36,7 @@ function! CloseGivenTab(tabIndex)
             let g:TabStack[i] -= 1
         endif
     endfor
+    return 1
 endfunction
 
 function! CloseDupTabs()
@@ -49,10 +63,12 @@ function! CloseDupTabs()
                 break
             endif
         endfor
+
+        let tabclosed = 0;
         if curDup == 1
-            call CloseGivenTab(lastTabIndex)
+            let tabclosed = CloseGivenTab(lastTabIndex)
         endif
-        let lastTabIndex -= 1
+        let lastTabIndex -= tabclosed
     endwhile
 endfunction
 
@@ -65,19 +81,32 @@ function! CloseCurrentTab()
     endif
     if (tabpagewinnr(iCurTab, '$') == 1 && len(g:TabStack) > 1)
         " This is the last window in the current tab
+
+        let buflist = tabpagebuflist(iCurTab)
+        for i in buflist
+            if getbufvar(i, "&mod") == 1
+                " at least one buffer in target tab is closed, don't close it
+                echom "Current tab has been modified, save it or exit it by :q!"
+                return
+            endif
+        endfor
+
         let toTab = g:TabStack[1]
         exec ":tabnext".toTab
         " tricky here, TabLeave/TabEnter happened
         if (g:TabStack[0] != toTab)
             throw ":tabnext doesn't trigger TabLeave/TabEnter?"
         endif
-        call CloseGivenTab(1)
+        let tabclosed = CloseGivenTab(1)
+        if tabclosed == 0
+            throw "why tab " . tabclosed . "is not closed which should success?"
+        endif
 
         " close extra tabs
         let lastTabIndex = len(g:TabStack) - 1
         while lastTabIndex > 25
-            call CloseGivenTab(lastTabIndex)
-            let lastTabIndex -= 1
+            let tabclosed = CloseGivenTab(lastTabIndex)
+            let lastTabIndex -= tabclosed
         endwhile
     else
         exec ":q"
