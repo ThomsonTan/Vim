@@ -293,10 +293,10 @@ inoremap <A-u> <C-o>4k
 
 " map <A-d> for both insert and visual mode
 " also add it for normal mode
-" mu only for exiting insert mode
-inoremap <A-d> <Esc>mu
-vnoremap <A-d> <Esc>
-nnoremap <A-d> <Esc>
+" auto-save for <A-d>
+imap <A-d> <Esc><A-s>
+vmap <A-d> <Esc><A-s>
+nmap <A-d> <Esc><A-s>
 " below mapping comes from link, search <C-c> and command line mode
 " http://vim.wikia.com/wiki/Avoid_the_escape_key
 cnoremap <A-d> <C-c>
@@ -451,7 +451,8 @@ endif
 
 " ==============================================================================
 " set Jump back to console Alt-c
-nnoremap <A-c> :call <SID>SwitchToPythonScriptWindow()<CR>
+nmap <A-c> <A-s>:call <SID>SwitchToPythonScriptWindow()<CR>
+imap <A-c> <A-s><C-o>:call <SID>SwitchToPythonScriptWindow()<CR>
 
 function! s:SwitchToPythonScriptWindow()
     let line = getline(1)
