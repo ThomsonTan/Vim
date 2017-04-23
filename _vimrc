@@ -449,6 +449,19 @@ if !has("float")
   finish
 endif
 
+" ==============================================================================
+" set Jump back to console Alt-c
+nnoremap <A-c> :call <SID>SwitchToPythonScriptWindow()<CR>
+
+function! s:SwitchToPythonScriptWindow()
+    let line = getline(1)
+    " starts with #PyConSc 111
+    if len(line) > 9 && line[0:8] == '#PyConSc '
+        let hwnd = line[9:]
+        call aaaSetForegroundHwnd(hwnd)
+    endif
+endfunction
+
 " == Options == "
 
 if !exists("g:SexyScroller_Enabled")
