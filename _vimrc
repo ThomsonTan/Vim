@@ -38,10 +38,12 @@ endfunction
 function! SaveCurrentBuffer()
     " bufnr("%") return current buf number, winnr() current win number,
     " tabpagenr() return current page numer
-    if getbufvar(bufnr("%"), "&mod") == 1
-        exe ":w"
-    else
-        echom "No change to save!"
+    if @% != ''
+        if getbufvar(bufnr("%"), "&mod") == 1
+            exe ":w"
+        else
+            echom "No change to save!"
+        endif
     endif
 endfunction
 
