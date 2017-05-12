@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\xETL]
+
+[HKEY_CLASSES_ROOT\*\shell\xETL\command]
+@="cmd.exe /c x.cmd \"%1\""
