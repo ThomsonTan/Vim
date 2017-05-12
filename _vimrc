@@ -35,9 +35,21 @@ function! ToggleSyntax()
   endif
 endfunction
 
+function! SaveCurrentBuffer()
+    " bufnr("%") return current buf number, winnr() current win number,
+    " tabpagenr() return current page numer
+    if @% != ''
+        if getbufvar(bufnr("%"), "&mod") == 1
+            exe ":w"
+        else
+            echom "No change to save!"
+        endif
+    endif
+endfunction
+
 " nnoremap <silent> <A-s> :call ToggleSyntax()<cr>
-nnoremap <silent> <A-s> :w<cr>
-inoremap <silent> <A-s> <C-o>:w<cr>
+nnoremap <silent> <A-s> :call SaveCurrentBuffer()<cr>
+inoremap <silent> <A-s> <C-o>:call SaveCurrentBuffer()<cr>
 
 " ignore the errorbell, does this really work?
 set noerrorbells
@@ -283,10 +295,10 @@ inoremap <A-u> <C-o>4k
 
 " map <A-d> for both insert and visual mode
 " also add it for normal mode
-" mu only for exiting insert mode
-inoremap <A-d> <Esc>mu
-vnoremap <A-d> <Esc>
-nnoremap <A-d> <Esc>
+" auto-save for <A-d>
+imap <A-d> <Esc><A-s>
+vmap <A-d> <Esc><A-s>
+nmap <A-d> <Esc><A-s>
 " below mapping comes from link, search <C-c> and command line mode
 " http://vim.wikia.com/wiki/Avoid_the_escape_key
 cnoremap <A-d> <C-c>
@@ -438,6 +450,20 @@ if !has("float")
   echo "smooth_scroller requires the +float feature, which is missing"
   finish
 endif
+
+" ==============================================================================
+" set Jump back to console Alt-c
+nmap <A-c> <A-s>:call <SID>SwitchToPythonScriptWindow()<CR>
+imap <A-c> <A-s><C-o>:call <SID>SwitchToPythonScriptWindow()<CR>
+
+function! s:SwitchToPythonScriptWindow()
+    let line = getline(1)
+    " starts with #PyConSc 111
+    if len(line) > 9 && line[0:8] == '#PyConSc '
+        let hwnd = line[9:]
+        call aaaSetForegroundHwnd(hwnd)
+    endif
+endfunction
 
 " == Options == "
 
