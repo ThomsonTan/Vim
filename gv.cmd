@@ -5,8 +5,11 @@ setlocal EnableExtensions
 SET MYGVIMPATH=C:\Progra~2\Vim\vim74\gvim.exe
 SET GVIMSINGLEINSTANCE=-p --remote-tab-silent
 
+SET paramLine=%*
+SET normalizeParamLine=%paramLine:"=%
+
 REM ONE tricky stuff for Set ENV=%%i, don't leave any spaces around =
-for /F "tokens=1,2,3 delims=:? " %%i in ("%*") do (
+for /F "tokens=1,2,3 delims=:? " %%i in ("!normalizeParamLine!") do (
     set GVFileName=%%i
     set GVLineNumber=%%j
     set EndMarker=%%k
@@ -14,7 +17,7 @@ for /F "tokens=1,2,3 delims=:? " %%i in ("%*") do (
 
 if not "!EndMarker!" EQU "" (
 REM re-split by ?, since driver latter is followed by :
-    for /F "tokens=1,2,3 delims=? " %%i in ("%*") do (
+    for /F "tokens=1,2,3 delims=? " %%i in ("!normalizeParamLine!") do (
         set GVFileName=%%i
         set GVLineNumber=%%j
         set EndMarker=%%k
