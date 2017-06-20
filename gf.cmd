@@ -1,12 +1,15 @@
 @rem = '--*-Perl-*--
 @echo off
-perl -x -S %0 %*
+set perl5lib_bak=%perl5lib%
+set perl5lib=
+C:\Perl64\bin\perl -x -S %0 %*
+set perl5lib=%perl5lib_bak%
 goto endofperl
 
 
 @rem -- BEGIN PERL -- ';
 #!/usr/bin/perl #line should be put after this line
-#line 9
+#line 12
 # Search keywords in multiple lines in given files, or file names in given pattern
 # under current directory
 #grep -oPz 'key1(.*\n){l,L}.*key1' file.txt could do the same
