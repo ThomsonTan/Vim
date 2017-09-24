@@ -5,9 +5,9 @@ reg add HKLM\Software\TestElevated /f >NUL 2>NUL || goto :ErrorNotAdmin
 reg delete HKLM\Software\TestElevated /f >NUL 2>NUL || goto :FailedToDelete
 @echo Install customized Vim stuff to system
 
-cmd.exe /c copy /y /v _vimrc %homedrive%%homepath%\_vimrc
+cmd.exe /c copy /y /v %~dp0_vimrc %homedrive%%homepath%\_vimrc
 
-robocopy /S vimfiles\ %homedrive%%homepath%\vimfiles\
+robocopy /S %~dp0vimfiles\ %homedrive%%homepath%\vimfiles\
 
 if "%PROCESSOR_ARCHITECTURE%" equ "AMD64" (
     cmd.exe /c copy /y /v %~dp0VimBin\ctags.exe %systemroot%\syswow64\
