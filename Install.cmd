@@ -1,8 +1,8 @@
 @REM workaround to check running in admin mode or not
 @echo off
-reg query HKLM\Software\TestElevated >NUL 2>NUL && goto :TestKeyExists
-reg add HKLM\Software\TestElevated /f >NUL 2>NUL || goto :ErrorNotAdmin
-reg delete HKLM\Software\TestElevated /f >NUL 2>NUL || goto :FailedToDelete
+reg query HKLM\Software\TestElevated-f57142fd-2586-45b8-bdb6-49e98d93789b >NUL 2>NUL && goto :TestKeyExists
+reg add HKLM\Software\TestElevated-f57142fd-2586-45b8-bdb6-49e98d93789b /f >NUL 2>NUL || goto :ErrorNotAdmin
+reg delete HKLM\Software\TestElevated-f57142fd-2586-45b8-bdb6-49e98d93789b /f >NUL 2>NUL || goto :FailedToDelete
 @echo Install customized Vim stuff to system
 
 cmd.exe /c copy /y /v %~dp0_vimrc %homedrive%%homepath%\_vimrc
