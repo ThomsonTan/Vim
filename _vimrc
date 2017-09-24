@@ -468,7 +468,7 @@ endfunction
 " == Options == "
 
 if !exists("g:SexyScroller_Enabled")
-  let g:SexyScroller_Enabled = 1
+  let g:SexyScroller_Enabled = $ENABLE_SCROLL_ANIMATION
 endif
 
 " We can only really see the cursor moving if 'cursorline' is enabled (or my hiline plugin is running)

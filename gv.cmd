@@ -4,6 +4,7 @@ setlocal EnableExtensions
 
 SET MYGVIMPATH=C:\Progra~2\Vim\vim74\gvim.exe
 SET GVIMSINGLEINSTANCE=-p --remote-tab-silent
+SET ENABLE_SCROLL_ANIMATION=1
 
 SET paramLine=%*
 SET normalizeParamLine=%paramLine:"=%
