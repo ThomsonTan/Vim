@@ -13,14 +13,16 @@ set completeopt=longest,menu
 " load indent file for specific file type
 filetype indent on
 
-:set ic
-:set smartcase
-:set incsearch
+set ic
+set smartcase
+set incsearch
 set hlsearch
-:set scrolloff=5
-:set tabstop=4 shiftwidth=4 expandtab
+set scrolloff=5
+set tabstop=4 shiftwidth=4 expandtab
 colors tan
 syntax on
+
+au FileType * set fo-=cro
 
 set autoread
 
