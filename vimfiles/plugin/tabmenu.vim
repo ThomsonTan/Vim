@@ -106,6 +106,10 @@ function! CloseCurrentTab()
         let lastTabIndex = len(g:TabStack) - 1
         while lastTabIndex > 25
             let tabclosed = CloseGivenTab(lastTabIndex)
+            " Breakout the loop for any reason cannot close given tab!
+            if tabclosed == 0
+                throw "Cannot close tab: " . lastTabIndex
+            endif
             let lastTabIndex -= tabclosed
         endwhile
     else
