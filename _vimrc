@@ -86,7 +86,8 @@ autocmd BufEnter *.dis set iskeyword+=`
 " specify comma seperated fonts works great here, and gVim will use the 
 " first available fonts, which is what I want.
 " http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
-:set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
+" :set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
+:set guifont=Monaco:h12:cANSI,Consolas:h13:cANSI
 
 :set cindent
 " could also say set ai! ?
@@ -335,6 +336,9 @@ nmap <C-n> <A-l>{<CR>
 " http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
 nnoremap <A-f> <C-w><C-]><C-w>T^
 
+" Open current file's parent folder in Ex, cannot register A-w?
+nnoremap <A-q> :tab new %:p:h<CR> 
+
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
 " navigation in current column
@@ -510,7 +514,7 @@ endif
 " == Setup == "
 
 command! SexyScrollerToggle call s:ToggleEnabled()
-nnoremap <A-q> :call <SID>ToggleEnabled()<CR>
+nnoremap <A-v> :call <SID>ToggleEnabled()<CR>
 
 augroup Smooth_Scroller
   autocmd!
