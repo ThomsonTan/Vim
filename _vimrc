@@ -337,7 +337,7 @@ nmap <C-n> <A-l>{<CR>
 nnoremap <A-f> <C-w><C-]><C-w>T^
 
 " Open current file's parent folder in Ex, cannot register A-w?
-nnoremap <A-q> :tab new %:p:h<CR> 
+nnoremap <A-q> :tab new %:p:h<CR>
 
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
