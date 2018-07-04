@@ -37,5 +37,5 @@ exit /b 2
 
 :Success
 @echo ========================================
-@echo Installed successful :)
+@echo Installed successfully :)
 @echo ========================================
