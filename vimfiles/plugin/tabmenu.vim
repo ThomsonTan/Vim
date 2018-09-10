@@ -163,7 +163,7 @@ let g:filenamePadLen = 26
 function! ShowTabLists(tabList, prompt)
 
   echohl WarningMsg
-  echom repeat('-', 80)
+  echo repeat('-', 80)
   echohl None
 
   let sortedTabDescs = a:tabList
@@ -175,11 +175,11 @@ function! ShowTabLists(tabList, prompt)
           echohl None
       endif
       let idChar = nr2char(iTab + 96)
-      echom idChar . ' : ' . desc . ' : ' . idChar
+      echo idChar . ' : ' . desc . ' : ' . idChar
       let iTab = iTab + 1
   endfor
   echohl None
-  echom a:prompt
+  echo a:prompt
 endfunction
 
 function! SwitchTab()
