@@ -339,6 +339,9 @@ nnoremap <A-f> <C-w><C-]><C-w>T^
 " Open current file's parent folder in Ex, cannot register A-w?
 nnoremap <A-q> :tab new %:p:h<CR>
 
+" Open current file's parent folder in Explorer
+nnoremap <A-b> :silent !cmd /c start %:p:h<CR>
+
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
 " navigation in current column
