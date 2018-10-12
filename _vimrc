@@ -462,15 +462,14 @@ endif
 
 " ==============================================================================
 " set Jump back to console Alt-c
-nmap <A-c> <A-s>:call <SID>SwitchToPythonScriptWindow()<CR>
-imap <A-c> <A-s><C-o>:call <SID>SwitchToPythonScriptWindow()<CR>
+nmap <A-c> <A-s>:call <SID>SwitchToConWindow()<CR>
+imap <A-c> <A-s><C-o>:call <SID>SwitchToConWindow()<CR>
 
-function! s:SwitchToPythonScriptWindow()
-    let line = getline(1)
-    " starts with #PyConSc 111
-    if len(line) > 9 && line[0:8] == '#PyConSc '
-        let hwnd = line[9:]
-        call aaaSetForegroundHwnd(hwnd)
+let g:conhwnd = 0
+
+function! s:SwitchToConWindow()
+    if g:conhwnd != 0
+        call aaaSetForegroundHwnd(g:conhwnd)
     endif
 endfunction
 
