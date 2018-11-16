@@ -108,7 +108,10 @@ function! CloseCurrentTab()
             let tabclosed = CloseGivenTab(lastTabIndex)
             " Breakout the loop for any reason cannot close given tab!
             if tabclosed == 0
-                throw "Cannot close tab: " . lastTabIndex
+                " Switch to the tab which cannot be closed
+                exec ":tabnext".g:TabStack[lastTabIndex]
+                let tabDesc = TabId2Str(g:TabStack[lastTabIndex]) . ' : ' . iTab
+                throw "Tried to switch to last tab which cannot be closed: " . tabDesc
             endif
             let lastTabIndex -= tabclosed
         endwhile
