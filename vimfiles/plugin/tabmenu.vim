@@ -110,7 +110,7 @@ function! CloseCurrentTab()
             if tabclosed == 0
                 " Switch to the tab which cannot be closed
                 exec ":tabnext".g:TabStack[lastTabIndex]
-                let tabDesc = TabId2Str(g:TabStack[lastTabIndex]) . ' : ' . iTab
+                let tabDesc = TabId2Str(g:TabStack[lastTabIndex]) . ' : ' . lastTabIndex
                 throw "Tried to switch to last tab which cannot be closed: " . tabDesc
             endif
             let lastTabIndex -= tabclosed
