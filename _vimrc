@@ -343,7 +343,8 @@ nnoremap <A-q> :tab new %:p:h<CR>
 nnoremap <A-b> :silent !cmd /c start %:p:h<CR>
 
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
-nnoremap <A-t> 0w:silent !cmd /c cd && sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>Nzz
+" Also need move cursor under ^commit as initial position
+nmap <A-t> 0w:silent !cmd /c cd && sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0Nzz
 
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
