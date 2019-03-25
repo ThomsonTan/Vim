@@ -340,7 +340,7 @@ nnoremap <A-f> <C-w><C-]><C-w>T^
 nnoremap <A-q> :tab new %:p:h<CR>
 
 " Open current file's parent folder in Explorer
-nnoremap <A-b> :silent !explorer.exe /select,%:p<CR>
+nnoremap <A-b> :silent !explorer.exe /select,"%:p"<CR>
 
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
 " Also need move cursor under ^commit as initial position
