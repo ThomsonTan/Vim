@@ -19,6 +19,7 @@ set incsearch
 set hlsearch
 set scrolloff=5
 set tabstop=4 shiftwidth=4 expandtab
+set encoding=utf-8
 colors tan
 syntax on
 
@@ -341,10 +342,6 @@ nnoremap <A-q> :tab new %:p:h<CR>
 
 " Open current file's parent folder in Explorer
 nnoremap <A-b> :silent !explorer.exe /select,"%:p"<CR>
-
-" need predefined sg.cmd to opend diff editor, and navigate backward by default.
-" Also need move cursor under ^commit as initial position
-nmap <A-t> 0w:silent !cmd /c cd && sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0?^commit<CR>zz
 
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
