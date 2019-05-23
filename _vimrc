@@ -342,7 +342,7 @@ nnoremap <A-q> :tab new %:p:h<CR>
 
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
 " Also need move cursor under ^commit as initial position
-nnoremap <silent> <A-t> 0w:silent !cmd /c cd && sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0?^commit<CR>zz
+nnoremap <silent> <A-t> 0w:silent !sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0?^commit<CR>zz
 
 " Open current file's parent folder in Explorer
 "nnoremap <A-b> :silent !cmd /c start %:p:h<CR>
