@@ -1,0 +1,1236 @@
+commit 1710898f89668340c4ea76a2f86e821fc019fdc1
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Tue Feb 19 12:42:59 2019 -0800
+
+    Cleanup readme
+
+commit 828978e8528796d3b78c6daf49c42a90320bb93b
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Tue Feb 5 11:38:51 2019 -0800
+
+    Fix incorrect variable name in TabMenu
+
+commit bd33dca120891730b243a9b3ac3cbadee48d4b0a
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri Nov 16 14:54:47 2018 -0800
+
+    Prompts correctly when cannot close a tab when closing extra tabs, also try switch to it
+
+commit f851ff8a2293dfee82481cb64eb75dcafecccd1d
+Author: Thomson Tan <lilotom@gmail.com>
+Date:   Thu Oct 11 22:42:13 2018 -0700
+
+    Connect GVim to console window
+
+commit 4b98766e6183a716e1cb7ee8e485ffb8a9c2015c
+Author: Tom Tan <totan@microsoft.com>
+Date:   Thu Oct 11 17:53:40 2018 -0700
+
+    Map a-b to open parent folder of current file
+
+commit b6ca6bc9474176bcc8a516707cd584ba822573c7
+Author: Tom Tan <totan@microsoft.com>
+Date:   Mon Sep 10 14:14:24 2018 -0700
+
+    Don't show list of a-r via echom which saves it to buffer
+
+commit 1cfe723ff64e7a044b59fae1e3e86f217ac74917
+Author: Tom Tan <totan@microsoft.com>
+Date:   Tue Jul 3 17:08:36 2018 -0700
+
+    Upgrade to Vim 8.1 path
+
+commit 658e3360730e13e8e0246f1692b26ff01b15050c
+Author: Tom Tan <totan@microsoft.com>
+Date:   Sun May 13 17:48:31 2018 -0700
+
+    Remove some accidental 0xa inserted at the end of line which triggers beep for the keyboard shortcut
+
+commit 9a74232a3b23bd2f42cd8eef13bf79fb8fad3a13
+Author: Tom Tan <totan@microsoft.com>
+Date:   Thu May 3 10:54:04 2018 -0700
+
+    Change font and map a-q to explore folder
+
+commit 545303e67acbe318f708aab137fd7a9f35e22fec
+Author: Tom Tan <totan@microsoft.com>
+Date:   Thu Apr 26 11:19:38 2018 -0700
+
+    Break a infinit loop in tab plug-in
+
+commit 09f51d76bd76118370ec9212315d1c7edd8059ce
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri Mar 2 17:14:19 2018 -0800
+
+    Update open vim shortcut to 8.0
+
+commit d9a0761af1e025b8c705a961404f9b5f15d1fe40
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri Mar 2 17:04:40 2018 -0800
+
+    Update vim register to 8.0
+
+commit 8211f05883d858da6671889387134d71c0107790
+Author: Tom Tan <totan@microsoft.com>
+Date:   Wed Oct 18 17:05:51 2017 -0700
+
+    Disable auto comment
+
+commit afe9cf151c3254a5fd2d9f6da32ad2375aa5eadd
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Sep 23 22:33:38 2017 -0700
+
+    Make the test admin mode reg key unique
+
+commit b042308b4dbca42eb9e9424ffee9926e7e6f500a
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Sep 23 22:26:12 2017 -0700
+
+    Correct copy to as relative path to the install script
+
+commit 4d777dd89c70cf28b4c9d5b51bf89cf64f145614
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Sep 23 22:22:02 2017 -0700
+
+    Copy ctags.exe to system directory in installation script, disable scroll animation by default
+
+commit 964b079696f863ccc0dcb6b7f8a6f40c4ab399bf
+Merge: b83cb55 bf63780
+Author: Tom Tan <totan@microsoft.com>
+Date:   Mon Jun 19 17:03:12 2017 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit b83cb55c7f2205fb0833ce58cc1c7459dfec0d7c
+Author: Tom Tan <totan@microsoft.com>
+Date:   Mon Jun 19 17:02:57 2017 -0700
+
+    Exclude perl5lib for gf.cmd
+
+commit bf63780367b93848d6d2a65867cf98b627758f83
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri May 12 14:29:25 2017 -0700
+
+    Fix gv.cmd for explorer context menu which passes double quotes around file name
+
+commit 2656be1db9bc3b50cbba2021abaa6edad9464174
+Merge: a1792cd 1cece0f
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri May 12 13:45:58 2017 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit a1792cddb41b57aacb6f2bf74694cb7297db9a71
+Author: Tom Tan <totan@microsoft.com>
+Date:   Fri May 12 13:45:41 2017 -0700
+
+    Add dump and etl open to context menu
+
+commit 1cece0f7024eb5c75121b24c084007e747a85872
+Author: Tom Tan <totan@microsoft.com>
+Date:   Wed Apr 26 16:19:07 2017 -0700
+
+    Don't try to write for unnamed buffer
+
+commit 48a23dec008de58f983d712d1bbd7130052ecb69
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Apr 23 09:28:00 2017 -0700
+
+    Add auto-save for A-d, and support A-c in insert mode
+
+commit 89be1ffc04dd72886841fff4b4b69f755b6f6420
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Apr 23 09:08:00 2017 -0700
+
+    Utilize new built-in funciton aaaSetForegroundHwnd
+
+commit d0c4ff09fef440086c180fe0a757874a6580684f
+Author: Tom Tan <totan@microsoft.com>
+Date:   Sat Mar 11 08:19:40 2017 -0800
+
+    Add shortcut for git diff
+
+commit c6b7ec7cdaf2c415d36677589323ac381182ea1d
+Author: Tom Tan <totan@microsoft.com>
+Date:   Thu Nov 17 16:39:07 2016 -0800
+
+    Support jump to cursor in launch
+
+commit 46fda12cd6169b9c5347340a8334aadffb0b2d61
+Author: Tom Tan <totan@microsoft.com>
+Date:   Sun Nov 6 18:02:02 2016 -0800
+
+    Ignore to close given tab if it is modified
+
+commit 619452f11d8397b284c42a39a08e6f1658d75ebd
+Author: Tom Tan <totan@microsoft.com>
+Date:   Tue Oct 25 23:36:59 2016 -0700
+
+    Adding result file support to gf.cmd
+
+commit 278e85ba3b5d534a8feff0ae0432713e171c7f72
+Author: Tom Tan <totan@microsoft.com>
+Date:   Sat Oct 8 16:10:11 2016 -0700
+
+    Remove ':' from keywords in C++ syntax
+
+commit a9ab075822a35047343059d4129ace352c144485
+Author: Tom Tan <lilotom@gmail.com>
+Date:   Tue Sep 27 20:53:14 2016 -0700
+
+    Update installation guide in readme.md
+
+commit 0788390175786df4fee3707fff4530d430f03b29
+Author: Tom Tan <totan@microsoft.com>
+Date:   Wed Jul 27 01:32:12 2016 -0700
+
+    autoread when file changes
+
+commit a0bb01497cae2eb10cae1351d5276dbccf6df073
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Sat Jun 11 15:57:58 2016 -0700
+
+    Map A-f to jump to tag, A-g to find in line
+
+commit 6e60e5ee48196e6a134ba3dd5ae026471b0b6ed6
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Sat Jun 11 09:03:38 2016 -0700
+
+    Initial check-in of gd.cmd which search files in given dir
+
+commit 406e08b49208f987f25607fefa3f05f0bf211b11
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Jun 10 21:00:09 2016 -0700
+
+    Remap A-g to ctags
+
+commit d7bb8610a4e54297e7be58026dfc53e0d9d865f2
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Jun 10 18:45:25 2016 -0700
+
+    Map remove duplicated tabs to A-a, don't enable it automatically in A-e
+
+commit 89196fe65830efc92ffc1229f43ab9dc4b2aa35a
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Jun 9 21:13:56 2016 -0700
+
+    Map A-r for task switch in insert mode
+
+commit ec4293416fe117b534ea3c7aaa02107c55703460
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Jun 9 21:03:17 2016 -0700
+
+    Close duplicated tabs when closing
+
+commit 5d3c7990a62b06aa206d3e2ec19e865ef580a410
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Jun 9 19:37:40 2016 -0700
+
+    Open tag in new tab, and close extra tab when closing
+
+commit ad93a9d6c43b0d784bebd1f5a86e6ed015bd5639
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon May 9 14:13:41 2016 -0700
+
+    Map A-k A-j to Up and Down in command mode
+
+commit 9a11967d5be22b58df9008ab727563267b86f127
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Apr 11 13:16:20 2016 -0700
+
+    Workaround color highlight for rs1, highlight needs reset explicitly?
+
+commit 53a635f0c9e3cc834d5390bf05b89689b8dded35
+Merge: 3c5342f dc73359
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Apr 11 13:14:09 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit dc733596883b9e3da6638c7b81d6409e5ea08284
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Mar 28 18:53:24 2016 -0700
+
+    Only search text files
+
+commit 3c5342f220414cbb028a6062bf6471f0fd9e83d7
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Mar 28 18:53:24 2016 -0700
+
+    Update tab number stack for a-e map
+
+commit 1ee0fffb6b06519dfa2328c65cd29d4e9c06c659
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Mar 28 00:34:12 2016 -0700
+
+    Update gvim to support MRU for remote-tab-silent
+
+commit ac5aa118151f4369e3a05853bd86fc7e8f209dc0
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Mar 27 17:35:47 2016 -0700
+
+    Follow MRU order to close tabs, extend keyword for .dis file
+
+commit 95be1ab0f211128f5dea3b5b939be9c1a75c6c76
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Mar 27 11:26:48 2016 -0700
+
+    Correct map command for SwitchTab
+
+commit 794e54fe0a5063511d867d3235c2f430e48f8ab5
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Mar 27 10:56:59 2016 -0700
+
+    Clean command mapping for TabEnter/TabLeave
+
+commit 503f207fdd91700bfe27c1422f1cb1d65573e5b4
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Mar 27 10:37:58 2016 -0700
+
+    Add MRU order tab list plug-in
+
+commit c8cba72549ff95681dbe08083b17fdccbd8e3975
+Merge: 4488611 a9d41d6
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Mar 25 22:08:40 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit a9d41d66cfc5d4b98ad61e6053a77106782796f6
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 25 22:08:08 2016 -0700
+
+    Open files in single gvim.exe instance
+
+commit 4488611f78d6f86275656c3619c9bf04e4c8f63f
+Merge: 69f8e11 a95992a
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Mar 25 20:38:52 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit a95992a9a322e9ede866ca74322a5939dd04cd2f
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 25 18:32:15 2016 -0700
+
+    Add index char to the end of each line to ease indexing via folder comparison
+
+commit 8ac6286783cf972b9f6b3ddd680604153843c84e
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Mar 24 23:49:43 2016 -0700
+
+    Correct single char wild match
+
+commit 9ceb8688b105d8297faa00c6affd002381bd50e5
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Mar 24 22:40:35 2016 -0700
+
+    Add SwitchTab plugin
+
+commit edd0ac6d6b4913b34885e401427ab28279c8bebc
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Thu Mar 24 22:38:09 2016 -0700
+
+    Cancel rnu map which is rarely used
+
+commit d33f0684a4524001bec6dca2390669f058d21a96
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Mar 21 13:50:53 2016 -0700
+
+    Starts color from green instead of red which is not in high contast based on dark
+
+commit 977404c93a4f1c45b0067bf796cddd6f09828686
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Mon Mar 21 01:00:27 2016 -0700
+
+    Fix match consecutive lines for single line search, enable highlight multiple occurrences of searching pattern in the same line
+
+commit 69f8e11e97d58d5566eba17ce2ad3b85176929ba
+Merge: c8d9d2e 38b5934
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Mar 18 20:32:47 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit 38b5934d7616e9b4394282425d67d0cf8edbdce6
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 18 20:32:18 2016 -0700
+
+    Exit for unknown option
+
+commit c8d9d2ed1eb6e06822cec1895f5d440993253263
+Merge: e78946c beea608
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Mar 18 19:53:39 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit beea608bb2514187dbffb3b3253b20cb1e9e35d3
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 18 18:28:11 2016 -0700
+
+    Make case sensitiveness configurable
+
+commit cf64c5e0cfd56bd269391a067b82931f4689c747
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 18 16:19:18 2016 -0700
+
+    Only enable separator for multi-line search
+
+commit a10e05e78527acc22dd2fd13798df23c3a51b842
+Merge: 735ec1a 83ca365
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 18 16:16:07 2016 -0700
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit 735ec1a3dc0db51fbe635e465d40e1d337f907de
+Author: Tom Tan <Tom.Tan@microsoft.com>
+Date:   Fri Mar 18 16:15:36 2016 -0700
+
+    Color the output, support search single patter and function definition heuristics
+
+commit 83ca36534ec51706970fb434c91a3123976509a6
+Author: Tom Tan <lilotom@gmail.com>
+Date:   Tue Mar 8 23:27:25 2016 -0800
+
+    Map A-e to exit gvim
+    
+    This is for coworking with new A-e in my PyCmd and findstr to accelerate content browse
+
+commit e78946c0641a8e5f6045e79aeff51f2d79db2607
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Mar 8 22:43:13 2016 -0800
+
+    Map A-e to exit gvim. This is for coworking with new A-e in my PyCmd and findstr to accelerate content browse
+
+commit e60bec332c80f42dfb7cf43451cb04e8a156fe49
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Feb 17 00:19:15 2016 +0800
+
+    Add surround.vim to plug-in list. May also consider repeat.vim
+
+commit 0f29c5a8f2aea368f19dd287cf617812b9229e65
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jan 28 22:11:34 2016 -0800
+
+    Update gvim.exe with function definition name highlight logic moved to code
+
+commit fb3f5fd890f0e71c81ab023c991db656c3e0127b
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jan 28 22:10:07 2016 -0800
+
+    Add macro FuncDefName to syntax highlight, delegate the highlight to code
+
+commit 108001013ee1c7a4aa6b4533a19f07cd521c31a7
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Nov 18 10:46:13 2015 -0800
+
+    Change color of return statement
+
+commit 2d2716b54c44a79901b6298a6c6ea69301a0ff37
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Sep 7 00:34:07 2015 -0700
+
+    Update scroll position for C-p which maps to :tag to avoid unexpected scrolling
+
+commit de51b181da3155dba72c3d668aa1f7add82fb621
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Sep 7 00:23:33 2015 -0700
+
+    Keyboard shortcut to recover last cscope result was overwrite unexpectedly, restore it
+
+commit c35e3ca3ce4e7653376141e30b16f33b7a31274d
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Sep 3 15:00:16 2015 -0700
+
+    Fix scroll for a-m finally, and adding shortcut to recover last cscope search
+
+commit 3757f7f0885c9d47b8318f62aedac7959d459055
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Aug 29 23:53:24 2015 -0700
+
+    Mard tag target globally by using upper case register
+
+commit 4c0d20babc6bf2eb08292f8505aa5817e18c0701
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Aug 29 21:33:14 2015 -0700
+
+    Adding mapping to show last scope search, and fix color of cscope output
+
+commit 8a66275297f84145d5f9d04e74123c99f3314a2c
+Author: unknown <totan@totan7.fareast.corp.microsoft.com>
+Date:   Fri Aug 14 10:21:39 2015 -0700
+
+    Map T to bidirection in easymotion, and t to normal nav in Vim
+
+commit f59f1f6346de938ca2c3526de018b40a0165087a
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jul 27 21:30:12 2015 -0700
+
+    Map F to easy motion in line
+
+commit 3ddbb6c519720a03f955218efc3059c9b7566690
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jul 27 21:23:16 2015 -0700
+
+    Map easy navigation in insert mode
+
+commit a3847ebe8fd04f3e7fc5c36aa5245c2821b5fb0c
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jun 15 13:30:36 2015 +0800
+
+    Add symtax after highlight for csharp
+
+commit e44a111cdb3b99fe671782b8f7dad4caf9c08299
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jun 15 11:31:20 2015 +0800
+
+    Increase background light for Visual mode
+
+commit 73d4af8d416b70cbd73eb67226fa2313e6dbc8f5
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jun 10 11:38:05 2015 +0800
+
+    Set diff text color to dark red which works with other syntax highlights
+
+commit bc4302c1ff8721a9baff0506200b7e4ac4d37201
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 9 19:59:15 2015 +0800
+
+    Reset comment color, need reconsider diff highlight color
+
+commit 861ca9f7ab204944eb3bcd9eb42f8a2c282fd059
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 9 17:29:49 2015 +0800
+
+    Make diff color to be more contrastable
+
+commit 6acb9b800c4a3276ec8022fcc5a81f9135fc4351
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 9 17:22:42 2015 +0800
+
+    Update comment color to work better in diff mode
+
+commit 42ad85cd51aae33a6244cc0c1ffe2f5f78119754
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 9 17:18:01 2015 +0800
+
+    Update colors for diff mode
+
+commit d380c63c46257fbacaabd7d780ab25ebd53a773f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jun 8 23:17:47 2015 +0800
+
+    Add rainbow plugin
+
+commit 5b151c60185e5f92e9b6b7f4fe50cf729a77deaf
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jun 4 18:46:21 2015 +0800
+
+    Make more sense for some sexy scroll function names
+
+commit 9dfd0cacd9c4d09d7b61fb38410eabbcd54a1684
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jun 4 17:17:45 2015 +0800
+
+    Fix highlight for function definition which tails it's first parameter with * and *
+    
+    Function like void foo(char* p) cannot be highlighted previously.
+
+commit a6a1126f43757308a9b85796b6801a29bad2e029
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jun 4 13:39:49 2015 +0800
+
+    Add help message for gf.cmd
+
+commit b530b4f223f8581828e99bc6467fc0a9c7b7ae2b
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jun 4 11:49:13 2015 +0800
+
+    Update installation guide in ReadMe.md
+
+commit f71e47673ba21ababdcbdb887c4b2bec9532b696
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 2 00:57:16 2015 +0800
+
+    Set highlight priority to -1 which is less then hlsearch priority 0
+
+commit 0b5184c67c68e2d7deb4131709b062643f4f121e
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 2 00:33:35 2015 +0800
+
+    Add deleted folders back under vimfiles
+
+commit 491ffddc44f3a332670b479622b3611c29a44779
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 2 00:32:47 2015 +0800
+
+    Delete folders under vimfiles to fix git submodule error
+
+commit 34e486bb5332af9015276bc3ed505b54a82bb745
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun May 31 12:53:45 2015 +0800
+
+    Highlight return statement specially with yellow color
+
+commit 86aa77336f90fb253c94d5dfaee1e2334e7bbe53
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat May 30 22:48:04 2015 +0800
+
+    Fix installation error
+
+commit d80d7834c546b39015511bdf59ed091d464da641
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu May 28 18:34:02 2015 +0800
+
+    Add VimBin(binary utility) to git source control
+
+commit 06c4321760e0f065089ccb850c08dd9d3c41bc92
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu May 28 18:26:35 2015 +0800
+
+    Update installation script to reflect new folder structure
+
+commit 76f0fdad4f61dfc12cbc6a448141a6ce348f2480
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu May 28 18:17:33 2015 +0800
+
+    Add vimfiles to git source control
+
+commit 5d25abfb36f22d031ca4eab37957d022f5e38d4c
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu May 28 18:10:09 2015 +0800
+
+    Add lexima plug-in for parenthesis auto-completion
+
+commit 9f7280747c09be92d6a35399b33b74f1d61bc53d
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 27 22:25:02 2015 +0800
+
+    Add customized syntax higlighting for C to installation script
+
+commit 7950cb6436f8d68498b9d765e119b4df5850a763
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 27 14:02:39 2015 +0800
+
+    Ajust guifg for visual mode
+
+commit 27fcc5c03a124d2659cf78df859ec90000107b7f
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 27 12:46:27 2015 +0800
+
+    Extend syntax hilighting for C/C++ functions
+
+commit a8cab223cccc79724897f34300ab7c11f2792a8c
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 20 13:40:07 2015 +0800
+
+    Disable IndentLine by default and add toggle for it
+
+commit c2ea54da5a2784f6d04e3f44a60acbb7bec8e2f5
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 20 12:19:24 2015 +0800
+
+    Still unfold all at startup, some plug-in might define fdm
+
+commit 06fde81224619d861c933b43c1c38d7d36f18446
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 20 12:16:48 2015 +0800
+
+    Disable fdm to improve performance, map F5 to highlight tags
+
+commit 9ae97834b25cc32dbd9e335e4ab0409366685d17
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue May 19 15:05:10 2015 +0800
+
+    Disable YCM and add quickhl based on keywords
+
+commit 80fdf504f159caab768c84f5c337d1cee02a7520
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun May 10 23:37:19 2015 +0800
+
+    Search fro current selection for * and #
+
+commit a43bde2e2709616dbc3c07b083d55cbd60459456
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun May 10 23:20:46 2015 +0800
+
+    Remap jump to top level (previous C-m) to A-m
+
+commit e97b351362cb2fbec166a6cc4b1838e46093ab4b
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed May 6 16:56:57 2015 +0800
+
+    Map f to easymotion
+
+commit 15d13fcb2ee34feb0431ac95e9979919e7e9eae1
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue May 5 12:18:12 2015 +0800
+
+    Map easy motion for operator motion
+
+commit ab8a2e63eb6d65a4523192825a193b99cdcc1dce
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Apr 29 15:27:05 2015 +0800
+
+    Add TODO to indicate C-m is inconsistent with Sexy Move
+
+commit 0514a2d4435e303dae63615df09ada330a2efd86
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 27 12:55:26 2015 +0800
+
+    Fix flickering by update position for <C-]> and <C-t>
+
+commit cae4f5ce99fa381759e98ad52765b16861be41d3
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 27 11:13:33 2015 +0800
+
+    Map i_ctrl-l to repeat patter since i_ctrl-u is used to undo last change in a line
+
+commit ad2e7d6f0be7c32fd88318367432efb4d0e7e727
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Apr 21 17:44:24 2015 +0800
+
+    Add k mark for c-m
+
+commit dd8ec3f1261bae2a4514d349279a5e6770b7aa38
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Feb 11 10:57:41 2015 +0800
+
+    Add repeat function for inser mode
+
+commit 1adbd450db24d5b1dae67b10c27c972a500c3cf6
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 20 10:56:08 2015 +0800
+
+    Remap A-s save file, instead of toggle syntax
+
+commit 82ba4c565b0a98ab5a4c9b621cb45c0b4ae51436
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jan 8 12:34:46 2015 +0800
+
+    Bugfix: Move cursorline highlight to color scheme
+
+commit beb837150d116c8dacc6791551678b05c047fe30
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jan 8 12:25:18 2015 +0800
+
+    copy plugin and color script sources to vimfiles
+
+commit e23edadef8c06fe285a593f2c6f442915719f8c5
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jan 8 12:12:06 2015 +0800
+
+    Split color scheme to a separate file and add toggle for syntax
+
+commit 6e5dbbb2aafbce8f8b8fa1c8460e527e297c18eb
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 29 12:53:30 2014 +0800
+
+    Expand folder after jumping to ctags definition
+
+commit 6e728e68be56d906671f5242ba85c88519fda44b
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 29 12:32:37 2014 +0800
+
+    Add scroll for ctags shortcuts
+
+commit 0266ffa750347a9d4f56a3f11c939ee54b7ee972
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Dec 24 14:46:22 2014 +0800
+
+    Fix incorrect escape char in gv.cmd. \ doesn't need escape, the escape char is ^, or ^^ for ! and %
+
+commit 2f807e613608bb4dfb06014ece727cee1f35b0d2
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Dec 23 13:30:02 2014 +0800
+
+    Fix a typo for fnamemodify argument
+
+commit 0908ed4d44265c969e5add7f9289913396d7a51a
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 22 17:37:11 2014 +0800
+
+    Fix the path of cscope.out as absolute path (adding drive letter
+
+commit 5f76caf3fd52e75f41fadf853228611d4c7ba012
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 22 16:10:21 2014 +0800
+
+    Fix a logical check of line number format
+
+commit 07768c5a6ab43dd4a7884d7b01bfc2e41cd25352
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Dec 21 22:48:02 2014 +0800
+
+    Workaround the incorrect separation between file name and line number for gv.cmd
+
+commit 0925b220c8df5c115559d864b28518146e787f7a
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Dec 21 22:27:24 2014 +0800
+
+    Update searching mechanism of cscope.out
+
+commit 595bac3223fff988325d6d9dcda9a714a3ee0e6e
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Dec 21 16:47:49 2014 +0800
+
+    Adding cscope and ctags support, and adding cscope.exe
+
+commit 3b42e9b7e4ead8b5780bf10ada64578d924467ed
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Dec 12 00:56:10 2014 +0800
+
+    Mapping keys with number/count prefix as smooth scroller friendly
+    
+    Like j/k/G/gg/gd/gD. Under stand expression matching (<expr>) more now. I might understand it while ago, the mapped item is evaluated at first, and returned string as final command.
+
+commit a1cdbdff809d1097b4fe0870ebd701d5f1dff39d
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Dec 11 23:45:43 2014 +0800
+
+    Mapping % as sexy scroller friendly
+
+commit c5483a8e3ed892bcf3f8a129eebe8ad74d9e5fd1
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Dec 11 18:01:03 2014 +0800
+
+    Mapping C-m as sexy scroller friendly
+
+commit 6e1515e9d01c99b6bf94f1169b73e9ab9e3aaab5
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Dec 11 17:49:33 2014 +0800
+
+    Mapping more navigation commands as sexy scroller friendly
+
+commit c93582d3e1fd1258ed9aa7328ee97e5a835a92df
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Dec 11 17:28:47 2014 +0800
+
+    Fix a typo for C-b in the previous fix for sexy scroller
+
+commit 92fb9edf1a08999fcbf2ef1fa123abe6bf9e7052
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Dec 11 17:14:14 2014 +0800
+
+    Fix the annoy sexy scrolling caused by scrolling mouse wheel
+
+commit f43d7e6d02b8ee0a277cff57a3f08f3a341b179f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 8 18:02:10 2014 +0800
+
+    Fix incorrectness of search result and rename mf.pl to gf.cmd, part 2
+
+commit 4ca2567d9f37702b09e34f26f7d6682736bd431f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 8 18:01:49 2014 +0800
+
+    Fix incorrectness of search result and rename mf.pl to gf.cmd
+
+commit 6e1479032f608f91d561135cc398d004997ce830
+Merge: b3b393d b512ae2
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 8 17:47:57 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit b3b393d158b5191ebd71e7ae20a036d20f5f39e4
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Dec 8 10:45:43 2014 +0800
+
+    Redirect vim-easymotion to my repository
+
+commit b512ae20d00a9377ab4cff7173d4ae37882c3ad4
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Dec 5 19:22:07 2014 +0800
+
+    Create mf.pl which search keywords in multiple lines
+
+commit 20745c56c9599e9d2d9f0bf5d393f30706417281
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Dec 3 12:13:10 2014 +0800
+
+    Adding shortcut gv.cmd which supports the line number format returned by findstr.exe. Please use insert mode of the shell
+
+commit 6a5e10c7ce42bab88141d723dd1e01ed97730886
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Nov 7 17:42:10 2014 +0800
+
+    Naming mark before tag as c (caller)
+
+commit 20cd1f19e3018568b5b95145d93f8dadfd397766
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Nov 7 17:16:37 2014 +0800
+
+    Hide the scrollbar which is too light
+
+commit a44223d9c18f24ef2364eb4d6f3300feba6ca93a
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Nov 7 16:41:14 2014 +0800
+
+    Add mark for tag navigation
+
+commit 2f49653e5535aa3533b0f1860bd794fd88a512b8
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Nov 7 16:41:07 2014 +0800
+
+    Add mark for tag navigation
+
+commit 253515f73c92de6cac273ed5b812f292e5ad4105
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Nov 7 15:55:58 2014 +0800
+
+    remap C-p to jump to tag
+
+commit 8532c51e2071b57296c3c53970c33ae3ba07aacb
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Nov 4 21:27:12 2014 +0800
+
+    Adding instruction for the archived vimfiles.7z
+
+commit fc08b313f7696724de673a94e6ae0420bb9a7d67
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Nov 4 21:24:23 2014 +0800
+
+    Add ctags and plugin description to README
+
+commit 2bd525003a1ceb6cbc7860dd8b64e063d7ce690f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Nov 3 13:15:14 2014 +0800
+
+    Adding support for Source Explorer plug in
+
+commit 916b85afc2369cb46fab5b37306c2b33d70b2ba6
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Nov 3 12:40:10 2014 +0800
+
+    Adding ctags and taglist support, check in ctags.exe and taglist.vim
+
+commit 7271044210e20991e339aac316dfa894aaff318f
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Oct 12 17:18:02 2014 +0800
+
+    Tune scrolling for C-D/C-U to be more smooth (no accelerate)
+
+commit 83becf79f186e517b0aa896b5dc7f0504901c697
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Oct 12 16:07:18 2014 +0800
+
+    Little cleanup for the previous change of adding sexy scroller
+
+commit cd0173ca14ec4ed88f21d298b0a16d1e0aa295ee
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Oct 12 16:03:33 2014 +0800
+
+    Add Sexy scroller and deprecate the previous smooth scroller
+
+commit 6a7ce248d0f4d55e1ae777c18cfb68a93605e48f
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Oct 10 00:32:56 2014 +0800
+
+    Add smooth scrolling logic
+
+commit 3a6f79c7762e1c2f5941fda4d17bdbaabcbe304d
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Oct 9 15:18:37 2014 +0800
+
+    Revise functions navigation by column searching
+
+commit e411f543118b7f1c9bb7fb777b1a1e27c91f79e0
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Oct 9 14:33:24 2014 +0800
+
+    Change cursor background to ease identification
+
+commit 2f20cea1776f93aae1e7f6673c7a798962e3d2ed
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Oct 9 00:48:15 2014 +0800
+
+    Add : prefix for a command mapping
+
+commit 2f3a3b575084e8fb002f6193a2e23aa53e3c9432
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Oct 9 00:29:31 2014 +0800
+
+    Add toogle for rnu
+
+commit c25789a4061d8df0f863bc94fe2ac465af3aae92
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Sep 28 11:07:28 2014 +0800
+
+    Add indentLine via vundle, avoid manual copy for every installation of Vim
+
+commit f5aa2f99fe8a251caddb6048e0f206eb9b7635bd
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Sep 27 15:26:19 2014 +0800
+
+    Add YCM configuration
+
+commit 90c36c0c9c44ee4bec008a31800e000250883344
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Sep 17 16:48:45 2014 +0800
+
+    Adding column search and quick navigation for insert mode
+
+commit ca9a47fe830f0d8c2318f237fcc503d28cfd7fca
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Sep 10 14:51:50 2014 +0800
+
+    Chage <C-space> map to highlight function
+
+commit 0b77fbe9a6225dd7164810b7c8cc1812ea372368
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Sep 9 17:09:49 2014 +0800
+
+    Reamp n/N navigation with consistent order
+
+commit ba784d9938061f5fb318a87f7d5b4810a98fc91c
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Sep 9 00:35:54 2014 +0800
+
+    Add quickhl exension to Vundle. Disable previous highlighting via <space>. <C-Space> is still valid
+
+commit 684b53d26c1e470a9d731e6159ea9ee3fc9df720
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Sep 5 20:59:47 2014 +0800
+
+    Add configuration for easy-motion to _vimrc
+
+commit 90265d3d1128e14eb518365ee3d3e2beead8c558
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Aug 1 13:01:53 2014 +0800
+
+    Map A-f as navigation in line
+
+commit ed479fe02185c3543d9c70d4e05cb42223e629aa
+Merge: f526789 c8885d7
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jul 29 16:31:42 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit f5267891c741fc19467c97a69359f4e68af05b56
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jul 29 16:31:35 2014 +0800
+
+    Map A-, A-. to scopes navigation
+
+commit c8885d7f68b3f22f0bfdeaf380b12344290acf51
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jul 24 23:51:25 2014 +0800
+
+    Add fallback message when no highlight found in local scope
+    
+    Since there might be no scope, so cannot get highlight in the scope.
+
+commit 66beac55d4d645d726e23cd9d794db28efe2964c
+Merge: 75f5973 e09b3ad
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jul 24 19:45:04 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit 75f59737a36a21d9879fd6f62d68d02a5fb15891
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jul 24 19:44:15 2014 +0800
+
+    Show the matched count of highlighted items when highlighting
+
+commit e09b3ad2f197f99ffa2edb9e8343374c2ac3ef85
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jul 23 23:58:23 2014 +0800
+
+    Add one user scenario for fFtT to readme.txt
+
+commit 1644fc8e5cde81c2ec3bd5c44977c9fdb082c563
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jul 23 10:40:34 2014 +0800
+
+    Avoid functions navigation to affect jump list
+
+commit 3d1ca401b1e1708519befc919c7d145f33b50963
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jul 22 18:59:54 2014 +0800
+
+    Add C-m to jump and center current function start
+
+commit 5f24aad1b0c002cb18a92e9294a07148dcb50953
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jul 22 17:14:10 2014 +0800
+
+    Add hilighting in local/same block level. Also add basic support for funcitons navigation
+
+commit d919a86e15f26fc0aae09ba3ca624048f4acd67c
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Jul 11 11:20:01 2014 +0800
+
+    Map A-n A-p to C-n and C-p to accerlerate navigating through completion list
+
+commit e9490128a134563749ea2a552d28145e08415449
+Author: Thomson <lilotom@gmail.com>
+Date:   Fri Jul 11 10:50:06 2014 +0800
+
+    Add inoremap for local completion to accerlerate performance
+
+commit 476f41a46473eb67c0a7433b7be9777cc197eb4f
+Merge: a188b69 3d64a9e
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jul 2 17:30:19 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit a188b69d437f405d785f4228ae9f447b67b00c65
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jul 2 17:29:40 2014 +0800
+
+    Add hlsearch, or the searches before highlighted by space will not be highlighted
+
+commit 3d64a9e2af0de43cc06595f2ef40835fba05caaa
+Author: Thomson <lilotom@gmail.com>
+Date:   Thu Jun 26 23:55:44 2014 +0800
+
+    comment the limitation of <A-f>. <A-l> is a workaround
+
+commit 35767d9ff6ffbfbdcfd7279687708c1eb5fba2f3
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Jun 25 14:53:55 2014 +0800
+
+    mark the current position to y when highlighting it
+
+commit 0ded7b1426610b0d916a09c4e2d48b50d8d6ade5
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jun 23 17:06:47 2014 +0800
+
+    Map <A-j> in normal mode to insert <CR> after cursor
+
+commit 28307ef4222626d0919978597fb837a2222831a7
+Author: Thomson <lilotom@gmail.com>
+Date:   Sun Jun 15 20:25:29 2014 +0800
+
+    Add comment for 'filetype plugin on' which changes input/indent/auto-complete behavior for specific languages
+
+commit 2a76502365d48394a696193f51b9fad18b875240
+Author: Thomson Tan <lilotom@gmail.com>
+Date:   Sun Jun 15 15:04:24 2014 +0800
+
+    Added hight cursorline, start as maximized Window, and varies other tunings
+
+commit 4c7c5484e3adf5a0f9ee5b4ef97da91e0441d181
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jun 10 15:41:06 2014 +0800
+
+    Map A-d to Esc to avoid long hand move, change original A-d to A-c
+
+commit 1d755063bc3c291b08aa4cf05b4d72d901fb1a33
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Apr 26 21:34:01 2014 +0800
+
+    Delete ._vimrc.swp which was added to last changeset by accident
+
+commit 5d6325d2292f90943df80b72f35450b6069e3c2f
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Apr 26 21:21:29 2014 +0800
+
+    add comments about file type customization and menu/toolbar
+
+commit aa1eb923f5c0aa3ff27ca2f4aa9b88d578b11584
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Apr 26 21:21:20 2014 +0800
+
+    add comments about file type customization and menu/toolbar
+
+commit f07393fb15c813d42bc7d22c9b46cee9bdcafb7f
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Apr 26 14:21:16 2014 +0800
+
+    Fix 2 navigation command in edit mode, A-e to end of word and A-l to end of line
+
+commit 0bb6f3f4c6844e1c81fa1964dc19344a94ba9a6c
+Author: Thomson <lilotom@gmail.com>
+Date:   Sat Apr 26 12:34:24 2014 +0800
+
+    Add installation script for customized Vim stuff
+
+commit 9958880ad162b2578ddc10ef81418cc082f6b681
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Apr 23 13:42:41 2014 +0800
+
+    Set ruler in _vimrc
+
+commit 930bbb34b783a225bfa6a55d406054eb5c419623
+Merge: 8d5ff46 053d92c
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Apr 23 13:24:58 2014 +0800
+
+    Merge with change of setting relative line numbers
+
+commit 8d5ff46aa5556d0e9f1c8df99b9a7785dc8fc7f4
+Author: Thomson <lilotom@gmail.com>
+Date:   Wed Apr 23 13:21:46 2014 +0800
+
+    Set relative line numbers as default
+
+commit 053d92c7ab12d17b7a877c34342871c2808e0985
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 21 22:33:25 2014 +0800
+
+    Add Envy Code R fonts to the comma separated fonts list
+
+commit f15e3a39e444dc9e35116db7c60ef6d5d318d714
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 21 14:01:22 2014 +0800
+
+    Reset default font to Consolas in _vimrc, or machines without given font will has problem
+
+commit 737ee37d402ad81f37bd5ce0fd3bb39e2ad60372
+Merge: 43b39bd 019999f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 21 13:27:17 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit 43b39bddb55568250283c2c9dc440b26ef3da00f
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Apr 21 13:26:32 2014 +0800
+
+    Add Envy Code R font to _vimrc
+
+commit 019999f3b0268983ebadb749b98476ff6865501d
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 28 22:01:46 2014 +0800
+
+    Merge with change on notebook which disable indent for brackets inside brackets
+
+commit 38bebcdf1f260ea719ba68f18e82922b6bb2435d
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 28 16:43:40 2014 +0800
+
+    Add version requirement to ReadMe.md
+    
+    The first update. Latest 7.3 will be Ok, but 7.4 will work for some indent shortcut for the brackets inside namespaces.
+
+commit 955783fc86908685954a4f6060104cd77ad55a42
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 28 14:21:08 2014 +0800
+
+    Submit the first indent plug-in and register shortcut
+
+commit 1606506bb767ccc1a0f10e491d66f50fe0a88bc0
+Merge: bc948e1 8c059b1
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 28 14:17:14 2014 +0800
+
+    Merge branch 'master' of https://github.com/ThomsonTan/Vim
+
+commit bc948e16e02b95d1dff8b57e5480f7bb51b1a5f0
+Author: Thomson <lilotom@gmail.com>
+Date:   Tue Jan 28 14:11:20 2014 +0800
+
+    Check in my first _vimrc
+
+commit 8c059b1146349a39d8e788417286117157dc7840
+Author: Thomson <lilotom@gmail.com>
+Date:   Mon Jan 27 22:02:37 2014 -0800
+
+    Initial commit
