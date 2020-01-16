@@ -1,8 +1,8 @@
 if has('gui_running')
-    nnoremap <A-x> :call MoveToNextMatch(1, 0)<CR>
-    vnoremap <A-x> :call MoveToNextMatch(1, 1)<CR>
-    nnoremap <C-x> :call MoveToNextMatch(0, 0)<CR>
-    vnoremap <C-x> :call MoveToNextMatch(0, 1)<CR>
+    nnoremap <C-n> :call MoveToNextMatch(1, 0)<CR>
+    vnoremap <C-n> :call MoveToNextMatch(1, 1)<CR>
+    nnoremap <C-p> :call MoveToNextMatch(0, 0)<CR>
+    vnoremap <C-p> :call MoveToNextMatch(0, 1)<CR>
 endif
 
 let g:NextPattern = '^!\s*\(else\|endif\)'
