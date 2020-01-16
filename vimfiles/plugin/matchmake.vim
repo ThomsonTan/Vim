@@ -1,6 +1,8 @@
 if has('gui_running')
-    nnoremap <A-x> :call MoveToNextMatch(1)<CR>
-    nnoremap <C-x> :call MoveToNextMatch(0)<CR>
+    nnoremap <A-x> :call MoveToNextMatch(1, 0)<CR>
+    vnoremap <A-x> :call MoveToNextMatch(1, 1)<CR>
+    nnoremap <C-x> :call MoveToNextMatch(0, 0)<CR>
+    vnoremap <C-x> :call MoveToNextMatch(0, 1)<CR>
 endif
 
 let g:NextPattern = '^!\s*\(else\|endif\)'
@@ -9,15 +11,19 @@ let g:PrevPattern = '^!\s*\(if\|else\)'
 let g:NextRecur = '^!\s*if'
 let g:PrevRecur = '^!\s*endif'
 
-function MoveToLine(line_nr)
+function MoveToLine(line_nr, v_mode)
     let target_line_pos = [0, a:line_nr, 0, 0]
     let curr_nr = line('.')
     if a:line_nr != curr_nr
-        exec 'normal ' . a:line_nr . 'G'
+        if a:v_mode == 1
+            exec 'normal V' .a:line_nr . 'G'
+        else
+            exec 'normal ' . a:line_nr . 'G'
+        endif
     endif
 endfunction
 
-function MoveToNextMatch(down)
+function MoveToNextMatch(down, v_mode)
     if a:down == 1
         let delta = 1
         let target_pat = g:NextPattern
@@ -36,7 +42,7 @@ function MoveToNextMatch(down)
     while delta > 0 && curr_nr <= total_nr || delta < 0 && curr_nr > 0
         let curr_line = getline(curr_nr)
         if curr_line =~ target_pat
-            call MoveToLine(curr_nr)
+            call MoveToLine(curr_nr, a:v_mode)
             break
         else
             let curr_nr = curr_nr + delta
