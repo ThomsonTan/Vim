@@ -11,7 +11,10 @@ let g:PrevRecur = '^!\s*endif'
 
 function MoveToLine(line_nr)
     let target_line_pos = [0, a:line_nr, 0, 0]
-    call setpos('.', target_line_pos)
+    let curr_nr = line('.')
+    if a:line_nr != curr_nr
+        exec 'normal ' . a:line_nr . 'G'
+    endif
 endfunction
 
 function MoveToNextMatch(down)
