@@ -43,7 +43,7 @@ function MoveToNextMatch(down, v_mode)
         let curr_line = getline(curr_nr)
         if curr_line =~ target_pat
             call MoveToLine(curr_nr, a:v_mode)
-            break
+            return
         else
             let curr_nr = curr_nr + delta
             if curr_line =~ recur_pat
@@ -51,7 +51,7 @@ function MoveToNextMatch(down, v_mode)
             endif
         endif
     endwhile
-
+    echo 'Cannot match to any target'
 endfunction
 
 function PassNextMatch(curr_nr, total_nr, delta, recur_pat, recur_pat_end)
