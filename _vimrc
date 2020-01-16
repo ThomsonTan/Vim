@@ -331,7 +331,8 @@ inoremap <A-p> <C-p>
 " The first function cannot be handed for forward navigation, also cannot handle C++ class
 " and namespaces indentation
 " Refactor functions navigation by usign column search <A-l>
-nmap <C-n> <A-l>{<CR>
+" nmap <C-n> <A-l>{<CR>
+
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap a-f to jump to tag
 " http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
