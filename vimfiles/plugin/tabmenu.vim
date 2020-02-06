@@ -169,6 +169,9 @@ function! ShowTabLists(tabList, prompt)
   echo repeat('-', 80)
   echohl None
 
+  let @z = ''
+  let searchFiles = []
+
   let sortedTabDescs = a:tabList
   let iTab = 1
   for desc in sortedTabDescs
@@ -179,10 +182,24 @@ function! ShowTabLists(tabList, prompt)
       endif
       let idChar = nr2char(iTab + 96)
       echo idChar . ' : ' . desc . ' : ' . idChar
+
+      let sDesc = split(desc, ' ')
+      if sDesc[0] != '[No-file]'
+          let sFullPath = sDesc[2] . '\' . sDesc[0]
+          if StringContain(searchFiles, sFullPath) == 0
+              let @z = @z . sFullPath . ' '
+              let searchFiles += [sFullPath]
+          endif
+      endif
+
       let iTab = iTab + 1
   endfor
   echohl None
   echo a:prompt
+
+  if @z != ''
+      let @z = @z . '|20cope'
+  endif
 endfunction
 
 function! SwitchTab()
@@ -234,6 +251,15 @@ function! StringCompare(i1, i2)
 	return s1 ==? s2 ? 0 : s1 >? s2 ? 1 : -1
 endfunction
 
+function! StringContain(sArr, str)
+    for i in range(len(a:sArr))
+        if a:sArr[i] == a:str
+            return 1
+        endif
+    endfor
+    return 0
+endfunction
+
 function! TabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
@@ -243,10 +269,10 @@ endfunction
 func! TabId2Str(index)
   let name = TabLabel(a:index)
   if name == ''
-    if !exists("g:menutrans_no_file")
-      let g:menutrans_no_file = "[No file]"
-    endif
-    let name = g:menutrans_no_file
+    " if !exists("g:menutrans_no_file")
+    "   let g:menutrans_no_file = "[No-file]"
+    " endif
+    let name = "[No-file]" "g:menutrans_no_file
   else
     let name = fnamemodify(name, ':p')
   endif
