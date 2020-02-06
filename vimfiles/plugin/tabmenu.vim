@@ -39,7 +39,7 @@ function! SearchInActiveTabs(sPat)
       for i in range(len(sortedTabDescs))
         let sSearchFiles = sSearchFiles . sortedTabDescs[i] . ' '
       endfor
-      exec ":silent vim /" . a:sPat . "/j" . sSearchFiles . "|22cw|set syn=cpp"
+      exec ":silent vim /" . a:sPat . "/j" . sSearchFiles . "|tab new|22cw|set syn=cpp"
   endif
 
 endfunction
