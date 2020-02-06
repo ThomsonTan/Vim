@@ -15,7 +15,7 @@ endif
 
 function! SearchInActiveTabs(sPat)
     if @z != ''
-        exec ":silent vim /" . a:sPat . "/j" . @z . "|40cope"
+        exec ":silent vim /" . a:sPat . "/j" . @z . "|22cw"
     else
         echo 'Please run A-r before searching'
     endif
