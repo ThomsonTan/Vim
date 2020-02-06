@@ -26,7 +26,7 @@ function! SearchInActiveTabs(sPat)
   if (g:cTabPages == len(tabDescs))
       for i in range(g:cTabPages)
           let curTabLine = tabDescs[g:TabStack[i]-1]
-          if curTabLine != ''
+          if curTabLine != '' && StringContain(sortedTabDescs, curTabLine) == 0
               let sortedTabDescs += [curTabLine]
           endif
       endfor
