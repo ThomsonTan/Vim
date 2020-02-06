@@ -14,11 +14,33 @@ if has('gui_running')
 endif
 
 function! SearchInActiveTabs(sPat)
-    if @z != ''
-        exec ":silent vim /" . a:sPat . "/j" . @z . "|22cw"
-    else
-        echo 'Please run A-r before searching'
-    endif
+  let iTab = 1
+  let tabDescs = []
+  for i in range(tabpagenr('$'))
+      let tabDesc = TabId2FullPath(iTab)
+      let tabDescs += [tabDesc]
+      let iTab = iTab + 1
+  endfor
+
+  let sortedTabDescs = []
+  if (g:cTabPages == len(tabDescs))
+      for i in range(g:cTabPages)
+          let curTabLine = tabDescs[g:TabStack[i]-1]
+          if curTabLine != ''
+              let sortedTabDescs += [curTabLine]
+          endif
+      endfor
+  else
+      throw "Inconsistent tab page counting " . g:cTabPages . ":" . len(tabDescs)
+  endif
+
+  if len(sortedTabDescs) > 0
+      let sSearchFiles = ''
+      for i in range(len(sortedTabDescs))
+        let sSearchFiles = sSearchFiles . sortedTabDescs[i] . ' '
+      endfor
+      exec ":silent vim /" . a:sPat . "/j" . sSearchFiles . "|22cw"
+  endif
 
 endfunction
 
@@ -179,9 +201,6 @@ function! ShowTabLists(tabList, prompt)
   echo repeat('-', 80)
   echohl None
 
-  let @z = ''
-  let searchFiles = []
-
   let sortedTabDescs = a:tabList
   let iTab = 1
   for desc in sortedTabDescs
@@ -192,16 +211,6 @@ function! ShowTabLists(tabList, prompt)
       endif
       let idChar = nr2char(iTab + 96)
       echo idChar . ' : ' . desc . ' : ' . idChar
-
-      let sDesc = split(desc, ' ')
-      if sDesc[0] != '[No-file]'
-          let sFullPath = sDesc[2] . '\' . sDesc[0]
-          if StringContain(searchFiles, sFullPath) == 0
-              let @z = @z . sFullPath . ' '
-              let searchFiles += [sFullPath]
-          endif
-      endif
-
       let iTab = iTab + 1
   endfor
   echohl None
@@ -272,13 +281,22 @@ function! TabLabel(n)
   return bufname(buflist[winnr - 1])
 endfunction
 
+func! TabId2FullPath(index)
+  let name = TabLabel(a:index)
+  if name == ''
+      return ''
+  else
+      return fnamemodify(name, ':p')
+  endif
+endfunc
+
 func! TabId2Str(index)
   let name = TabLabel(a:index)
   if name == ''
-    " if !exists("g:menutrans_no_file")
-    "   let g:menutrans_no_file = "[No-file]"
-    " endif
-    let name = "[No-file]" "g:menutrans_no_file
+    if !exists("g:menutrans_no_file")
+      let g:menutrans_no_file = "[No file]"
+    endif
+    let name = "[No file]" "g:menutrans_no_file
   else
     let name = fnamemodify(name, ':p')
   endif
