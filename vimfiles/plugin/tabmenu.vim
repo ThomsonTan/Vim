@@ -5,12 +5,22 @@ if has('gui_running')
     inoremap <A-r> <Esc>:call SwitchTab()<CR>
     nnoremap <A-e> :call CloseCurrentTab()<CR>
 
-    nnoremap <A-a> :call CloseDupTabs()<CR>
+    noremap <A-a> :call SearchInActiveTabs('')<Left><Left>
+    " nnoremap <A-a> :call CloseDupTabs()<CR>
     inoremap <A-a> :call CloseDupTabs()<CR>
 
     autocmd TabEnter * call EnterTab()
     autocmd TabLeave * call LeaveTab()
 endif
+
+function! SearchInActiveTabs(sPat)
+    if @z != ''
+        exec ":silent vim /" . a:sPat . "/j" . @z . "|40cope"
+    else
+        echo 'Please run A-r before searching'
+    endif
+
+endfunction
 
 " tab index starts at 1
 function! CloseGivenTab(tabIndex)
@@ -196,10 +206,6 @@ function! ShowTabLists(tabList, prompt)
   endfor
   echohl None
   echo a:prompt
-
-  if @z != ''
-      let @z = @z . '|20cope'
-  endif
 endfunction
 
 function! SwitchTab()
