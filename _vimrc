@@ -88,7 +88,7 @@ autocmd BufEnter *.dis set iskeyword+=`
 " first available fonts, which is what I want.
 " http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
 " :set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
-:set guifont=Monaco:h12:cANSI,Consolas:h13:cANSI
+:set guifont=Cascadia_Code:h13:cANSI,Monaco:h12:cANSI,Consolas:h13:cANSI
 
 :set cindent
 " could also say set ai! ?
@@ -354,8 +354,10 @@ nnoremap <A-g> /\%<C-R>=line('.')<CR>l
 " navigation in current column
 nnoremap <A-l> /\%<C-R>=col('.')<CR>c
 nnoremap <A-S-l> ?\%<C-R>=col('.')<CR>c
-nnoremap <A-n> :keepj norm nn%zz<CR>
-nnoremap <A-p> :keepj norm N%zz<CR>
+" nnoremap <A-n> :keepj norm nn%zz<CR>
+" nnoremap <A-p> :keepj norm N%zz<CR>
+nnoremap <A-n> :cn<CR>
+nnoremap <A-p> :cp<CR>
 
 " make n/N behavior consistent
 " nnoremap <expr> n 'Nn'[v:searchforward]
