@@ -1,14 +1,13 @@
+" For multiple windows opened in one tab, show the file lines in sequential in
+" all the windows, based on current window
+
 if has('gui_running')
     nnoremap <A-w> :call ReflowTabWindows()<CR>
 endif
 
 function ReflowTabWindows()
     let l:currWindow = winnr()
-    let l:prevCount = l:currWindow - 1
-    let l:nextCount = winnr('$') - l:currWindow
-
     let l:marginLines = 6
-
     let l:currStartLine = line('w0')
     let l:currEndLine = line('w$')
 
@@ -25,7 +24,6 @@ function ReflowTabWindows()
 
     " restore current window
     exec  l:currWindow . 'wincmd w'
-    
 
     " flow forward
 
