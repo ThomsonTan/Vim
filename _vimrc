@@ -69,7 +69,7 @@ set updatecount=0
 " set laststatus=2
 
 "http://unix.stackexchange.com/questions/3073/what-is-a-vi-equivalent-of-vims-set-ruler-command
-:set ruler
+set ruler
 " Using relative numbers for navigation
 " switch between normal and relative is not considered, since the column width changes 
 " in this case. Please use C-g to get the absolute line information
@@ -88,24 +88,24 @@ autocmd BufEnter *.dis set iskeyword+=`
 " first available fonts, which is what I want.
 " http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
 " :set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
-:set guifont=Cascadia_Code:h13:cANSI,Monaco:h12:cANSI,Consolas:h13:cANSI
+set guifont=Cascadia_Code:h13:cANSI,Monaco:h12:cANSI,Consolas:h13:cANSI
 
-:set cindent
+set cindent
 " could also say set ai! ?
-:set autoindent
+set autoindent
 
 " Hide the menu and toolbar completely
-:set guioptions-=m
-:set guioptions-=T
-:set guioptions-=r
-:set guioptions-=L
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
 
 " http://stackoverflow.com/questions/7622564/vim-auto-indent-private-keyword
-:set cino+=g0
+set cino+=g0
 " http://stackoverflow.com/questions/2549019/how-to-avoid-namespace-content-indentation-in-vim
 " this actually need to relative higher version of vim73, at least it works for vim74
-:set cino+=N-s
-:set cino+=(s
+set cino+=N-s
+set cino+=(s
 
 let g:highlighting = 0
 " TODO: Toggle between different highlights looks separate
@@ -271,7 +271,7 @@ autocmd VimEnter * normal! zR
 " support crtl+c/ctrl+v
 " from http://stackoverflow.com/questions/2861627/paste-in-insert-mode
 " 2013/11/18 by tstan
-:set pastetoggle=<F10>
+set pastetoggle=<F10>
 inoremap <C-v> <F10><C-r>+<F10>
 vnoremap <C-c> "+y
 
@@ -280,7 +280,7 @@ nnoremap <C-h> :e#<CR>
 
 " provide short cuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
-:set winaltkeys=no
+set winaltkeys=no
 inoremap <A-h> <Left>
 inoremap <A-j> <C-o>j
 inoremap <A-k> <C-o>k
