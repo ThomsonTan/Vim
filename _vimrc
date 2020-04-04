@@ -499,7 +499,7 @@ if !exists("g:SexyScroller_ScrollTime")
 endif
 
 if !exists("g:SexyScroller_MaxTime")
-  let g:SexyScroller_MaxTime = 800
+  let g:SexyScroller_MaxTime = 300
 endif
 
 if !exists("g:SexyScroller_EasingStyle")
