@@ -7,19 +7,22 @@ endif
 
 function ReflowTabWindows()
     let l:currWindow = winnr()
-    let l:marginLines = 6
     let l:currStartLine = line('w0')
     let l:currEndLine = line('w$')
+
+    let l:savedScrollOff = &scrolloff
+
+    set scrolloff=0
 
     " assumes all tabs in the same height?
     let l:tabHeight = l:currEndLine - l:currStartLine + 1
 
     " flow backward
-    let l:lastLine = l:currStartLine - l:marginLines
+    let l:lastLine = l:currStartLine - 1
     for i in range(l:currWindow - 1, 1, -1)
         exec 'wincmd W'
         exec 'norm 'l:lastLine . 'zb'
-        let l:lastLine = l:lastLine - l:tabHeight
+        let l:lastLine = line('w0') - 1
     endfor
 
     " restore current window
@@ -27,13 +30,16 @@ function ReflowTabWindows()
 
     " flow forward
 
-    let l:lastLine = l:currEndLine + l:marginLines
+    let l:firstLine = l:currEndLine + 1
     for i in range(l:currWindow + 1, winnr('$'))
         exec 'wincmd w'
-        exec 'norm ' . l:lastLine . 'zt'
-        let l:lastLine = l:lastLine + l:tabHeight
+        exec 'norm ' . l:firstLine . 'zt'
+        let l:firstLine = line('w$') + 1
     endfor
 
     " restore current window
     exec  l:currWindow . 'wincmd w'
+
+    let &scrolloff=l:savedScrollOff
+
 endfunction
