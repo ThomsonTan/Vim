@@ -21,7 +21,8 @@ function ReflowTabWindows()
     let l:lastLine = l:currStartLine - 1
     for i in range(l:currWindow - 1, 1, -1)
         exec 'wincmd W'
-        exec 'norm 'l:lastLine . 'zb'
+        exec 'norm ' . l:lastLine . 'zb'
+        exec 'norm ' . (l:savedScrollOff + 1) . 'k'
         let l:lastLine = line('w0') - 1
     endfor
 
@@ -34,6 +35,7 @@ function ReflowTabWindows()
     for i in range(l:currWindow + 1, winnr('$'))
         exec 'wincmd w'
         exec 'norm ' . l:firstLine . 'zt'
+        exec 'norm ' . (l:savedScrollOff + 1) . 'j'
         let l:firstLine = line('w$') + 1
     endfor
 
