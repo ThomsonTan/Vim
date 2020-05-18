@@ -2,7 +2,7 @@
 @echo off
 set perl5lib_bak=%perl5lib%
 set perl5lib=
-C:\Perl64\bin\perl -x -S %0 %*
+C:\Perl\bin\perl -x -S %0 %*
 set perl5lib=%perl5lib_bak%
 goto endofperl
 
@@ -35,13 +35,14 @@ open(my $resultMap, ">", $resultMapFileName) || ($hasMapFile = 0);
 my $lineIndex = 0;
 
 if (@ARGV == 0) {
-    print "Usage: $0 <pattern1> [-e<pattern2>] [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-d] [-i] [-g] [-R] [-r<FileNamePattern>] [filename [filename ...]]\n";
+    print "Usage: $0 <pattern1> [-e<pattern2>] [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-d] [-i] [-s] [-g] [-R] [-r<FileNamePattern>] [filename [filename ...]]\n";
     print "\n";
     print "    pattern will be surrounded by match operator (/pattern1/) in Perl.\n";
     print "    -l2 means output has 2 lines as minimum, which is default. -l1 makes no sense here.\n";
     print "    -i Do case-insensitive match in all regexp match.\n";
     print "    -R Inverse the order of search patterns.\n";
     print "    -r FileNamePattern is matched resursively.\n";
+    print "    -s Accept file path list from STDIN for searching.\n";
     print "    -g Match line to start pattern greedy, start line is reset when sees start pattern anytime.\n";
     print "    no wildchar in filename.\n";
     print "\n";
@@ -62,6 +63,13 @@ for (@ARGV) {
         elsif (/^.r/) {
             $FileNamePattern = substr $_, 2;
         }
+        elsif (/^.s/) {
+            while (<STDIN>) {
+                chomp;
+                last if /^\s*$/;
+                push @Filter_ARGV, $_;
+            }
+        }
         elsif (/^.g/) {
             $greedyMatchStartPat = 1;
         }
@@ -79,6 +87,7 @@ for (@ARGV) {
         }
     }
     elsif (!defined($pat1)) {
+# TODO: $pat1 doesn't support ^$?
         $pat1 = $_;
     }
     else {
@@ -118,7 +127,7 @@ sub GetFileNames {
     }
 }
 
-if (defined($FileNamePattern) || @Filter_ARGV == 0) {
+if (defined($FileNamePattern) or (@Filter_ARGV == 0)) {
     find ({wanted => \&GetFileNames, no_chdir => 1}, '.');
 }
 if (@Filter_ARGV == 0) {
