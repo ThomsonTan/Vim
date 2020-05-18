@@ -27,6 +27,7 @@ my $FileNamePattern;
 my $greedyMatchStartPat = 0;
 my $caseInsensitiveMatch = 0;
 my $findDefPattern = 0;
+my $matchFromBegin = 0;
 
 my $resultMapFileName = $ENV{'PYCMD_RESULT_MAP_FILE_PATH'};
 my $hasMapFile = 1;
@@ -35,13 +36,14 @@ open(my $resultMap, ">", $resultMapFileName) || ($hasMapFile = 0);
 my $lineIndex = 0;
 
 if (@ARGV == 0) {
-    print "Usage: $0 <pattern1> [-e<pattern2>] [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-d] [-i] [-s] [-g] [-R] [-r<FileNamePattern>] [filename [filename ...]]\n";
+    print "Usage: $0 <pattern1> [-e<pattern2>] [-l<MinNumOfLines>] [-L<MaxNumOfLines>] [-b] [-d] [-i] [-s] [-g] [-R] [-r<FileNamePattern>] [filename [filename ...]]\n";
     print "\n";
     print "    pattern will be surrounded by match operator (/pattern1/) in Perl.\n";
     print "    -l2 means output has 2 lines as minimum, which is default. -l1 makes no sense here.\n";
     print "    -i Do case-insensitive match in all regexp match.\n";
     print "    -R Inverse the order of search patterns.\n";
     print "    -r FileNamePattern is matched resursively.\n";
+    print "    -b Matching from beging of line.\n";
     print "    -s Accept file path list from STDIN for searching.\n";
     print "    -g Match line to start pattern greedy, start line is reset when sees start pattern anytime.\n";
     print "    no wildchar in filename.\n";
@@ -69,6 +71,9 @@ for (@ARGV) {
                 last if /^\s*$/;
                 push @Filter_ARGV, $_;
             }
+        }
+        elsif (/^.b/) {
+            $matchFromBegin = 1;
         }
         elsif (/^.g/) {
             $greedyMatchStartPat = 1;
@@ -161,7 +166,7 @@ my $start_matching = 0;
 my $hasAnyOutput = 0;
 while (<>) {
    chomp;
-   if ((($greedyMatchStartPat == 1) || !$start_matching) && /$pat1/) {
+   if ((($greedyMatchStartPat == 1) || !$start_matching) && (($matchFromBegin == 1 and /^$pat1/) or ($matchFromBegin == 0 and /$pat1/))) {
        @cache_range = ();
        $start_matching = 1;
        $startline = $.;
@@ -181,7 +186,7 @@ while (<>) {
            $start_matching = 0;
            @cache_range = ();
        }
-       elsif (!defined($pat2) or /$pat2/) {
+       elsif (!defined($pat2) or ($matchFromBegin == 1 and /^$pat2/) or ($matchFromBegin == 0 and /$pat2/)) {
            my $iterLineNum = 0;
             for (@cache_range) {
 # remove prefix ./
