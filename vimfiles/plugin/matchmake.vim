@@ -5,11 +5,11 @@ if has('gui_running')
     vnoremap <C-p> :call MoveToNextMatch(0, 1)<CR>
 endif
 
-let g:NextPattern = '^!\s*\(else\|endif\)'
-let g:PrevPattern = '^!\s*\(if\|else\)'
+let g:NextPattern = '^\(!\|#\)\s*\(else\|elif\|endif\)'
+let g:PrevPattern = '^\(!\|#\)\s*\(if\|else\)'
 
-let g:NextRecur = '^!\s*if'
-let g:PrevRecur = '^!\s*endif'
+let g:NextRecur = '^\(!\|#\)\s*if'
+let g:PrevRecur = '^\(!\|#\)\s*endif'
 
 function MoveToLine(line_nr, v_mode)
     let target_line_pos = [0, a:line_nr, 0, 0]
