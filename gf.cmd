@@ -120,8 +120,9 @@ if ($findDefPattern == 1) {
 }
 
 sub GetFileNames {
-    if (/tags/) {
-# don't search ctags filefunctionDef
+    if (/tags/ or /\.git/) {
+# don't search ctags filefunctionDef.
+# don't search .git directory.
         return;
     }
     elsif (/$FileNamePattern/i && -T) {
