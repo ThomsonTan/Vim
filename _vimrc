@@ -20,7 +20,9 @@ set hlsearch
 set scrolloff=5
 set tabstop=4 shiftwidth=4 expandtab
 set encoding=utf-8
-colors tan
+if has("gui_running")
+    colors tan
+endif
 syntax on
 
 au FileType * set fo-=cro
@@ -365,7 +367,7 @@ nnoremap <A-p> :cp<CR>
 
 " shortcuts for insert mode, a/u reserve a/u for in file marks
 " not use u register since the existence of gi command
-inoremap kk <Esc>'a
+inoremap jj <Esc>ma
 
 " below techical of maximize gvim Window on Windows comems from below link:
 " http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
@@ -374,7 +376,7 @@ if (has("win32") || has("win64"))
     " share clipboard with Windows
     set clipboard+=unnamed
 elseif has("unix")
-    set clipboard+=linux
+    " set clipboard+=linux
 endif
 
 " The techinical of maximize Windows on Linux comes from below link:
