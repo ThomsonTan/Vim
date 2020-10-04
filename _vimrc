@@ -50,9 +50,9 @@ function! SaveCurrentBuffer()
     endif
 endfunction
 
-" nnoremap <silent> <A-s> :call ToggleSyntax()<cr>
-nnoremap <silent> <A-s> :call SaveCurrentBuffer()<cr>
-inoremap <silent> <A-s> <C-o>:call SaveCurrentBuffer()<cr>
+" nnoremap <silent> <C-s> :call ToggleSyntax()<cr>
+nnoremap <silent> <C-s> :call SaveCurrentBuffer()<cr>
+inoremap <silent> <C-s> <C-o>:call SaveCurrentBuffer()<cr>
 
 " ignore the errorbell, does this really work?
 set noerrorbells
@@ -300,9 +300,9 @@ inoremap <A-u> <C-o>4k
 " map <A-d> for both insert and visual mode
 " also add it for normal mode
 " auto-save for <A-d>
-imap <A-d> <Esc><A-s>
-vmap <A-d> <Esc><A-s>
-nmap <A-d> <Esc><A-s>
+imap <A-d> <Esc><C-s>
+vmap <A-d> <Esc><C-s>
+nmap <A-d> <Esc><C-s>
 " below mapping comes from link, search <C-c> and command line mode
 " http://vim.wikia.com/wiki/Avoid_the_escape_key
 cnoremap <A-d> <C-c>
@@ -471,8 +471,8 @@ endif
 
 " ==============================================================================
 " set Jump back to console Alt-c
-nmap <A-c> <A-s>:call <SID>SwitchToConWindow()<CR>
-imap <A-c> <A-s><C-o>:call <SID>SwitchToConWindow()<CR>
+nmap <A-c> <C-s>:call <SID>SwitchToConWindow()<CR>
+imap <A-c> <C-s><C-o>:call <SID>SwitchToConWindow()<CR>
 
 let g:conhwnd = 0
 
