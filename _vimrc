@@ -367,7 +367,7 @@ nnoremap <A-p> :cp<CR>
 
 " shortcuts for insert mode, a/u reserve a/u for in file marks
 " not use u register since the existence of gi command
-inoremap jj <Esc>ma
+inoremap jj <Esc>mj
 
 " below techical of maximize gvim Window on Windows comems from below link:
 " http://wenku.baidu.com/link?url=1yPMaL-9SsDE5PULKNZ61eeV0cjUp0qYEIiX7_u27siVqN89cleuFCpTLqaj8P8SVH3JtrsNxR8WmKRbLrHfqSS_e4aXlFoZDwOEU-_1dOS
