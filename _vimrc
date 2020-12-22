@@ -351,6 +351,8 @@ nnoremap <silent> <A-t> 0w:silent !sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expa
 "nnoremap <A-b> :silent !cmd /c start %:p:h<CR>
 nnoremap <A-b> :silent !explorer.exe /select,"%:p"<CR>
 
+nnoremap <A-x> :silent !bb.cmd <C-r>=expand('%:p').':'.line('.')<CR><CR>
+
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
 " navigation in current column
