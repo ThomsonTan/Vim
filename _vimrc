@@ -364,6 +364,8 @@ nnoremap <A-S-l> ?\%<C-R>=col('.')<CR>c
 nnoremap <A-n> :cn<CR>
 nnoremap <A-p> :cp<CR>
 
+nnoremap <A-s> :ta <C-r>*
+
 " make n/N behavior consistent
 " nnoremap <expr> n 'Nn'[v:searchforward]
 " nnoremap <expr> N 'nN'[v:searchforward]
