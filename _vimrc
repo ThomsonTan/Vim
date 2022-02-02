@@ -346,7 +346,8 @@ nnoremap <A-q> :tab new %:p:h<CR>
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
 " Also need move cursor under ^commit as initial position
 " A-t seems a little hard to reach, change to a-z!
-nnoremap <silent> <A-z> 0w:silent !sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0?^commit<CR>zz
+nnoremap <silent> <A-c> 0w:silent !sg.cmd <C-r>=expand('<cword>')<CR> <C-r>=expand('%:p:h')<CR><CR>0?^commit<CR>zz:call <SID>CheckForPositionChange(0)<CR>
+nmap <silent> <A-t> N
 
 " Open current file's parent folder in Explorer
 "nnoremap <A-b> :silent !cmd /c start %:p:h<CR>
@@ -479,8 +480,8 @@ endif
 
 " ==============================================================================
 " set Jump back to console Alt-c
-nmap <A-c> <C-s>:call <SID>SwitchToConWindow()<CR>
-imap <A-c> <C-s><C-o>:call <SID>SwitchToConWindow()<CR>
+" nmap <A-c> <C-s>:call <SID>SwitchToConWindow()<CR>
+" imap <A-c> <C-s><C-o>:call <SID>SwitchToConWindow()<CR>
 
 let g:conhwnd = 0
 
