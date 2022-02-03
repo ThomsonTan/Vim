@@ -2,7 +2,7 @@
 " all the windows, based on current window
 
 if has('gui_running')
-    nnoremap <A-w> :call ReflowTabWindows()<CR>
+    nnoremap <A-z> :call ReflowTabWindows()<CR>
 endif
 
 function ReflowTabWindows()
