@@ -278,9 +278,13 @@ inoremap <C-v> <F10><C-r>+<F10>
 vnoremap <C-c> "+y
 
 " More accessible key combination for jumping back to previous file
+" not useful anymore as C-h is mapped to backspace by ahk
 nnoremap <C-h> :e#<CR>
 
-" provide short cuts for insert mode
+nnoremap <A-o> :tab new<CR>i
+nnoremap <A-s-o> :q!<CR>
+
+" provide shortcuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
 set winaltkeys=no
 inoremap <A-h> <Left>
