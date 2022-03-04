@@ -539,7 +539,7 @@ endif
 " == Setup == "
 
 command! SexyScrollerToggle call s:ToggleEnabled()
-nnoremap <A-v> :call <SID>ToggleEnabled()<CR>
+nnoremap <A-y> :call <SID>ToggleEnabled()<CR>
 
 augroup Smooth_Scroller
   autocmd!
