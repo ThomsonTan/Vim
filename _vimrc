@@ -883,7 +883,7 @@ map <A-k> <Plug>(easymotion-k)
 " config for quickhl
 Bundle 'ThomsonTan/vim-quickhl'
 
-let g:quickhl_hl_keyword=1
+let g:quickhl_hl_keyword=0
 let g:quickhl_manual_hl_priority=-1
 
 nmap <Space> <Plug>(quickhl-manual-this)
