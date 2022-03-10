@@ -881,10 +881,15 @@ map <A-k> <Plug>(easymotion-k)
 
 " ==============================================================================
 " config for quickhl
+
+let g:quickhl_hl_keyword=1
+
 Bundle 'ThomsonTan/vim-quickhl'
 
-let g:quickhl_hl_keyword=0
-let g:quickhl_manual_hl_priority=-1
+" Seems hard to call below for the creation of the first buffer/win/tab.
+" VimEnter/GuiEnter all don't work. Can only start from the second one!
+" Below command works per tab
+autocmd TabEnter * :QuickhlCwordEnable
 
 nmap <Space> <Plug>(quickhl-manual-this)
 xmap <Space> <Plug>(quickhl-manual-this)
