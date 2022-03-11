@@ -576,7 +576,8 @@ nnoremap <silent> / :call <SID>StartSexy()<CR>/
 nnoremap <silent> ? :call <SID>StartSexy()<CR>?
 nnoremap <silent> <expr> n <SID>StartSexy().'Nn'[v:searchforward]
 nnoremap <silent> <expr> N <SID>StartSexy().'nN'[v:searchforward]
-nnoremap <silent> <A-space> :call <SID>StartSexy()<CR>*
+nnoremap <silent> <space> :call <SID>StartSexy()<CR>*
+nnoremap <silent> <s-space> :call <SID>StartSexy()<CR>#
 nnoremap <silent> * :call <SID>StartSexy()<CR>*
 nnoremap <silent> # :call <SID>StartSexy()<CR>#
 nnoremap <silent> % :call <SID>StartSexy()<CR>%
@@ -891,8 +892,8 @@ Bundle 'ThomsonTan/vim-quickhl'
 " Below command works per tab
 autocmd TabEnter * :QuickhlCwordEnable
 
-nmap <Space> <Plug>(quickhl-manual-this)
-xmap <Space> <Plug>(quickhl-manual-this)
+nmap <A-Space> <Plug>(quickhl-manual-this)
+xmap <A-Space> <Plug>(quickhl-manual-this)
 nmap <A-u> <Plug>(quickhl-manual-reset)
 xmap <A-u> <Plug>(quickhl-manual-reset)
 
