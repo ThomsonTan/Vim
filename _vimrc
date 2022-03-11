@@ -886,7 +886,7 @@ map <A-k> <Plug>(easymotion-k)
 let g:quickhl_hl_keyword=1
 " Below doesn't work and still needs TabEnter?
 let g:quickhl_cword_enable_at_startup=1
-let g:quickhl_cword_hl_command = 'link QuickhlCword Visual'
+let g:quickhl_cword_hl_command = 'QuickhlCword guifg=#ffffff guibg=#686868'
 
 Bundle 'ThomsonTan/vim-quickhl'
 
