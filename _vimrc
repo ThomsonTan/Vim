@@ -282,7 +282,8 @@ vnoremap <C-c> "+y
 nnoremap <C-h> :e#<CR>
 
 nnoremap <A-o> :tab new<CR>i
-nnoremap <A-s-o> :q!<CR>
+" <C-A-o> doesn't work?
+nnoremap <A-S-o> :q!<CR>
 
 " provide shortcuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
