@@ -39,7 +39,8 @@ hi link Debug Special
 
 hi String          guifg=#E6DB74
 hi Character       guifg=#E6DB74
-hi Function        guifg=#A6E22E
+" hi Function        guifg=#A6E22E
+hi Function        guifg=#FF00FF
 hi Identifier      guifg=#FD971F
 hi FunctionUse     guifg=#66D9EF
 
