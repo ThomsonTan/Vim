@@ -90,7 +90,7 @@ autocmd BufEnter *.dis set iskeyword+=`
 " first available fonts, which is what I want.
 " http://stackoverflow.com/questions/23191969/how-to-determine-whether-a-set-command-failed-to-run-in-vimrc/23195939?noredirect=1#23195939
 " :set guifont=Envy_Code_R:h13:cANSI,Consolas:h13:cANSI
-set guifont=Cascadia_Code:h13:cANSI,Monaco:h12:cANSI,Consolas:h13:cANSI
+set guifont=Cascadia_Code_Light:h13:cANSI,Monaco:h12:cANSI,Consolas:h13:cANSI
 
 set cindent
 " could also say set ai! ?
