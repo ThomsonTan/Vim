@@ -361,6 +361,7 @@ nnoremap <A-b> :silent !explorer.exe /select,"%:p"<CR>
 
 nnoremap <A-x> :silent !bb.cmd <C-r>=expand('%:p').':'.line('.')<CR><CR>
 nnoremap <C-x> :silent let @*=line('.') <bar> !start cmd /c sdvdiff.cmd <C-r>=expand('%:p')<CR><CR>
+nnoremap <A-c> :silent !c.cmd <C-r>=expand('%:p').':'.line('.')<CR><CR>
 
 " navigation in one line
 nnoremap <A-g> /\%<C-R>=line('.')<CR>l
