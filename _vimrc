@@ -325,8 +325,8 @@ cnoremap <A-l> <Right>
 " cancel this maaping for easy-motion
 " nnoremap <A-j> a<CR><Esc>k$
 
-nnoremap <C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
-nnoremap <C-j> :call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
+nnoremap <C-k> m':call search('\%' . virtcol('.') . 'v\S', 'bW') <CR>
+nnoremap <C-j> m':call search('\%' . virtcol('.') . 'v\S', 'W') <CR>
 
 " map completion at local file scope to more convenient keys
 inoremap <A-,> <C-x><C-p>
