@@ -276,6 +276,7 @@ autocmd VimEnter * normal! zR
 set pastetoggle=<F10>
 inoremap <C-v> <F10><C-r>+<F10>
 vnoremap <C-c> "+y
+cnoremap <C-v> <C-r>*
 
 " More accessible key combination for jumping back to previous file
 " not useful anymore as C-h is mapped to backspace by ahk
