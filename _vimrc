@@ -344,6 +344,8 @@ inoremap <A-p> <C-p>
 " nnoremap <C-p> :keepj norm []%zz<CR>
 " remap a-f to jump to tag
 " http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
+" <C-w><C-]> opens the tag in a sub-window, then <C-w>T split the subwindow to a new tag, why tailing ^
+" Use :ts to list all tags
 nnoremap <A-f> <C-w><C-]><C-w>T^
 
 " Open current file's parent folder in Ex, cannot register A-w?
