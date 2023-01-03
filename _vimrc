@@ -348,6 +348,8 @@ inoremap <A-p> <C-p>
 " Use :ts to list all tags
 " nnoremap <A-f> <C-w><C-]><C-w>T^
 " The flickering of the center horizontal bar on <C-w><C-]> is annoy!
+" N.B. for the current mapping, there is an issue when there is one tab, or 2 tabs and reducing to 1 tab,
+"   and the window is left or right maximzed. Adding or removing tabs moves the window to central maximized, why?
 nnoremap <A-f> :tab split<CR><C-]>
 
 " Open current file's parent folder in Ex, cannot register A-w?
