@@ -350,7 +350,8 @@ inoremap <A-p> <C-p>
 " The flickering of the center horizontal bar on <C-w><C-]> is annoy!
 " N.B. for the current mapping, there is an issue when there is one tab, or 2 tabs and reducing to 1 tab,
 "   and the window is left or right maximzed. Adding or removing tabs moves the window to central maximized, why?
-nnoremap <A-f> :tab split<CR><C-]>
+"   Add the call to :QuickhlCwordEnable because there TabEnter is triggered for C-].
+nnoremap <A-f> :tab split<CR><C-]>:QuickhlCwordEnable<CR>
 
 " Open current file's parent folder in Ex, cannot register A-w?
 nnoremap <A-q> :tab new %:p:h<CR>
@@ -903,6 +904,9 @@ Bundle 'ThomsonTan/vim-quickhl'
 " VimEnter/GuiEnter all don't work. Can only start from the second one!
 " Below command works per tab
 autocmd TabEnter * :QuickhlCwordEnable
+" TabEnter for the first window is delayed to the creation of the 2nd tab?
+" TODO, below doesn't work for the first window!!!
+autocmd WinEnter * :QuickhlCwordEnable
 
 nmap <A-Space> <Plug>(quickhl-manual-this)
 xmap <A-Space> <Plug>(quickhl-manual-this)
