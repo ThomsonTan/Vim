@@ -346,7 +346,9 @@ inoremap <A-p> <C-p>
 " http://stackoverflow.com/questions/6069279/vim-open-tag-in-new-tab
 " <C-w><C-]> opens the tag in a sub-window, then <C-w>T split the subwindow to a new tag, why tailing ^
 " Use :ts to list all tags
-nnoremap <A-f> <C-w><C-]><C-w>T^
+" nnoremap <A-f> <C-w><C-]><C-w>T^
+" The flickering of the center horizontal bar on <C-w><C-]> is annoy!
+nnoremap <A-f> :tab split<CR><C-]>
 
 " Open current file's parent folder in Ex, cannot register A-w?
 nnoremap <A-q> :tab new %:p:h<CR>
