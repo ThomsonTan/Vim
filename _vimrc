@@ -351,10 +351,10 @@ inoremap <A-p> <C-p>
 " N.B. for the current mapping, there is an issue when there is one tab, or 2 tabs and reducing to 1 tab,
 "   and the window is left or right maximzed. Adding or removing tabs moves the window to central maximized, why?
 "   Add the call to :QuickhlCwordEnable because there TabEnter is triggered for C-].
-nnoremap <A-f> :tab split<CR><C-]>:QuickhlCwordEnable<CR>
+nnoremap <silent> <A-f> :tab split<CR><C-]>:QuickhlCwordEnable<CR>
 
 " Open current file's parent folder in Ex, cannot register A-w?
-nnoremap <A-q> :tab new %:p:h<CR>
+nnoremap <silent> <A-q> :tab new %:p:h<CR>
 
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
 " Also need move cursor under ^commit as initial position
