@@ -626,17 +626,19 @@ if maparg("<C-d>", 'n') == ''
   nnoremap <silent> <C-d> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-d>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
-if maparg("<C-U>", 'n') == ''
+if maparg("<C-u>", 'n') == ''
   nnoremap <silent> <C-u> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-u>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
 endif
 
-if maparg("<C-f>", 'n') == ''
-  nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-f>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
-endif
+" if maparg("<C-f>", 'n') == ''
+"   nnoremap <silent> <C-f> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-f>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
+" endif
+" 
+" if maparg("<C-b>", 'n') == ''
+"   nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-b>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
+" endif
 
-if maparg("<C-b>", 'n') == ''
-  nnoremap <silent> <C-b> :call <SID>StartSexy()<CR>:call <SID>ChangeSexyScrollStyle(0)<CR>mk<C-b>:call <SID>CheckForPositionChange(1)<CR>:call <SID>BackupSexyScrollStyle()<CR>
-endif
+nnoremap <silent> <C-f> :silent !cg.cmd <C-r>=expand('%:p')<CR> <C-r>=expand('<cword>')<CR><CR>
 
 " Search for current selection (from Practical Vim)
 " ==============================================================================
