@@ -286,6 +286,8 @@ nnoremap <A-o> :tab new<CR>i
 " <C-A-o> doesn't work?
 nnoremap <A-S-o> :q!<CR>
 
+nnoremap <silent> gc <C-w>v<C-w>lgf
+
 " provide shortcuts for insert mode
 " http://stackoverflow.com/questions/1737163/traversing-text-in-insert-mode
 set winaltkeys=no
