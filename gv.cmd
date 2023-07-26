@@ -2,7 +2,10 @@
 setlocal EnableDelayedExpansion
 setlocal EnableExtensions
 
-SET MYGVIMPATH=C:\Progra~1\Vim\vim90\gvim.exe
+REM private build works with latest vim 8.1, not latest vim 8.2
+REM https://github.com/vim/vim-win32-installer/releases/tag/v8.1.2424
+
+SET MYGVIMPATH=C:\Progra~1\Vim\vim81\gvim.exe
 SET GVIMSINGLEINSTANCE=-p --remote-tab-silent
 SET ENABLE_SCROLL_ANIMATION=1
 
