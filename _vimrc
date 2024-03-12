@@ -358,23 +358,30 @@ nnoremap <silent> <A-f> :tab split<CR><C-]>:QuickhlCwordEnable<CR>
 " Open current file's parent folder in Ex, cannot register A-w?
 nnoremap <silent> <A-q> :tab new %:p:h<CR>
 
-function! s:OpenCommit()
+function! s:OpenCommitInLog()
   let w:curr_pattern = @/
-  if w:curr_pattern == "commit"
-    execute "!sg.cmd " . expand('<cword>') . ' ' . expand('%p:h') + '\r'
-    norm ?^commit\r
+  if w:curr_pattern == '\<commit\>'
+    norm! w
+    " Do not end the command with "\r" which seems cancel the command.
+    execute '!sg.cmd ' . expand('<cword>') . ' ' . expand('%p:h')
+    execute "norm! k?^commit\n"
+    let @/=w:curr_pattern
   else
-    let at_tmp=@/
-    execute "!sg.cmd " . expand('<cword>') . ' ' . expand('%p:h') + '\r'
-    execute "norm! ?' . at_tmp . '\r'
+    execute "norm! ?^commit\nw"
+    " below line doesn't work?
+    " norm! ?^commit<CR>
+    execute "!sg.cmd " . expand('<cword>') . ' ' . expand('%p:h')
+    execute "norm! ?" . w:curr_pattern . "\n"
   endif
+  norm zz
+  call s:CheckForPositionChange(0)
 endfunction
 
 " need predefined sg.cmd to opend diff editor, and navigate backward by default.
 " Also need move cursor under ^commit as initial position
 " A-t seems a little hard to reach, change to a-z!
 " A-c is used for system ahk shortcut - CodeFlow, map to A-t
-nnoremap <silent> <A-t> :silent :call<SID>OpenCommit()<CR>zz:call <SID>CheckForPositionChange(0)<CR>
+nnoremap <silent> <A-t> :silent :call<SID>OpenCommitInLog()<CR>
 " nmap <silent> <A-t> N
 
 " Open current file's parent folder in Explorer
