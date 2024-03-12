@@ -363,14 +363,14 @@ function! s:OpenCommitInLog()
   if w:curr_pattern == '\<commit\>'
     norm! w
     " Do not end the command with "\r" which seems cancel the command.
-    execute '!sg.cmd ' . expand('<cword>') . ' ' . expand('%p:h')
+    execute '!sg.cmd ' . expand('<cword>') . ' ' . expand('%:p:h')
     execute "norm! k?^commit\n"
     let @/=w:curr_pattern
   else
     execute "norm! ?^commit\nw"
     " below line doesn't work?
     " norm! ?^commit<CR>
-    execute "!sg.cmd " . expand('<cword>') . ' ' . expand('%p:h')
+    execute "!sg.cmd " . expand('<cword>') . ' ' . expand('%:p:h')
     execute "norm! ?" . w:curr_pattern . "\n"
   endif
   norm zz
